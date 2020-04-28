@@ -5,7 +5,6 @@ var isProduction = process.env.NODE_ENV === 'production';
 
 //SECTION Import schemas
 const User = require('../User/schema');
-const Collection = require('../Collection/schema');
 
 //SECTION ADMINBRO
 const AdminBro = require('admin-bro')
@@ -15,11 +14,9 @@ AdminBro.registerAdapter(AdminBroMongoose)
 
 //SECTION Importing components
 var userComponent = require("../User/index");
-var collectionComponent = require("../Collection/index");
 
 //SECTION Using API Components
 app.use(userComponent);
-app.use(collectionComponent);
 
 var DB = null;
 //SECTION Connecting to MongoDB
@@ -40,8 +37,7 @@ if (isProduction) {
 
 const adminBro = new AdminBro({
     resources: [
-        {resource: User},
-        {resource:Collection}
+        {resource: User}
         ],
       database:DB,
       branding: {

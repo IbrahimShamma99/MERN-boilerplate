@@ -26,6 +26,5 @@ app.use(session({
   
 //SECTION Requiring DataBase Schemas
 require('../User/schema');
-require('../Collection/schema');
 
 module.exports = app;
