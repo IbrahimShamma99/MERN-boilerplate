@@ -14,12 +14,11 @@ import NavDropdown from "react-bootstrap/NavDropdown"
 const naviagtionBar = (props) => (
   <div className="navbar">
     <Navbar fixed="top" className="input" bg="black" expand="lg">
-    <Navbar.Brand href={RouteNames.home}><h4>Pics App</h4></Navbar.Brand>
+    <Navbar.Brand href={RouteNames.home}><h4>App</h4></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
         <Nav.Link href={RouteNames.profile}><h5>Profile</h5></Nav.Link>
-        <Nav.Link href={RouteNames.feed}><h5>Feed</h5></Nav.Link>
         <Nav.Link href={RouteNames.register}><h5>Register</h5></Nav.Link>
         <Nav.Link href={RouteNames.login}><h5>Login</h5></Nav.Link>
         <NavDropdown title="Find your genre" id="basic-nav-dropdown">
