@@ -1,0 +1,50 @@
+.login-form {
+    border: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px -150px -150px -150px;
+    width: 300px;
+    height: 250px;
+    padding: 20px;
+    border-radius: 5%;
+    background-color: bisque;
+}
+
+.login-background {
+    background-image: url("../../img/WinterPeace.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 5px;
+}
+
+label {
+    color: black;
+}
+.btn-flat {
+    background-color: rgb(32, 32, 32);
+    color: white;
+    width:100px;
+}
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: rgba(50,50,50, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none;
+}
