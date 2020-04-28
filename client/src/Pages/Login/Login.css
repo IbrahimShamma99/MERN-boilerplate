@@ -11,15 +11,6 @@
     background-color: bisque;
 }
 
-.login-background {
-    background-image: url("../../img/WinterPeace.jpg");
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 5px;
-}
-
 label {
     color: black;
 }

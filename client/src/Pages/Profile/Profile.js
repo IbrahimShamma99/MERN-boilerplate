@@ -41,7 +41,7 @@ class Profile extends React.Component {
     <Breakpoint medium up>
     {/** Desktop & Tablet version */}
     <div className="profile-container">
-        <img className="profile-picture" alt="profile" src={require("../../img/profile.jpg")}></img>
+        <img className="profile-picture" alt="profile" src={require("../../logos/profile.jpg")}></img>
             <div className="username-container">
 
                 <span><h3>{this.state.user.first_name} <br/>{this.state.user.last_name}</h3></span>
@@ -81,7 +81,7 @@ class Profile extends React.Component {
 
     <Breakpoint small down>
     <div className="mobile-profile-container container-fluid">
-    <img className="mobile-profile-picture" alt="profile" src={require("../../img/profile.jpg")}></img>
+    <img className="mobile-profile-picture" alt="profile" src={require("../../logos/profile.jpg")}></img>
         <div className="mobile-username-container">
 
             <span><h3>{this.state.user.first_name} <br/>{this.state.user.last_name}</h3></span>
@@ -91,27 +91,27 @@ class Profile extends React.Component {
             <div className="row">
         
             <div class="col">
-            <a href="/"><img alt="pinterest" src={require("../../img/pinterest.svg")}></img></a>
+            <a href="/"><img alt="pinterest" src={require("../../logos/pinterest.svg")}></img></a>
             </div>
 
             <div class="col">
-            <a href="/"><img alt="github" src={require("../../img/github.png")}></img></a>
+            <a href="/"><img alt="github" src={require("../../logos/github.png")}></img></a>
             </div>
 
             <div class="col">
-            <a href="/"><img alt="dev" src={require("../../img/dev-brands.png")}></img></a>
+            <a href="/"><img alt="dev" src={require("../../logos/dev-brands.png")}></img></a>
             </div>
             
             <div class="col">
-            <a href="/"><img alt="twitter" src={require("../../img/twitter.svg")}></img></a>
+            <a href="/"><img alt="twitter" src={require("../../logos/twitter.svg")}></img></a>
             </div>
             
             <div class="col">
-            <a href="/"><img alt="linkedin" src={require("../../img/linkedin.png")}></img></a>
+            <a href="/"><img alt="linkedin" src={require("../../logos/linkedin.png")}></img></a>
             </div>
 
             <div class="col">
-            <a href="/"><img alt="user" src={require("../../img/user-circle-solid.svg")}></img></a>
+            <a href="/"><img alt="user" src={require("../../logos/user-circle-solid.svg")}></img></a>
             </div>
 
             </div>

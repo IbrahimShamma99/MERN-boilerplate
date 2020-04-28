@@ -1,10 +1,10 @@
 import React from 'react';
-import linkedin from '../../img/linkedin.png';
-import pinterest from '../../img/pinterest.svg';
-import github from '../../img/github.png';
-import dev from "../../img/dev-brands.png";
-import portfolio from "../../img/user-circle-solid.svg";
-import twitter from '../../img/twitter.svg';
+import linkedin from '../../logos/linkedin.png';
+import pinterest from '../../logos/pinterest.svg';
+import github from '../../logos/github.png';
+import dev from "../../logos/dev-brands.png";
+import portfolio from "../../logos/user-circle-solid.svg";
+import twitter from '../../logos/twitter.svg';
 
 const contactLogo = (props) => {
     var path;

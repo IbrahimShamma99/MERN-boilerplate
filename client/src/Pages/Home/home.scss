@@ -1,106 +1,54 @@
-    body {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    
-    .background1 {
-        background-image: url("../../img/chase.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100%;
-        padding-bottom: 25%;
-    }
-    
-    .background2 {
-        background-image: url("../../img/deep.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: local;
-        background-size: cover;
-        height: 100%;
-        width: 100%;
-        padding: 21%;
-    }
-    
-    .background2 h1 {
-        margin-left: -190px;
-        margin-top: 150px;
-        margin-right: 300px;
-        font-weight: bold;
-        color: black;
-    }
-    
-    .background2 h3 {
-        margin-top: 150px;
-        margin-left: 50px;
-        margin-right: 300px;
-        font-weight: bold;
-    }
-    
-    .background3 {
-        background-image: url("../../img/memory.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: local;
-        background-size: cover;
-        height: 100%;
-        width: 100%;
-        padding: 21%;
-    }
-    
-    .background3 h1 {
-        margin-left: -190px;
-    }
-    
-    h1 {
-        margin-top: 250px;
-        margin-left: 50px;
-        font-weight: bold;
-        color: black;
-        font-family: 'Times New Roman', Times, serif;
-    }
-    
-    h3 {
-        margin-left: 50px;
-        font-weight: bold;
-        color: black;
-    }
-    
-    .btn-register {
-        margin-top: 5px;
-        margin-left: 50px;
-        //border: 2px solid var(--theme-top-bar-write-color, rgb(100, 100, 40));
-        outline: invert;
-        border-radius: 5px;
-        width: 140px;
-        height: 36px;
-        background-color: rgb(20, 20, 20);
-        color: beige;
-    }
-    
-    .btn-login {
-        margin-top: 5px;
-        margin-left: 30px;
-        outline: invert;
-        border-radius: 5px;
-        width: 140px;
-        height: 36px;
-        background-color: rgb(180, 55, 55);
-        color: beige;
-    }
-    
-    .btn-login:hover {
-        border: 2px solid #e93333;
-        background: 0 0;
-        color: #fff;
-    }
+body {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-      
-    
-    .btn-register:hover {
-        border: 2px solid #e93333;
-        background: 0 0;
-        color: #fff;
-    }
+h1 {
+  margin-top: 250px;
+  margin-left: 50px;
+  font-weight: bold;
+  color: black;
+  font-family: "Times New Roman", Times, serif;
+}
+
+h3 {
+  margin-left: 50px;
+  font-weight: bold;
+  color: black;
+}
+
+.btn-register {
+  margin-top: 5px;
+  margin-left: 50px;
+  //border: 2px solid var(--theme-top-bar-write-color, rgb(100, 100, 40));
+  outline: invert;
+  border-radius: 5px;
+  width: 140px;
+  height: 36px;
+  background-color: rgb(20, 20, 20);
+  color: beige;
+}
+
+.btn-login {
+  margin-top: 5px;
+  margin-left: 30px;
+  outline: invert;
+  border-radius: 5px;
+  width: 140px;
+  height: 36px;
+  background-color: rgb(180, 55, 55);
+  color: beige;
+}
+
+.btn-login:hover {
+  border: 2px solid #e93333;
+  background: 0 0;
+  color: #fff;
+}
+
+.btn-register:hover {
+  border: 2px solid #e93333;
+  background: 0 0;
+  color: #fff;
+}
