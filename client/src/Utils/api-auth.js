@@ -1,5 +1,7 @@
+import apiNames from '../constants/server';
+
 const login = (DATA) => {
-    return fetch('/auth/signin/', {
+    return fetch(apiNames.serverDev +'/login/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -15,7 +17,7 @@ const login = (DATA) => {
 }
   
   const logout = () => {
-    return fetch('/auth/signout/', {
+    return fetch(apiNames.serverDev +'/logout', {
       method: 'GET',
     }).then(response => {
         return response.json()
@@ -24,7 +26,7 @@ const login = (DATA) => {
   
   const register = (user) => {
     
-    return fetch('http://localhost:5000/register', {
+    return fetch(apiNames.serverDev +'/register', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
