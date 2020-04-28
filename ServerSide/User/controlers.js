@@ -18,7 +18,7 @@ const adduser = (req, res, next) => {
     user.save(function(err) {
         if (err) {
             if (err.name === 'MongoError' && err.code === 11000) {
-                return res.status(422).send({ succes: false, message: 'User already exist!' });
+                return res.status(422).send({ success: false, message: 'User already exist!' });
             }
             return res.status(422).send(err);
         }
@@ -57,17 +57,20 @@ const login = async(req, res, next) => {
 const updateUser = (req ,res, next)=>{
         const updateData = req.body.user;
         if (!updateData){
-            res.status(422).send({"message":"please provide what you want to update"})
+            res.status(422).send({success:false,"message":"please provide what you want to update"})
         }
         User.findById(updateData._id).then(function(user) {
             if (!user) { return res.sendStatus(401); }
             user.assignInfo(updateData);
             return user.save()
                 .then(function() {
-                    return res.json({ user: user.toAuthJSON() });
+                    return res.json({ 
+                        user: user.toAuthJSON(),
+                        success:true                    
+                    });
                 });
         }).catch(()=>{
-            res.status(422).send({"message":"couldn't update user"})
+            res.status(422).send({success:false,"message":"couldn't update user"})
         }
         );
     };
@@ -75,21 +78,22 @@ const updateUser = (req ,res, next)=>{
 const followUser = (req,res,next)=>{
     const userInfo = req.body.user;
     const followedInfo = req.body.followed;
-    if (!userInfo){res.status(422).send({"message":"User not provided"})};
-    if (!followedInfo){res.status(422).send({"message":"Followed not provided"})};
+    if (!userInfo){res.status(422).send({success:false,"message":"User not provided"})};
+    if (!followedInfo){res.status(422).send({success:false,"message":"Followed not provided"})};
     User.findById(userInfo._id).then((user)=>{
         User.findById(followedInfo._id).then((followed)=>{
-            if (!user){res.status(422).send({"message":"User not found"})}
-            if (!followed){res.status(422).send({"message":"followed not found"})}
+            if (!user){res.status(422).send({success:false,"message":"User not found"})}
+            if (!followed){res.status(422).send({success:false,"message":"followed not found"})}
             
             user.following.push(followed);
             followed.followedBy.push(user);
             user.save();
             followed.save();
             
-            return res.status(202).json(
-                user.toAuthJSON()
-            )
+            return res.status(202).send({
+                user:user.toAuthJSON(),
+                success:true
+            })
         }).catch(next)
     }).catch(next)
 }
