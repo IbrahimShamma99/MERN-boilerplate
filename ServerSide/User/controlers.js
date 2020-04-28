@@ -61,7 +61,7 @@ const updateUser = (req ,res, next)=>{
         }
         User.findById(updateData._id).then(function(user) {
             if (!user) { return res.sendStatus(401); }
-            user.handleInfo(updateData);
+            user.assignInfo(updateData);
             return user.save()
                 .then(function() {
                     return res.json({ user: user.toAuthJSON() });
@@ -71,6 +71,7 @@ const updateUser = (req ,res, next)=>{
         }
         );
     };
+    
 const followUser = (req,res,next)=>{
     const userInfo = req.body.user;
     const followedInfo = req.body.followed;
