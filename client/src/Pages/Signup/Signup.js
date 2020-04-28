@@ -4,9 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Signup.css";
 import propTypes from 'prop-types';
-import {register} from '../../Utils/api-auth';
-// import Dialog, {DialogActions, DialogContent, DialogContentText, DialogTitle} from 'material-ui/Dialog'
-// import {Link} from 'react-router-dom';
+import {register,uploadAvatar} from '../../Utils/api-auth';
 
 class Signup extends React.Component{
     state = {
@@ -18,8 +16,9 @@ class Signup extends React.Component{
         interests:propTypes.object,
         location:propTypes.string,
         password:propTypes.string,
-        open: false,
-        error: ''  
+        AvatarFile: null,
+        open: propTypes.bool,
+        error: propTypes.string
     };
 
     Changehandler = name => event => {
@@ -48,6 +47,14 @@ class Signup extends React.Component{
         })
       }
     
+      onChangeFileHandler = event =>{
+        const data = new FormData()
+        data.append('file', this.state.selectedFile)
+        uploadAvatar(data)
+          this.setState({AvatarFile:event.target.files[0],
+          loaded: 0,
+        })
+      }
 
     render(){
         return(
@@ -72,11 +79,7 @@ class Signup extends React.Component{
         <Form.Label>Password</Form.Label>
         <Form.Control onChange={this.Changehandler("password")} type="password" placeholder="Password" />
     </Form.Group>
-
-    <Form.Group>
-    <Form.Label htmlFor="exampleFormControlFile1">Avatar</Form.Label>
-    <Form.Control type="file" className="form-control-file" id="exampleFormControlFile1"/>        
-    </Form.Group>
+      <input type="file" name="avatarFile" onChange={this.onChangeFileHandler}/>
         <Button size="md" /*style={}*/ variant="flat" onClick={this.clickSubmit}>
             Submit
         </Button>
