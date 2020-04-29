@@ -48,7 +48,7 @@ const register = (user) => {
 const uploadAvatar = (file) => {
   return axios.post(apiNames.serverDev +"/upload", file, {})
     .then(res => { // then print response status
-      console.log(res.statusText)
+      console.log(res.file)
     })
 };
 

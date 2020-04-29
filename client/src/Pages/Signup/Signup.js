@@ -4,7 +4,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Signup.css";
 import propTypes from 'prop-types';
-import {register,uploadAvatar} from '../../Utils/api-auth';
+import {register} from '../../Utils/api-auth';
+import {Redirect} from "react-router-dom";
 
 class Signup extends React.Component{
     state = {
@@ -16,8 +17,7 @@ class Signup extends React.Component{
         interests:propTypes.object,
         location:propTypes.string,
         password:propTypes.string,
-        AvatarFile: null,
-        open: propTypes.bool,
+        open: false,
         error: propTypes.string
     };
 
@@ -34,7 +34,6 @@ class Signup extends React.Component{
             password: this.state.password || undefined
             }
         }
-        console.log(userData)
         register(userData).then((data) => {
             console.log(data)
           if (data.error) {
@@ -47,18 +46,10 @@ class Signup extends React.Component{
         })
       }
     
-      onChangeFileHandler = event =>{
-        const data = new FormData()
-        data.append('file', this.state.selectedFile)
-        uploadAvatar(data)
-          this.setState({AvatarFile:event.target.files[0],
-          loaded: 0,
-        })
-      }
-
     render(){
         return(
     <div className="signup-form">
+    {this.state.open ? <Redirect to="/user" /> :null}
     <Form>
     <Form.Group controlId="formBasicPassword">
     <Form.Label>First name</Form.Label>
@@ -79,7 +70,6 @@ class Signup extends React.Component{
         <Form.Label>Password</Form.Label>
         <Form.Control onChange={this.Changehandler("password")} type="password" placeholder="Password" />
     </Form.Group>
-      <input type="file" name="avatarFile" onChange={this.onChangeFileHandler}/>
         <Button size="md" /*style={}*/ variant="flat" onClick={this.clickSubmit}>
             Submit
         </Button>

@@ -35,7 +35,7 @@ var UserSchema = new mongoose.Schema({
     },
     contacts: [],
     bio: String,
-    avatar: String,
+    profileImg: {contentType: String},
     hash: String,
     salt: String,
     interests:[{required:false}]
