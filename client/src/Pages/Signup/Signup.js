@@ -6,6 +6,7 @@ import "./Signup.css";
 import propTypes from 'prop-types';
 import {register} from '../../Utils/api-auth';
 import {Redirect} from "react-router-dom";
+import RouteNames from '../../constants/routes';
 
 class Signup extends React.Component{
     state = {
@@ -49,7 +50,7 @@ class Signup extends React.Component{
     render(){
         return(
     <div className="signup-form">
-    {this.state.open ? <Redirect to="/user" /> :null}
+    {this.state.open ? <Redirect to={RouteNames.profile} /> :null}
     <Form>
     <Form.Group controlId="formBasicPassword">
     <Form.Label>First name</Form.Label>
