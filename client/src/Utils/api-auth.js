@@ -2,13 +2,14 @@ import apiNames from "../constants/server";
 import axios from 'axios';
 
 const login = (DATA) => {
-  return fetch(apiNames.serverDev + "/login/", {
+  return fetch(apiNames.serverDev + "/login", {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    credentials: "include",
+    withCredentials: true,
+    crossdomain: true,
     body: JSON.stringify(DATA),
   })
     .then((response) => {

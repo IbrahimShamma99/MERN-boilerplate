@@ -17,6 +17,25 @@ class Login extends React.PureComponent {
     onChangeHandler =  name => event => {
       this.setState({[name]:event.target.value})
     }
+    onSubmitHandler = () => {
+      const userData = {
+        user:{
+          email:this.state.email,
+          password:this.state.password
+        }
+      };
+      login(userData).then((data) => {
+        console.log(data)
+      if (data.error) {
+        this.setState({error: data.error})
+      } 
+      else {
+        console.log(data)
+        this.setState({error: '', open: true})
+        }
+    })
+
+    }
 
     render(){
     return (
@@ -33,7 +52,7 @@ class Login extends React.PureComponent {
         <Form.Control onChange={this.onChangeHandler("password")} type="password" placeholder="Password" />
     </Form.Group>
     <Form.Group controlId="formBasicSubmit">
-    <Button variant="flat" type="submit">
+    <Button onClick={this.onSubmitHandler} variant="flat">
         Submit
     </Button>
     </Form.Group>
