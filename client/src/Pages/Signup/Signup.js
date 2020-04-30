@@ -19,7 +19,8 @@ class Signup extends React.Component{
         location:propTypes.string,
         password:propTypes.string,
         open: false,
-        error: propTypes.string
+        error: propTypes.string,
+        show:false
     };
 
     Changehandler = name => event => {
@@ -38,7 +39,7 @@ class Signup extends React.Component{
         register(userData).then((data) => {
             console.log(data)
           if (data.error) {
-            this.setState({error: data.error})
+            this.setState({error: data.error,show:true})
           } 
           else {
             console.log(data)
@@ -52,6 +53,12 @@ class Signup extends React.Component{
     <div className="signup-form">
     {this.state.open ? <Redirect to={RouteNames.profile} /> :null}
     <Form>
+    {this.state.show?
+        <div className="alert">
+        <span className="closebtn" onClick="this.parentElement.style.display='none';">&times;</span>
+        {this.state.error}
+        </div>
+        :null}
     <Form.Group controlId="formBasicPassword">
     <Form.Label>First name</Form.Label>
     <Form.Control onChange={this.Changehandler("first_name")} type="username" placeholder="First name" />

@@ -31,19 +31,21 @@ const adduser = (req, res, next) => {
 const login = async(req, res, next) => {
     const UserInfo = req.body.user;
     if (!UserInfo.email) {
-        res.send(422).json({ error: { message: "please provide email " } });
+        return res.send(422).json({ error: "please provide email " });
     };
     if (!UserInfo.password) {
-        return res.status(422).json({ errors: { password: "can't be blank" } });
+        return res.status(422).json({ error: "can't be blank"  });
     };
-    await User.findOne({ email: UserInfo.email }).then(
-        user => {
+    await User.findOne({ email: UserInfo.email }).then((user) => {
+            if (!user){
+                return res.status(422).json({ error: "User not found" });
+            }
             if (user.validPassword(UserInfo.password)) {
                 return res.status(202).json(
                     user.toAuthJSON()
                 )
             } else {
-                return res.status(422).send({ errors: { authentication: "authentication error" } })
+                return res.status(422).send({ error: "authentication error" })
             }
         }
     ).catch(
