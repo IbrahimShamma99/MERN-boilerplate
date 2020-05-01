@@ -4,23 +4,23 @@ var User = mongoose.model('User');
 const adduser = (req, res, next) => {
     const UserInfo = req.body.user;
     console.log(req.body.user)
-    if (!UserInfo){return res.status(422).send({error:{message:"Data not being provided"},success:false})};
-    if (!UserInfo.email){return res.status(422).send({error:{message:"please provide email"},success:false})};
-    if (!UserInfo.password){return res.status(422).send({error:{message:"please provide password"},success:false})};
+    if (!UserInfo){return res.status(422).send({error:"Data not being provided",success:false})};
+    if (!UserInfo.email){return res.status(422).send({error:"please provide email",success:false})};
+    if (!UserInfo.password){return res.status(422).send({error:"please provide password",success:false})};
     var user = new User();
     try {
         user.assignInfo(UserInfo);
         }
     catch (e) {
         return res.status(422).send({
-            error:{message:"error during registeration"}
+            error:"error during registeration"
         });
     };
 
     user.save(function(err) {
         if (err) {
             if (err.name === 'MongoError' && err.code === 11000) {
-                return res.status(422).send({ success: false,error: {message: 'User already exist!'} });
+                return res.status(422).send({ success: false,error:  'User already exist!' });
             }
             return res.status(422).send(err);
         }
@@ -54,7 +54,7 @@ const login = async(req, res, next) => {
     ).catch(
         () => {
             return res.status(422)
-                .send({ errors: { authentication: "Email not valid" } })
+                .send({ error:  "Email not valid"  })
         }
     );
 };

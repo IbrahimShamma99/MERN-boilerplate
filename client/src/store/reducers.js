@@ -31,7 +31,8 @@ const intialState = {
     }],
     open: false,
     error: "",
-    show: false
+    show: false,
+    submitted:false
 };
 
 const reducers = (state=intialState,action) => {
@@ -63,27 +64,6 @@ const reducers = (state=intialState,action) => {
                     }
                   }
                 })
-            }
-            else if (!state.password) {
-                return {
-                    ...state,
-                    error: "please provide password",
-                    show:true
-                }
-            }
-            else if (!isEmail(state.email)) {
-                return {
-                    ...state,
-                    error: "please provide email properly",
-                    show:true
-                }
-            }
-            else {
-                return {
-                    ...state,
-                    error: "please provide data properly",
-                    show:true
-                }
             }
             break;            
         default:

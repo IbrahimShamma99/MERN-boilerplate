@@ -3,7 +3,6 @@ import NavigationBar from "./Navigation/Naviagation"
 import Switcher from "./Switcher";
 import  { BreakpointProvider } from 'react-socks';
 
-
 function App() {
   return (
     <React.Fragment>
