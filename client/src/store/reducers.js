@@ -46,14 +46,14 @@ const reducers = (state=intialState,action) => {
                 [action.name]:action.value
             };
         case(actionTypes.REGISTER):
-            console.log("ISEMAIL=",isEmail(state.email))
             if (isEmail(state.email) && state.password){
             register(userData).then((data) => {
+                  console.log(data.error);
                   if (data.error) {
                       return {
                           ...state,
                           error: data.error,
-                          show:true  
+                          show:true
                       }
                   } else {
                     return {

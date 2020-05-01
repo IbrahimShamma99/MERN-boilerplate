@@ -3,18 +3,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Signup.css";
-import propTypes from "prop-types";
+// import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/routes";
 import {connect} from 'react-redux';
 import * as actionTypes from '../../store/actions';
 
 class Signup extends React.Component {
-  state = {
-    open: false,
-    error: propTypes.string,
-    show: false,
-  };
+//   state = {
+//     open: false,
+//     error: propTypes.string,
+//     show: false,
+//   };
 
   Changehandler = (name) => (event) => {
       this.props.change(name,event.target.value);
@@ -103,7 +103,6 @@ const mapStateToProps = (state) => {
         error: state.error,
         show: state.show
       };
-    console.log(RegisterState);
   return RegisterState;
 };
 const mapDispatchToProps = (dispatch) => {
