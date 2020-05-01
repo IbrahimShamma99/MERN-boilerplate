@@ -1,5 +1,5 @@
 import * as actionTypes from './actions';
-import { login, register, logout } from "../Utils/api-auth";
+import { login, register } from "../Utils/api-auth";
 
 const intialState = {
     first_name:"",
@@ -26,26 +26,32 @@ const intialState = {
     {
         link:"",
         platform:""
-    }]
+    }],
+    open: false,
+    error: "",
+    show: false
 };
 
 const reducers = (state=intialState,action)=>{
+    const userData = {user:{...state}};
     switch(action.type){
         case(actionTypes.LOGIN):
-            console.log("Reducer state",state)
-            login({user:{
-                ...state
-            }
-        }).then(
+            console.log("Reducer state",userData)
+            login(userData).then(
             (data)=>console.log(data)
         )
         break;
         case(actionTypes.MODIFY):
-            console.log(state);
+            console.log(state.email);
             return {
                 ...state,
                 [action.name]:action.value
             }
+        case(actionTypes.REGISTER):
+            console.log("Reducer state",userData)
+            register(userData).then(
+            (data)=>console.log(data))
+            break;            
         default:
             return {
                 ...state
