@@ -5,6 +5,7 @@ const intialState = {
     first_name:"",
     last_name:"",
     bio:"",
+    password:"",
     collections:[{}],
     interests:[],
     email:"",
@@ -32,25 +33,33 @@ const intialState = {
     show: false
 };
 
-const reducers = (state=intialState,action)=>{
+const reducers = (state=intialState,action) => {
     const userData = {user:{...state}};
     switch(action.type){
         case(actionTypes.LOGIN):
-            console.log("Reducer state",userData)
-            login(userData).then(
-            (data)=>console.log(data)
-        )
+            login(userData).then()
         break;
         case(actionTypes.MODIFY):
-            console.log(state.email);
             return {
                 ...state,
                 [action.name]:action.value
-            }
+            };
         case(actionTypes.REGISTER):
-            console.log("Reducer state",userData)
-            register(userData).then(
-            (data)=>console.log(data))
+            if (state.email && state.password){
+            register(userData).then((data) => {
+                  if (data.error) {
+                      return {
+                          ...state,
+                          error: data.error
+                      }
+                  } else {
+                    return {
+                        ...state,
+                        ...data.user,
+                        open: true
+                    }
+                  }
+                })}
             break;            
         default:
             return {

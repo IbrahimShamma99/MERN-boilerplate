@@ -21,14 +21,6 @@ class Signup extends React.Component {
   };
 
   clickSubmit = () => {
-    // const userData = {
-    //   user: {
-    //     first_name: this.state.first_name || undefined,
-    //     last_name: this.state.last_name || undefined,
-    //     email: this.state.email || undefined,
-    //     password: this.state.password || undefined,
-    //   },
-    // };
     // register(userData).then((data) => {
     //   if (data.error) {
     //     this.setState({ error: data.error, show: true });
@@ -41,9 +33,9 @@ class Signup extends React.Component {
   render() {
     return (
       <div className="signup-form">
-        {this.state.open ? <Redirect to={RouteNames.profile} /> : null}
+        {this.props.open ? <Redirect to={RouteNames.profile} /> : null}
         <Form>
-          {this.state.show ? (
+          {this.props.show ? (
             <div className="alert">
               <span
                 className="closebtn"
@@ -51,7 +43,7 @@ class Signup extends React.Component {
               >
                 &times;
               </span>
-              {this.state.error}
+              {this.props.error}
             </div>
           ) : null}
           <Form.Group controlId="formBasicPassword">
@@ -103,10 +95,13 @@ class Signup extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    email: state.email,
+    email:state.email,
     first_name: state.first_name,
     last_name: state.last_name,
-    password: propTypes.string
+    password: propTypes.string,
+    open: false,
+    error: "",
+    show: false
   };
 };
 const mapDispatchToProps = (dispatch) => {
