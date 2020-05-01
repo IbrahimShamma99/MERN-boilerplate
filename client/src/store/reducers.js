@@ -50,16 +50,33 @@ const reducers = (state=intialState,action) => {
                   if (data.error) {
                       return {
                           ...state,
-                          error: data.error
+                          error: data.error,
+                          show:true  
                       }
                   } else {
                     return {
                         ...state,
                         ...data.user,
-                        open: true
+                        open: true,
+                        show:true
                     }
                   }
-                })}
+                })
+            }
+            else if (!state.password) {
+                return {
+                    ...state,
+                    error: "please provide password",
+                    show:true
+                }
+            }
+            else if (!state.email) {
+                return {
+                    ...state,
+                    error: "please provide email",
+                    show:true
+                }
+            }
             break;            
         default:
             return {

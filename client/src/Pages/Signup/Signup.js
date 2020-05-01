@@ -84,7 +84,7 @@ class Signup extends React.Component {
           <Button
             size="md"
             /*style={}*/ variant="flat"
-            onClick={()=>this.props.submit()}>
+            onClick={()=>{return this.props.submit()}}>
             Submit
           </Button>
         </Form>
@@ -94,15 +94,17 @@ class Signup extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    email:state.email,
-    first_name: state.first_name,
-    last_name: state.last_name,
-    password: propTypes.string,
-    open: false,
-    error: "",
-    show: false
-  };
+    const RegisterState = {
+        email:state.email,
+        first_name: state.first_name,
+        last_name: state.last_name,
+        password: state.password,
+        open: state.open,
+        error: state.error,
+        show: state.show
+      };
+    console.log(RegisterState);
+  return RegisterState;
 };
 const mapDispatchToProps = (dispatch) => {
   return {
