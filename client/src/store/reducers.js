@@ -1,4 +1,5 @@
 import * as actionTypes from './actions';
+import { login, register, logout } from "../Utils/api-auth";
 
 const intialState = {
     first_name:"",
@@ -31,13 +32,18 @@ const intialState = {
 const reducers = (state=intialState,action)=>{
     switch(action.type){
         case(actionTypes.LOGIN):
-            return{
-                ...state,
-                ...action.res
-            };
+            console.log("Reducer state",state)
+            login({user:{
+                ...state
+            }
+        }).then(
+            (data)=>console.log(data)
+        )
+        break;
         case(actionTypes.MODIFY):
             console.log(state);
             return {
+                ...state,
                 [action.name]:action.value
             }
         default:

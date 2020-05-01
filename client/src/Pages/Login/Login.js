@@ -18,8 +18,8 @@ class Login extends React.Component {
   }
   onChangeHandler = (name) => (event) => {
     this.props.change(name,event.target.value)
-    //this.setState({ [name]: event.target.value });
   };
+
   onSubmitHandler = () => {
     if (this.state.email && this.state.password) {
       const userData = {
@@ -28,6 +28,7 @@ class Login extends React.Component {
           password: this.state.password,
         },
       };
+      
       login(userData).then((data) => {
         if (data.error) {
           this.setState({ error: data.error, show: true });
@@ -75,7 +76,7 @@ class Login extends React.Component {
             />
           </Form.Group>
           <Form.Group controlId="formBasicSubmit">
-            <Button onClick={this.onSubmitHandler} variant="flat">
+            <Button onClick={this.props.submit} variant="flat">
               Submit
             </Button>
           </Form.Group>
@@ -90,8 +91,8 @@ Login.propTypes = {
   password:PropTypes.string
 };
 
-const mapStateToProps =state=>{
-  console.log("STATE=",state)
+const mapStateToProps = state => {
+  console.log("mapStateToProps=",state)
   return {
     email:state.email,
     password:state.password
