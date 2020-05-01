@@ -4,7 +4,9 @@ var User = mongoose.model('User');
 const adduser = (req, res, next) => {
     const UserInfo = req.body.user;
     console.log(req.body.user)
-    if (!UserInfo){return res.status(422).send({success:false})}
+    if (!UserInfo){return res.status(422).send({error:{message:"Data not being provided"},success:false})};
+    if (!UserInfo.email){return res.status(422).send({error:{message:"please provide email"},success:false})};
+    if (!UserInfo.password){return res.status(422).send({error:{message:"please provide password"},success:false})};
     var user = new User();
     try {
         user.assignInfo(UserInfo);
@@ -18,7 +20,7 @@ const adduser = (req, res, next) => {
     user.save(function(err) {
         if (err) {
             if (err.name === 'MongoError' && err.code === 11000) {
-                return res.status(422).send({ success: false, message: 'User already exist!' });
+                return res.status(422).send({ success: false,error: {message: 'User already exist!'} });
             }
             return res.status(422).send(err);
         }
@@ -29,6 +31,7 @@ const adduser = (req, res, next) => {
 };
 
 const login = async(req, res, next) => {
+    console.log(req.body)
     const UserInfo = req.body.user;
     if (!UserInfo.email) {
         return res.send(422).json({ error: "please provide email " });
@@ -39,7 +42,7 @@ const login = async(req, res, next) => {
     await User.findOne({ email: UserInfo.email }).then((user) => {
             if (!user){
                 return res.status(422).json({ error: "User not found" });
-            }
+            };
             if (user.validPassword(UserInfo.password)) {
                 return res.status(202).json(
                     user.toAuthJSON()
@@ -111,6 +114,7 @@ const followUser = (req,res,next)=>{
             })
         }).catch(next)
     }).catch(next)
-}
+};
+const UserControler = { adduser, login  ,uploadAvatar, updateUser , followUser };
 
-module.exports = { adduser, login  ,uploadAvatar, updateUser , followUser };
+module.exports = UserControler;
