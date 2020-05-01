@@ -1,8 +1,9 @@
-import actionTypes from './actions';
+import * as actionTypes from './actions';
 
 const intialState = {};
 
-const reducer = ()=>{};
+const reducers = (state=intialState,actions)=>{
 
+};
 
-export default reducer;
+export default reducers;
