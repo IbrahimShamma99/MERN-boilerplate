@@ -8,6 +8,7 @@ import RouteNames from "../../constants/routes";
 import { login } from "../../Utils/api-auth";
 import { connect } from "react-redux";
 import * as actionTypes from '../../store/actions';
+import PropTypes from 'prop-types';
 
 class Login extends React.Component {
   state = {
@@ -16,7 +17,8 @@ class Login extends React.Component {
     show:false
   }
   onChangeHandler = (name) => (event) => {
-    this.setState({ [name]: event.target.value });
+    this.props.change(name,event.target.value)
+    //this.setState({ [name]: event.target.value });
   };
   onSubmitHandler = () => {
     if (this.state.email && this.state.password) {
@@ -83,14 +85,23 @@ class Login extends React.Component {
   }
 };
 
+Login.propTypes = {
+  email:PropTypes.string,
+  password:PropTypes.string
+};
+
 const mapStateToProps =state=>{
+  console.log("STATE=",state)
   return {
     email:state.email,
     password:state.password
   }
 };
 const mapDispatchToProps = dispatch =>{
-
+  return {
+    change:(name,value)=>dispatch({type:actionTypes.MODIFY,name,value}),
+    submit:()=>dispatch({type:actionTypes.LOGIN})
+  }
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Login);

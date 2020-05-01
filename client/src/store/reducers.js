@@ -1,41 +1,49 @@
 import * as actionTypes from './actions';
-import propTypes from 'prop-types';
+
 const intialState = {
-    first_name:propTypes.string,
-    last_name:propTypes.string,
-    bio:propTypes.string,
-    contacts:[{
-        link:propTypes.string,
-        platform:propTypes.string
-    },{
-        link:propTypes.string,
-        platform:propTypes.string
-    },{
-        link:propTypes.string,
-        platform:propTypes.string
-    },
-    {
-        link:propTypes.string,
-        platform:propTypes.string
-    },
-    {
-        link:propTypes.string,
-        platform:propTypes.string
-    }],
+    first_name:"",
+    last_name:"",
+    bio:"",
     collections:[{}],
     interests:[],
-    email:propTypes.string,
-    location:propTypes.string
+    email:"",
+    location:"",
+    contacts:[{
+        link:"",
+        platform:""
+    },{
+        link:"",
+        platform:""
+    },{
+        link:"",
+        platform:""
+    },
+    {
+        link:"",
+        platform:""
+    },
+    {
+        link:"",
+        platform:""
+    }]
 };
 
 const reducers = (state=intialState,action)=>{
     switch(action.type){
         case(actionTypes.LOGIN):
-            state={
+            return{
                 ...state,
                 ...action.res
             };
-            break;
+        case(actionTypes.MODIFY):
+            console.log(state);
+            return {
+                [action.name]:action.value
+            }
+        default:
+            return {
+                ...state
+            }
     }
 };
 
