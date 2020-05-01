@@ -7,15 +7,14 @@ import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/routes";
 import { login } from "../../Utils/api-auth";
 import { connect } from "react-redux";
+import * as actionTypes from '../../store/actions';
 
 class Login extends React.Component {
-  // state = {
-  //   email:"",
-  //   password:"",
-  //   error:"",
-  //   open:false,
-  //   show:false
-  // }
+  state = {
+    error:"",
+    open:false,
+    show:false
+  }
   onChangeHandler = (name) => (event) => {
     this.setState({ [name]: event.target.value });
   };
@@ -84,7 +83,14 @@ class Login extends React.Component {
   }
 };
 
-const mapStateToProps =state=>{};
-const mapDispatchToProps = dispatch =>{};
+const mapStateToProps =state=>{
+  return {
+    email:state.email,
+    password:state.password
+  }
+};
+const mapDispatchToProps = dispatch =>{
+
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(Login);
