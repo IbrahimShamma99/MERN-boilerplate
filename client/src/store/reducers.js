@@ -28,8 +28,15 @@ const intialState = {
     location:propTypes.string
 };
 
-const reducers = (state=intialState,actions)=>{
-
+const reducers = (state=intialState,action)=>{
+    switch(action.type){
+        case(actionTypes.LOGIN):
+            state={
+                ...state,
+                ...action.res
+            };
+            break;
+    }
 };
 
 export default reducers;
