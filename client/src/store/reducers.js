@@ -49,13 +49,12 @@ const reducers = (state=intialState,action) => {
         case(actionTypes.REGISTER):
             if (isEmail(state.email) && state.password){
             register(userData).then((data) => {
-                  console.log(data.error);
-                  if (data.error) {
-                      return {
-                          ...state,
-                          error: data.error,
-                          show:true
-                      }
+                if (data.error) {
+                    return {
+                        ...state,
+                        error: data.error,
+                        show:true
+                    }
                   } else {
                     return {
                         ...state,
