@@ -56,6 +56,7 @@ const reducers = (state=intialState,action) => {
                         show:true
                     }
                   } else {
+                      console.log(data.user)
                     return {
                         ...state,
                         ...data.user,
@@ -63,6 +64,13 @@ const reducers = (state=intialState,action) => {
                     }
                   }
                 })
+            }
+            else {
+                return {
+                    ...state,
+                    error: "Data is not valid",
+                    show:true
+                }
             }
             break;            
         default:
