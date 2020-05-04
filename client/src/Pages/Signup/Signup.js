@@ -101,6 +101,7 @@ const mapStateToProps = (state) => {
   };
   return RegisterState;
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) =>
@@ -108,4 +109,6 @@ const mapDispatchToProps = (dispatch) => {
     submit: () => dispatch({ type: actionTypes.REGISTER }),
   };
 };
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

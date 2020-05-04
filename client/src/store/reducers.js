@@ -1,6 +1,5 @@
 import * as actionTypes from './actions';
 import { login, register } from "../Utils/api-auth";
-import isEmail from 'validator/lib/isEmail';
 
 const intialState = {
     first_name:"",
@@ -47,32 +46,28 @@ const reducers = (state=intialState,action) => {
                 [action.name]:action.value
             };
         case(actionTypes.REGISTER):
-            if (isEmail(state.email) && state.password){
-            register(userData).then((data) => {
+            register(userData)
+            .then((data) => {
                 if (data.error) {
-                    return {
-                        ...state,
-                        error: data.error,
-                        show:true
-                    }
-                  } else {
-                      console.log(data.user)
-                    return {
-                        ...state,
-                        ...data.user,
-                        open:true,
-                    }
+                    action.asyncDispatch({type:"error",message:data.error})
+                  } 
+                  else {
+                      action.asyncDispatch({type:"success",res:data.user})
                   }
                 })
+            return {...state};
+        case("error"):
+            return {
+                ...state,
+                error: action.message,
+                show:true
             }
-            else {
-                return {
-                    ...state,
-                    error: "Data is not valid",
-                    show:true
-                }
-            }
-            break;            
+        case("success"):
+        return {
+            ...state,
+            ...action.res,
+            open:true,
+        }
         default:
             return {
                 ...state

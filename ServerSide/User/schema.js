@@ -64,7 +64,7 @@ UserSchema.methods.toAuthJSON = function() {
     };
 };
 
-UserSchema.methods.assignInfo = function(info){      
+UserSchema.methods.assignInfo = function(info){     
     this.first_name = info.first_name;
     this.last_name = info.last_name;
     this.email = info.email;
