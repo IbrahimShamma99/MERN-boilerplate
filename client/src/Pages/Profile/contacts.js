@@ -32,7 +32,7 @@ const contactLogo = (props) => {
     }
     console.log(path)
     return (
-        <div class="col">
+        <div className="col">
         <a href={props.contact.path}><img alt={props.contact.platform} src={path}></img></a>
         </div>
     )

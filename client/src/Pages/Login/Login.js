@@ -49,9 +49,9 @@ class Login extends React.Component {
 
         <Form>
           {this.state.show ? (
-            <div class="alert">
+            <div className="alert">
               <span
-                class="closebtn"
+              className="closebtn"
                 onclick="this.parentElement.style.display='none';"
               >
                 &times;

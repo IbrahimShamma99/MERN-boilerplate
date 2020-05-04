@@ -3,6 +3,16 @@ import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import rootReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+const persistConfig = {
+  key: 'authType',
+  storage: storage,
+  whitelist: ['authType'] // which reducer want to store
+};
+
+const pReducer = persistReducer(persistConfig, rootReducer);
 
 const loggerMiddleware = createLogger();
 
@@ -51,8 +61,10 @@ const getMiddleware = () => {
 }
 
 const store = createStore(
-    rootReducer,composeWithDevTools(getMiddleware())
-    
+  pReducer,composeWithDevTools(getMiddleware()) 
 );
+const persistor = persistStore(store);
 
-export default store;
+const StoreComponent = {persistor ,store};
+
+export default StoreComponent;
