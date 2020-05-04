@@ -21,7 +21,7 @@ const naviagtionBar = (props) => (
         <Nav.Link href={RouteNames.profile}><h5>Profile</h5></Nav.Link>
         <Nav.Link href={RouteNames.register}><h5>Register</h5></Nav.Link>
         <Nav.Link href={RouteNames.login}><h5>Login</h5></Nav.Link>
-        <Nav.Link href={RouteNames.login}><h5>Logout</h5></Nav.Link>
+        <Nav.Link href={RouteNames.logout}><h5>Logout</h5></Nav.Link>
 
 {/*        
           <NavDropdown title="Find your genre" id="basic-nav-dropdown">
