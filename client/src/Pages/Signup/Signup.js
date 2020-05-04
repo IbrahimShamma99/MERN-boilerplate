@@ -68,7 +68,7 @@ class Signup extends React.Component {
 
             <div className={'form-group' + (this.state.submitted && !this.props.last_name ? ' has-error' : '')}>
             <label htmlFor="password">Password</label>
-            <input type="text" className="form-control" name="password" 
+            <input type="password" className="form-control" name="password" 
             value={this.props.password} onChange={this.Changehandler("password")}  placeholder="Password" />
             {this.state.submitted && !this.props.password &&
             <div className="help-block">Password is required</div>

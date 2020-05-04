@@ -60,7 +60,7 @@ const reducers = (state=intialState,action) => {
                     return {
                         ...state,
                         ...data.user,
-                        open: true,
+                        open:true,
                     }
                   }
                 })
