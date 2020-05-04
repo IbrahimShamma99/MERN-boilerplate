@@ -12,6 +12,7 @@ const adduser = (req, res, next) => {
         user.assignInfo(UserInfo);
         }
     catch (e) {
+        console.log(e);
         return res.status(422).send({
             error:"error during registeration"
         });

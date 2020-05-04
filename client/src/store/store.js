@@ -7,9 +7,8 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: 'authType',
+  key: 'root',
   storage: storage,
-  whitelist: ['authType'] // which reducer want to store
 };
 
 const pReducer = persistReducer(persistConfig, rootReducer);
