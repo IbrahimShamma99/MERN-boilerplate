@@ -5,6 +5,7 @@ const RouteNames = {
     home:"/home",
     base:"/",
     profile:"/user",
-    update:"/update"
+    update:"/update",
+    logout:"/logout"
 };
 export default RouteNames;

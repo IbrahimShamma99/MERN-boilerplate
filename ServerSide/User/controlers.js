@@ -116,6 +116,15 @@ const followUser = (req,res,next)=>{
         }).catch(next)
     }).catch(next)
 };
-const UserControler = { adduser, login  ,uploadAvatar, updateUser , followUser };
+
+const logout = (req,res)=>{
+    return res.status(202).send({
+        message:"Logged out!",
+        user:{},
+        success:true
+    })
+};
+
+const UserControler = { adduser, login  ,uploadAvatar, logout, updateUser , followUser };
 
 module.exports = UserControler;
