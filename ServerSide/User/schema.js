@@ -12,8 +12,8 @@ const crypto = require('crypto');
  * @contacts => User's contacts like (number , linkedIn , etc ..)
  * @courses => The courses made by user
  * @comments => The comments made by user
- * 
  */
+
 var UserSchema = new mongoose.Schema({
     first_name: {
         type: String,
