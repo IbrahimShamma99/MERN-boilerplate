@@ -6,7 +6,7 @@ import RouteNames from "../../constants/routes";
 
 const logout = (props) => (
   <div>
-  {this.props.open ? <Redirect to={RouteNames.profile} /> : null}
+  {this.props.open ? <Redirect to={RouteNames.login} /> : null}
     <p>loging out</p>
   </div>
 );
