@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions";
 
 const logout = (props) => (
     <div>
