@@ -4,7 +4,8 @@ import { Breakpoint } from "react-socks";
 import ContactLogo from "./contacts";
 import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
-console.log("sessionStorage=",sessionStorage)
+
+console.log("sessionStorage=",sessionStorage);
 const mapStatetoProps = (state) => {
   return {
     ...state,

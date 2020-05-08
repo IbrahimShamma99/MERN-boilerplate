@@ -52,5 +52,12 @@ const uploadAvatar = (file) => {
       console.log(res.file)
     })
 };
+const signout = () => {
+  return fetch(apiNames.serverDev + "/logout", {
+    method: 'GET',
+  }).then(response => {
+      return response.json()
+  }).catch((err) => console.log(err))
+};
 
-export { login, logout, register,uploadAvatar };
+export {signout, login, logout, register,uploadAvatar };
