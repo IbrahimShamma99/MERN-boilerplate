@@ -38,8 +38,16 @@ const reducers = (state=intialState,action) => {
     const userData = {user:{...state}};
     switch(action.type){
         case(actionTypes.LOGIN):
-            login(userData).then()
-        break;
+            login(userData)
+                .then((data) => {
+                if (data.error) {
+                    action.asyncDispatch({type:actionTypes.ERROR,message:data.error})
+                  } 
+                  else {
+                      action.asyncDispatch({type:actionTypes.SUCCESS,res:data.user})
+                  }
+                })
+            return {...state}
         case(actionTypes.MODIFY):
             return {
                 ...state,
