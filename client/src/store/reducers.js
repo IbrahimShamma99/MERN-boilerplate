@@ -49,20 +49,20 @@ const reducers = (state=intialState,action) => {
             register(userData)
             .then((data) => {
                 if (data.error) {
-                    action.asyncDispatch({type:"error",message:data.error})
+                    action.asyncDispatch({type:actionTypes.ERROR,message:data.error})
                   } 
                   else {
-                      action.asyncDispatch({type:"success",res:data.user})
+                      action.asyncDispatch({type:actionTypes.SUCCESS,res:data.user})
                   }
                 })
             return {...state};
-        case("error"):
+        case(actionTypes.ERROR):
             return {
                 ...state,
                 error: action.message,
                 show:true
             }
-        case("success"):
+        case(actionTypes.SUCCESS):
         return {
             ...state,
             ...action.res,
