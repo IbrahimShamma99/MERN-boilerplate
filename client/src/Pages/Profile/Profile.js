@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 const mapStatetoProps = (state) => {
   return {
-      ...state
+    ...state,
   };
 };
 
@@ -22,7 +22,7 @@ class Profile extends React.Component {
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
           <div className="profile-container">
-          {console.log(this.props)}
+            {console.log(this.props)}
             <img
               className="profile-picture"
               alt="profile"
@@ -158,4 +158,4 @@ class Profile extends React.Component {
     );
   }
 }
-export default connect(mapStatetoProps,mapDispatchToProps)(Profile);
+export default connect(mapStatetoProps, mapDispatchToProps)(Profile);
