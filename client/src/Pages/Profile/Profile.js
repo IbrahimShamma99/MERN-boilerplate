@@ -43,9 +43,11 @@ class Profile extends React.Component {
               </div>
               <div className="contacts-container">
                 <div className="row">
-                  {this.props.contacts.map((contact) => {
+                  {this.props.contacts?
+                    this.props.contacts.map((contact) => {
                     return <ContactLogo contact={contact} />;
-                  })}
+                  }):null
+                }
                 </div>
               </div>
             </div>

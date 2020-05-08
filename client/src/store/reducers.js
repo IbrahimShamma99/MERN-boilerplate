@@ -39,7 +39,6 @@ const reducers = (state=intialState,action) => {
     switch(action.type){
         case(actionTypes.INIT):
             return {
-                ...state,
                 show:false,
                 error:"",
                 open:false

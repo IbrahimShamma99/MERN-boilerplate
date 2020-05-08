@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import * as actionTypes from '../../store/actions';
 import PropTypes from 'prop-types';
 
-class Login extends React.Component {
+class Login extends React.PureComponent {
 
   componentDidMount() {
     this.props.InitState();
