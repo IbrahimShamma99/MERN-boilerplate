@@ -5,8 +5,9 @@ import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/routes";
 
 class Logout extends React.Component {
-  
+
   componentWillMount() {
+    this.props.InitState();
     this.props.logoutUser();
   }
 
