@@ -16,40 +16,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Profile extends React.Component {
-//   state = {
-//     user: {
-//       first_name: "Ibrahim",
-//       last_name: "abushammah",
-//       bio: "Self educated JS Developer.",
-//       contacts: [
-//         {
-//           link: "/",
-//           platform: "linkedin",
-//         },
-//         {
-//           link: "/",
-//           platform: "github",
-//         },
-//         {
-//           link: "/",
-//           platform: "pinterest",
-//         },
-//         {
-//           link: "/",
-//           platform: "portfolio",
-//         },
-//         {
-//           link: "/",
-//           platform: "twitter",
-//         },
-//       ],
-//       collections: [{}],
-//       interests: ["Coding", "coffee", "Deepconversations", "Reading"],
-//       email: "I.abushammah@gmail.com",
-//       location: "Amman , Jordan",
-//     },
-//   };
-
   render() {
     return (
       <div className="container">
