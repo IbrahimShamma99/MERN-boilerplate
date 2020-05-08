@@ -11,21 +11,17 @@ import * as actionTypes from '../../store/actions';
 import PropTypes from 'prop-types';
 
 class Login extends React.Component {
-  state = {
-    error:"",
-    open:false,
-    show:false
-  }
+
   onChangeHandler = (name) => (event) => {
     this.props.change(name,event.target.value)
   };
 
   onSubmitHandler = () => {
-    if (this.state.email && this.state.password) {
+    if (this.props.email && this.props.password) {
       const userData = {
         user: {
-          email: this.state.email,
-          password: this.state.password,
+          email: this.props.email,
+          password: this.props.password,
         },
       };
       
@@ -44,11 +40,10 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login-form">
-        {this.state.open ? <Redirect to={RouteNames.profile} /> : null}
-        {console.log(this.state)}
+        {this.props.open ? <Redirect to={RouteNames.profile} /> : null}
 
         <Form>
-          {this.state.show ? (
+          {this.props.show ? (
             <div className="alert">
               <span
               className="closebtn"
@@ -56,7 +51,7 @@ class Login extends React.Component {
               >
                 &times;
               </span>
-              {this.state.error}
+              {this.props.error}
             </div>
           ) : null}
           <Form.Group controlId="formBasicEmail">
@@ -95,7 +90,10 @@ const mapStateToProps = state => {
   console.log("mapStateToProps=",state)
   return {
     email:state.email,
-    password:state.password
+    password:state.password,
+    error:state.error,
+    open:state.open,
+    show:state.show,
   }
 };
 const mapDispatchToProps = dispatch =>{

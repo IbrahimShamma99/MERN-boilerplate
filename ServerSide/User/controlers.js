@@ -32,7 +32,7 @@ const adduser = (req, res, next) => {
 };
 
 const login = async(req, res, next) => {
-    console.log(req.body)
+    console.log("body=",req.body)
     const UserInfo = req.body.user;
     if (!UserInfo.email) {
         return res.send(422).json({ error: "please provide email " });
