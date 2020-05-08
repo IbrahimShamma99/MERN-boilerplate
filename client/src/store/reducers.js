@@ -85,6 +85,7 @@ const reducers = (state=intialState,action) => {
         }
         case(actionTypes.LOGOUT):
             return {
+                ...state,
                 open:true
             }
         default:
