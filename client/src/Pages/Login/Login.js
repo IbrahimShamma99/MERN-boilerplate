@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 class Login extends React.Component {
 
   componentDidMount() {
-    this.props.requestPageOfPlans();
+    this.props.InitState();
   };
 
   onChangeHandler = (name) => (event) => {
@@ -104,7 +104,7 @@ const mapDispatchToProps = dispatch =>{
   return {
     change:(name,value)=>dispatch({type:actionTypes.MODIFY,name,value}),
     submit:()=>dispatch({type:actionTypes.LOGIN}),
-    InitState:() => dispatch({type:actionTypes.LOGIN})
+    InitState:() => dispatch({type:actionTypes.INIT})
   }
 };
 
