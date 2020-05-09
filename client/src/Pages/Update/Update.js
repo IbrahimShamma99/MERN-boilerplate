@@ -1,8 +1,44 @@
 import React from 'react';
 import './Update.css';
+import auth from '../../Utils/auth-helper';
+import {connect} from 'react-redux';
+import * as actionTypes from '../../store/actions';
 
+const mapStateToProps = (state) => {
+    const RegisterState = {
+      email: state.email,
+      first_name: state.first_name,
+      last_name: state.last_name,
+      password: state.password,
+      open: state.open,
+      error: state.error,
+      show: state.show,
+      submitted: state.submitted,
+    };
+    return RegisterState;
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      change: (name, value) =>dispatch({ type: actionTypes.MODIFY, name, value }),
+      submit: () => dispatch({ type: actionTypes.REGISTER }),
+    };
+  };
+  
 class Update extends React.Component {
-    
+    componentWillMount(){
+        if(auth.isAuthenticated()){
+            console.log("auth")
+            return true;
+        }
+        else {
+            console.log("No auth");
+            return false;
+        }
+    }
+    componentDidMount(){
+        console.log(sessionStorage)
+    }
     render(){ 
         return (
             <div className="update-container">
@@ -38,4 +74,4 @@ class Update extends React.Component {
     }
 };
 
-export default Update;
+export default connect(mapStateToProps,mapDispatchToProps)(Update);
