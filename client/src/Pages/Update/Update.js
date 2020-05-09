@@ -54,13 +54,6 @@ class Update extends React.Component {
     this.props.InitState();
   };
   onChangeHandler = (name) => (event) => {
-    if (name === "avatar"){
-      return this.setState({ 
-        user: {
-            ...this.state.user,
-            [name]: event.target.files 
-        }})
-    };
     this.setState({ 
         user: {
             ...this.state.user,
@@ -71,6 +64,12 @@ class Update extends React.Component {
   clickSubmit =()=> {
       console.log("props=",this.props)
     return this.props.submit(this.state);
+  }
+
+  onChangeAvatarHandler = (event) => {
+    const formData = new FormData();
+    formData.append('avatar',this.state.file);
+    
   }
 
   render() {

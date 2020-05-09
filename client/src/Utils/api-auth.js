@@ -45,25 +45,6 @@ const register = (user) => {
     .catch((err) => console.log(err));
 };
 
-const uploadAvatar = (file) => {
-  
-  return fetch(apiNames.serverDev + "/user", {
-    method: "PUT",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "multipart/form-data",
-      "Authorization":  "Token ".concat( sessionStorage.getItem("jwt"))
-    },
-    withCredentials: true,
-    crossdomain: true,
-    file
-    })
-    .then((response) => {
-      return response.json();
-    })
-    .catch((err) => console.log(err));
-  
-};
 const signout = () => {
   return fetch(apiNames.serverDev + "/logout", {
     method: "GET",
@@ -93,4 +74,4 @@ const update = (DATA) => {
     .catch((err) => console.log(err));
 };
 
-export { signout, login, logout, register, uploadAvatar ,update};
+export { signout, login, logout, register ,update};
