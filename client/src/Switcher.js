@@ -4,7 +4,7 @@ import RouteNames from "./constants/routes";
 
 //SECTION Pages
 import Login from "./Pages/Login/";
-import Signup from "./Pages/Signup/";
+import Signup from "./Pages/Register/";
 import Home from "./Pages/Home";
 import Profile from './Pages/Profile';
 import Update from './Pages/Update';

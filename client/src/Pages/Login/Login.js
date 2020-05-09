@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import "./Login.css";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/routes";
-import { login } from "../../Utils/api-auth";
 import { connect } from "react-redux";
 import * as actionTypes from '../../store/actions';
 import PropTypes from 'prop-types';
