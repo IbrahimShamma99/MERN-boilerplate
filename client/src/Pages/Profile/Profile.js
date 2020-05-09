@@ -4,7 +4,7 @@ import { Breakpoint } from "react-socks";
 import ContactLogo from "./contacts";
 import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
-
+import auth from '../../Utils/auth-helper';
 console.log("sessionStorage=",sessionStorage);
 const mapStatetoProps = (state) => {
   return {
@@ -17,6 +17,17 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Profile extends React.Component {
+
+  componentWillMount(){
+    if (auth.isAuthenticated()){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+
   render() {
     return (
       <div className="container">
