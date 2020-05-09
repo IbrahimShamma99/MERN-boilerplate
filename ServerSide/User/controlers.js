@@ -85,9 +85,8 @@ const updateUser = (req ,res, next)=>{
             user.assignInfo(updateData);
             return user.save()
                 .then(function() {
-                    return res.json({ 
-                        user: user.toAuthJSON(),
-                        success:true                    
+                    return res.status(202).send({ 
+                        user: user.toAuthJSON()
                     });
                 });
         }).catch(()=>{

@@ -38,7 +38,7 @@ const intialState = {
 const reducers = (state=intialState,action) => {
     const userData = {user:{...state}};
     switch(action.type){
-        case(actionTypes.INIT):
+        case(actionTypes.REFRESH):
             return {
                 ...state,
                 show:false,

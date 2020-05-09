@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    InitState:() => dispatch({type:actionTypes.INIT}),
+    InitState:() => dispatch({type:actionTypes.REFRESH}),
     logoutUser: () => dispatch({ type: actionTypes.LOGOUT }),
   };
 };

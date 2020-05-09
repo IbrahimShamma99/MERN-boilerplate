@@ -26,6 +26,7 @@ const mapDispatchToProps = (dispatch) => {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
     submit: (Data) => dispatch({ type: actionTypes.UPDATE,Data}),
+    InitState:() => dispatch({type:actionTypes.REFRESH})
   };
 };
 
@@ -49,8 +50,8 @@ class Update extends React.Component {
     }
   }
   componentDidMount() {
-    console.log(sessionStorage);
-  }
+    this.props.InitState();
+  };
   onChangeHandler = (name) => (event) => {
     console.log(this.state);
     this.setState({ 

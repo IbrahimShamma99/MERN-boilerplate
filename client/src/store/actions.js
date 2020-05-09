@@ -1,4 +1,4 @@
-export const INIT = () => "INIT_STATE";
+export const REFRESH = () => "REFRESH_STATE";
 export const MODIFY = "USER_EDIT";
 export const LOGIN = ()=> "USER_LOGIN";
 export const UPDATE = () => "USER_UPDATE";
