@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: () => dispatch({ type: actionTypes.UPDATE }),
+    submit: (Data) => dispatch({ type: actionTypes.UPDATE,Data}),
   };
 };
 

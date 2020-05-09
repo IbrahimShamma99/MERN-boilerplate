@@ -1,5 +1,5 @@
 import * as actionTypes from './actions';
-import { login, register } from "../Utils/api-auth";
+import { login, register,update } from "../Utils/api-auth";
 import auth from '../Utils/auth-helper';
 
 const intialState = {
@@ -78,6 +78,17 @@ const reducers = (state=intialState,action) => {
                 error: action.message,
                 show:true
             }
+        case (actionTypes.UPDATE):
+            update(action.Data).then(
+                (date)=>{
+                    if (data.error) {
+                        action.asyncDispatch({type:actionTypes.ERROR,message:data.error})
+                      } 
+                      else {
+                          action.asyncDispatch({type:actionTypes.SUCCESS,user:data.user})
+                      }
+                })
+                return state;
         case(actionTypes.SUCCESS):
         auth.authenticate(action.user.token,()=>{});
         return(

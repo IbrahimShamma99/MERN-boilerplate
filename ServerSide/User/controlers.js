@@ -77,7 +77,7 @@ const uploadAvatar = (req, res)=> {
 const updateUser = (req ,res, next)=>{
         const updateData = req.body.user;
         if (!updateData){
-            res.status(422).send({success:false,"message":"please provide what you want to update"})
+            res.status(422).send({success:false,error:"please provide what you want to update"})
         }
         User.findById(updateData._id).then(function(user) {
             if (!user) { return res.sendStatus(401); }
@@ -90,7 +90,7 @@ const updateUser = (req ,res, next)=>{
                     });
                 });
         }).catch(()=>{
-            res.status(422).send({success:false,"message":"couldn't update user"})
+            res.status(422).send({success:false,error:"couldn't update user"})
         }
         );
     };
