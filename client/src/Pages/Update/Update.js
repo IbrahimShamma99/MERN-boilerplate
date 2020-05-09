@@ -7,14 +7,17 @@ import Button from "react-bootstrap/Button";
 
 const mapStateToProps = (state) => {
     const RegisterState = {
-      email: state.email,
-      first_name: state.first_name,
-      last_name: state.last_name,
-      password: state.password,
-      open: state.open,
-      error: state.error,
-      show: state.show,
-      submitted: state.submitted,
+    user:{
+            email: state.email,
+            first_name: state.first_name,
+            last_name: state.last_name,
+            password: state.password,
+      
+        },
+    open: state.open,
+    error: state.error,
+    show: state.show,
+    submitted: state.submitted,
     };
     return RegisterState;
   };
@@ -48,7 +51,7 @@ class Update extends React.Component {
     }
     onChangeHandler = name => event => {
         console.log(this.state)
-        this.setState({[name]:event.target.value})
+        this.setState({user:{ [name]:event.target.value}})
     }
     clickSubmit() {}
     render(){ 
