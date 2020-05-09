@@ -59,16 +59,16 @@ class Update extends React.Component {
                     <input value={this.state.first_name} onChange={this.onChangeHandler('first_name')} type="text" id="First" name="First"></input><br/>
                     
                     <label htmlFor="Last">Last name:</label><br/>
-                    <input value={this.state.last_name} onChange={this.props.onChangeHandler('last_name')} type="text" id="Last" name="Last"></input><br/>
+                    <input value={this.state.last_name} onChange={this.onChangeHandler('last_name')} type="text" id="Last" name="Last"></input><br/>
 
                     <label htmlFor="Email">Email</label><br/>
-                    <input value={this.state.email} onChange={this.props.onChangeHandler('email')} type="email" id="Email" name="Email"></input><br/>
+                    <input value={this.state.email} onChange={this.onChangeHandler('email')} type="email" id="Email" name="Email"></input><br/>
 
                     <label htmlFor="Password">Password</label><br/>
-                    <input type="password" id="Password" name="Password"></input><br/>
+                    <input value={this.state.password} onChange={this.onChangeHandler('password')} type="password" id="Password" name="Password"></input><br/>
 
                     <label className="bio-form" htmlFor="Bio">Bio:</label><br/>
-                    <textarea maxLength="60" type="text" id="Bio" name="Bio"></textarea><br/>
+                    <textarea value={this.state.bio} onChange={this.onChangeHandler('bio')} maxLength="60" type="text" id="Bio" name="Bio"></textarea><br/>
 
                     <label htmlFor="Pinterest">Pinterest</label><br/>
                     <input type="url" id="Pinterest" name="Pinterest"></input><br/>
@@ -79,8 +79,6 @@ class Update extends React.Component {
                     <label htmlFor="Github">Github</label><br/>
                     <input type="url" id="Github" name="Github"></input><br/>
 
-{//                    <input type="file"></input><br/>
-}
                     <Button
                     size="md"
                     /*style={}*/ variant="flat"

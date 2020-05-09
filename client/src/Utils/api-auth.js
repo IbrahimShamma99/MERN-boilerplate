@@ -1,5 +1,5 @@
 import apiNames from "../constants/server";
-import axios from 'axios';
+import axios from "axios";
 
 const login = (DATA) => {
   return fetch(apiNames.serverDev + "/login", {
@@ -47,17 +47,36 @@ const register = (user) => {
 };
 
 const uploadAvatar = (file) => {
-  return axios.post(apiNames.serverDev +"/upload", file, {})
-    .then(res => { // then print response status
-      console.log(res.file)
-    })
+  return axios.post(apiNames.serverDev + "/upload", file, {}).then((res) => {
+    // then print response status
+    console.log(res.file);
+  });
 };
 const signout = () => {
   return fetch(apiNames.serverDev + "/logout", {
-    method: 'GET',
-  }).then(response => {
-      return response.json()
-  }).catch((err) => console.log(err))
+    method: "GET",
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
 };
 
-export {signout, login, logout, register,uploadAvatar };
+const update = (DATA) => {
+  return fetch(apiNames.serverDev + "/login", {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+    crossdomain: true,
+    body: JSON.stringify(DATA),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+export { signout, login, logout, register, uploadAvatar ,update};

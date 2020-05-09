@@ -5,7 +5,7 @@ const Routes = {
     Logout: "/logout",
     user: "/users/:user",
     profile: "/users/:user/profile",
-    update:'/users/update',
+    update:'/user',
     follow:"/follow",
     admin:"/admin"
 };
