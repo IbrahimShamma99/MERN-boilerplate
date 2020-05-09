@@ -103,6 +103,7 @@ const reducers = (state=intialState,action) => {
         return(
             {...state,
             ...action.user,
+            open:true
             }
         )
         case(actionTypes.LOGOUT):

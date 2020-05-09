@@ -37,6 +37,7 @@ class Update extends React.Component {
         _id:this.props._id,
         first_name: this.props.first_name,
         last_name: this.props.last_name,
+        bio: this.props.bio,
         password: this.props.password,
       }
   };
