@@ -3,19 +3,18 @@ import { connect } from "react-redux";
 import * as actionTypes from "../../store/actions";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/routes";
+import auth from '../../Utils/auth-helper';
 
 class Logout extends React.Component {
 
-  componentWillMount() {
-    this.props.InitState();
-    this.props.logoutUser();
+  componentDidMount() {
+    auth.signout(()=>{});
   }
 
   render() {
     return (
       <div>
-        {this.props.open ? <Redirect to={RouteNames.login} /> : null}
-        <p>loging out</p>
+        {<Redirect to={RouteNames.login} /> }
       </div>
     );
   }

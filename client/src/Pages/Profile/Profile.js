@@ -20,6 +20,7 @@ class Profile extends React.Component {
 
   componentWillMount(){
     if (auth.isAuthenticated()){
+      console.log("componentWillMount")
       return true;
     }
     else {
