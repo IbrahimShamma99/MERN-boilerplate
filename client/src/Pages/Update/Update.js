@@ -10,6 +10,7 @@ const mapStateToProps = (state) => {
     email: state.email,
     first_name: state.first_name,
     last_name: state.last_name,
+    bio:state.bio,
     password: state.password,
     open: state.open,
     error: state.error,
@@ -60,7 +61,7 @@ class Update extends React.Component {
           <label htmlFor="First">First name:</label>
           <br />
           <input
-            value={this.state.first_name}
+            value={this.state.user.first_name}
             onChange={this.onChangeHandler("first_name")}
             type="text"
             id="First"
@@ -71,7 +72,7 @@ class Update extends React.Component {
           <label htmlFor="Last">Last name:</label>
           <br />
           <input
-            value={this.state.last_name}
+            value={this.state.user.last_name}
             onChange={this.onChangeHandler("last_name")}
             type="text"
             id="Last"
@@ -82,7 +83,7 @@ class Update extends React.Component {
           <label htmlFor="Email">Email</label>
           <br />
           <input
-            value={this.state.email}
+            value={this.state.user.email}
             onChange={this.onChangeHandler("email")}
             type="email"
             id="Email"
@@ -93,7 +94,7 @@ class Update extends React.Component {
           <label htmlFor="Password">Password</label>
           <br />
           <input
-            value={this.state.password}
+            value={this.state.user.password}
             onChange={this.onChangeHandler("password")}
             type="password"
             id="Password"
@@ -106,7 +107,7 @@ class Update extends React.Component {
           </label>
           <br />
           <textarea
-            value={this.state.bio}
+            value={this.state.user.bio}
             onChange={this.onChangeHandler("bio")}
             maxLength="60"
             type="text"
