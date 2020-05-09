@@ -51,7 +51,7 @@ const uploadAvatar = (file) => {
     method: "PUT",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
       "Authorization":  "Token ".concat( sessionStorage.getItem("jwt"))
     },
     withCredentials: true,
