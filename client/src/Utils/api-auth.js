@@ -1,5 +1,4 @@
 import apiNames from "../constants/server";
-import axios from "axios";
 
 const login = (DATA) => {
   return fetch(apiNames.serverDev + "/login", {
@@ -47,10 +46,23 @@ const register = (user) => {
 };
 
 const uploadAvatar = (file) => {
-  return axios.post(apiNames.serverDev + "/upload", file, {}).then((res) => {
-    // then print response status
-    console.log(res.file);
-  });
+  
+  return fetch(apiNames.serverDev + "/user", {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Authorization":  "Token ".concat( sessionStorage.getItem("jwt"))
+    },
+    withCredentials: true,
+    crossdomain: true,
+    file
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+  
 };
 const signout = () => {
   return fetch(apiNames.serverDev + "/logout", {

@@ -54,24 +54,26 @@ class Update extends React.Component {
     this.props.InitState();
   };
   onChangeHandler = (name) => (event) => {
-    console.log(this.state);
+    if (name === "avatar"){
+      return this.setState({ 
+        user: {
+            ...this.state.user,
+            [name]: event.target.files 
+        }
+    })
+    };
+    console.log(this.state)
     this.setState({ 
         user: {
             ...this.state.user,
             [name]: event.target.value 
-        } 
+        }
     });
   };
   clickSubmit =()=> {
       console.log("props=",this.props)
     return this.props.submit(this.state);
   }
-  onChangeAvatar(e) {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('myfile',e.target.files);
-
-}
 
   render() {
     return (
@@ -160,8 +162,10 @@ class Update extends React.Component {
           <br />
           <input type="url" id="Github" name="Github"></input>
           <br />
-          <input type="file" className="custom-file-input" 
-          name="avatar" onChange= {this.onChangeAvatar} />
+          <label htmlFor="avatar">avatar</label>
+
+          <input type="file" className="" 
+          name="avatar" onChange= {this.onChangeHandler("avatar")} />
 
           <Button
             size="md"
