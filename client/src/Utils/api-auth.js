@@ -63,11 +63,13 @@ const signout = () => {
 };
 
 const update = (DATA) => {
+  console.log(DATA)
   return fetch(apiNames.serverDev + "/user", {
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      "Authorization": sessionStorage.getItem("jwt")
     },
     withCredentials: true,
     crossdomain: true,

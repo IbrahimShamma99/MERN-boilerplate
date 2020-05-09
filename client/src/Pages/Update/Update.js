@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 const mapStateToProps = (state) => {
   const RegisterState = {
     email: state.email,
+    _id:state._id,
     first_name: state.first_name,
     last_name: state.last_name,
     bio:state.bio,
@@ -32,6 +33,7 @@ class Update extends React.Component {
   state = {
       user:{
         email: this.props.email,
+        _id:this.props._id,
         first_name: this.props.first_name,
         last_name: this.props.last_name,
         password: this.props.password,
@@ -51,9 +53,16 @@ class Update extends React.Component {
   }
   onChangeHandler = (name) => (event) => {
     console.log(this.state);
-    this.setState({ user: { [name]: event.target.value } });
+    this.setState({ 
+        user: {
+            ...this.state.user,
+            [name]: event.target.value 
+        } 
+    });
   };
-  clickSubmit() {}
+  clickSubmit() {
+    return this.props.submit(this.state);
+  }
   render() {
     return (
       <div className="update-container">
@@ -134,7 +143,7 @@ class Update extends React.Component {
           <Button
             size="md"
             /*style={}*/ variant="flat"
-            onClick={this.props.submit(this.state)}>
+            onClick={this.clickSubmit}>
             Submit
           </Button>
         </form>

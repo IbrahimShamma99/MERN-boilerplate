@@ -81,6 +81,7 @@ const reducers = (state=intialState,action) => {
         case (actionTypes.UPDATE):
             update(action.Data).then(
                 (data)=>{
+                    console.log("data=",data)
                     if (data.error) {
                         action.asyncDispatch({type:actionTypes.ERROR,message:data.error})
                       } 
