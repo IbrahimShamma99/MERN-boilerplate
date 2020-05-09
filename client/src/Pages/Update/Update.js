@@ -27,6 +27,12 @@ const mapStateToProps = (state) => {
   };
   
 class Update extends React.Component {
+    state = {
+        email: this.props.email,
+        first_name: this.props.first_name,
+        last_name: this.props.last_name,
+        password: this.props.password          
+    };    
     componentWillMount(){
         if(auth.isAuthenticated()){
             console.log("auth")
@@ -46,13 +52,13 @@ class Update extends React.Component {
             <div className="update-container">
                 <form>
                     <label htmlFor="First">First name:</label><br/>
-                    <input value={this.props.first_name} onChange={this.props.change('last_name')} type="text" id="First" name="First"></input><br/>
+                    <input value={this.state.first_name} onChange={this.onChangeHandler('first_name')} type="text" id="First" name="First"></input><br/>
                     
                     <label htmlFor="Last">Last name:</label><br/>
-                    <input value={this.props.last_name} onChange={this.props.change('last_name')} type="text" id="Last" name="Last"></input><br/>
+                    <input value={this.state.last_name} onChange={this.props.onChangeHandler('last_name')} type="text" id="Last" name="Last"></input><br/>
 
                     <label htmlFor="Email">Email</label><br/>
-                    <input value={this.props.email} onChange={this.props.change('email')} type="email" id="Email" name="Email"></input><br/>
+                    <input value={this.state.email} onChange={this.props.onChangeHandler('email')} type="email" id="Email" name="Email"></input><br/>
 
                     <label htmlFor="Password">Password</label><br/>
                     <input type="password" id="Password" name="Password"></input><br/>
