@@ -46,6 +46,10 @@ class Update extends React.Component {
     componentDidMount(){
         console.log(sessionStorage)
     }
+    onChangeHandler = name => event => {
+        console.log(this.state)
+        this.setState({[name]:event.target.value})
+    }
     clickSubmit() {}
     render(){ 
         return (
