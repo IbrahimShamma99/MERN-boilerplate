@@ -63,7 +63,7 @@ const signout = () => {
 };
 
 const update = (DATA) => {
-  return fetch(apiNames.serverDev + "/login", {
+  return fetch(apiNames.serverDev + "/user", {
     method: "PUT",
     headers: {
       Accept: "application/json",

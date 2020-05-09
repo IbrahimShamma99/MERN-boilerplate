@@ -134,8 +134,7 @@ class Update extends React.Component {
           <Button
             size="md"
             /*style={}*/ variant="flat"
-            onClick={this.clickSubmit}
-          >
+            onClick={this.props.submit(this.state)}>
             Submit
           </Button>
         </form>
