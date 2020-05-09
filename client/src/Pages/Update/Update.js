@@ -60,13 +60,23 @@ class Update extends React.Component {
         } 
     });
   };
-  clickSubmit() {
+  clickSubmit =()=> {
+      console.log("props=",this.props)
     return this.props.submit(this.state);
   }
   render() {
     return (
       <div className="update-container">
         <form>
+        {this.props.show ? (
+            <div className="alert">
+              <span
+                className="closebtn"
+                onClick="this.parentElement.style.display='none';"
+              >
+                &times;
+              </span>
+
           <label htmlFor="First">First name:</label>
           <br />
           <input

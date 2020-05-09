@@ -69,7 +69,7 @@ const update = (DATA) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "Authorization": sessionStorage.getItem("jwt")
+      "Authorization": "Token "+sessionStorage.getItem("jwt")
     },
     withCredentials: true,
     crossdomain: true,
