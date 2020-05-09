@@ -125,8 +125,7 @@ const mapDispatchToProps = dispatch =>{
     change:(name,value)=>dispatch({type:actionTypes.MODIFY,name,value}),
     submit:()=>dispatch({type:actionTypes.LOGIN}),
     InitState:() => dispatch({type:actionTypes.INIT}),
-    InitState:(value) => dispatch({type:actionTypes.ERROR,err:value})
-
+    ExternalError:(value) => dispatch({type:actionTypes.ExternalError,err:value})
   }
 };
 
