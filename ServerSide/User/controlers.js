@@ -81,8 +81,9 @@ const updateUser = (req ,res, next)=>{
         }
         User.findById(updateData._id).then(function(user) {
             if (!user) { return res.sendStatus(401)
-                .send({success:false,error:"please provide what you want to update"}) }
+                .send({success:false,error:"please provide what you want to update"})}
             user.assignInfo(updateData);
+            console.log(user.toAuthJSON())
             return user.save()
                 .then(function() {
                     return res.status(202).send({ 

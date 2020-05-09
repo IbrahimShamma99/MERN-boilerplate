@@ -91,11 +91,18 @@ const reducers = (state=intialState,action) => {
                 })
                 return state;
         case(actionTypes.SUCCESS):
-        auth.authenticate(action.user.token,()=>{});
+        console.log("action User",action.user)
+        auth.authenticate(action.user.token,()=>{
+            return(
+                {...state,
+                ...action.user,
+                open:true
+                }
+            )
+        });
         return(
             {...state,
             ...action.user,
-            open:true
             }
         )
         case(actionTypes.LOGOUT):

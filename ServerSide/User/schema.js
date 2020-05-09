@@ -54,6 +54,8 @@ UserSchema.methods.generateJWT = function() {
 
 UserSchema.methods.toAuthJSON = function() {
     return {
+        first_name:this.first_name,
+        last_name:this.last_name,
         username: this.username,
         email: this.email,
         token: this.generateJWT(),
@@ -67,6 +69,7 @@ UserSchema.methods.toAuthJSON = function() {
 UserSchema.methods.assignInfo = function(info){     
     this.first_name = info.first_name;
     this.last_name = info.last_name;
+    this.bio = info.bio;
     this.email = info.email;
     this.setPassword(info.password);
     this.token = this.generateJWT();
