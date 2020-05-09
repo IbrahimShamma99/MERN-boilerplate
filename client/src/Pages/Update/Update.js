@@ -76,7 +76,9 @@ class Update extends React.Component {
               >
                 &times;
               </span>
-
+              {this.props.error}
+              </div>
+            ) : null}  
           <label htmlFor="First">First name:</label>
           <br />
           <input
