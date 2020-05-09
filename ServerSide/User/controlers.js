@@ -44,6 +44,7 @@ const login = async(req, res, next) => {
             if (!user){
                 return res.status(422).json({ error: "User not found" });
             };
+            console.log(user.toAuthJSON())
             if (user.validPassword(UserInfo.password)) {
                 return res.status(202).json(
                     user.toAuthJSON()

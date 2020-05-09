@@ -12,74 +12,89 @@ import PropTypes from 'prop-types';
 
 class Login extends React.PureComponent {
 
+  state = {
+    submitted: false,
+    ok: true,
+  };
+
   componentDidMount() {
     this.props.InitState();
   };
 
-  onChangeHandler = (name) => (event) => {
+  Changehandler = (name) => (event) => {
     this.props.change(name,event.target.value)
   };
 
-  onSubmitHandler = () => {
-    if (this.props.email && this.props.password) {
-      const userData = {
-        user: {
-          email: this.props.email,
-          password: this.props.password,
-        },
-      };
-      
-      login(userData).then((data) => {
-        if (data.error) {
-          this.setState({ error: data.error, show: true });
-          console.log(data.error);
-        } else {
-          console.log(data);
-          this.setState({ error: "", open: true });
-        }
-      });
-    }
+  SubmitHandler = () => {
+    this.setState({ submitted: true });
+    return this.props.submit();    
   };
 
   render() {
     return (
       <div className="login-form">
         {this.props.open ? <Redirect to={RouteNames.profile} /> : null}
-
         <Form>
-          {this.props.show ? (
-            <div className="alert">
-              <span
+        {this.props.show ? (
+          <div className="alert">
+            <span
               className="closebtn"
-                onclick="this.parentElement.style.display='none';"
-              >
-                &times;
-              </span>
-              {this.props.error}
-            </div>
-          ) : null}
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              onChange={this.onChangeHandler("email")}
-              type="email"
-              placeholder="Enter email"
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              onChange={this.onChangeHandler("password")}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicSubmit">
-            <Button onClick={this.props.submit} variant="flat">
-              Submit
-            </Button>
-          </Form.Group>
-        </Form>
+              onClick="this.parentElement.style.display='none';"
+            >
+              &times;
+            </span>
+            {this.props.error}
+          </div>
+        ) : null}
+        <div
+        className={
+          "form-group" +
+          (this.state.submitted && !this.props.email ? " has-error" : "")
+        }
+      >
+        <label htmlFor="email">Email</label>
+        <input
+          type="text"
+          className="form-control"
+          name="email"
+          value={this.props.email}
+          onChange={this.Changehandler("email")}
+          placeholder="Email"
+        />
+        {this.state.submitted && !this.props.email && (
+          <div className="help-block">Email is required</div>
+        )}
+      </div>
+
+      <div
+        className={
+          "form-group" +
+          (this.state.submitted && !this.props.last_name
+            ? " has-error"
+            : "")
+        }
+      >
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          className="form-control"
+          name="password"
+          value={this.props.password}
+          onChange={this.Changehandler("password")}
+          placeholder="Password"
+        />
+        {this.state.submitted && !this.props.password && (
+          <div className="help-block">Password is required</div>
+        )}
+      </div>
+      <Button
+      size="md"
+      /*style={}*/ variant="flat"
+      onClick={this.SubmitHandler}
+    >
+      Submit
+    </Button>
+      </Form>
       </div>
     );
   }
@@ -98,6 +113,7 @@ const mapStateToProps = state => {
     error:state.error,
     open:state.open,
     show:state.show,
+    submitted: state.submitted
   }
 };
 const mapDispatchToProps = dispatch =>{

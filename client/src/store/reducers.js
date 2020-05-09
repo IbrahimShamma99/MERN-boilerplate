@@ -1,5 +1,6 @@
 import * as actionTypes from './actions';
 import { login, register } from "../Utils/api-auth";
+import auth from '../Utils/auth-helper';
 
 const intialState = {
     first_name:"",
@@ -51,7 +52,7 @@ const reducers = (state=intialState,action) => {
                     action.asyncDispatch({type:actionTypes.ERROR,message:data.error})
                   } 
                   else {
-                      action.asyncDispatch({type:actionTypes.SUCCESS,res:data.user})
+                      action.asyncDispatch({type:actionTypes.SUCCESS,user:data})
                   }
                 })
             return {...state}
@@ -67,7 +68,7 @@ const reducers = (state=intialState,action) => {
                     action.asyncDispatch({type:actionTypes.ERROR,message:data.error})
                   } 
                   else {
-                      action.asyncDispatch({type:actionTypes.SUCCESS,res:data.user})
+                      action.asyncDispatch({type:actionTypes.SUCCESS,user:data.user})
                   }
                 })
             return {...state};
@@ -78,16 +79,22 @@ const reducers = (state=intialState,action) => {
                 show:true
             }
         case(actionTypes.SUCCESS):
-        return {
-            ...state,
-            ...action.res,
-            open:true,
-        }
+        console.log(action.user)
+        auth.authenticate(action.user.token ,()=>{
+            return(
+            {...state,
+            ...action.user,
+            open:true})
+        });
+        return {...state};
         case(actionTypes.LOGOUT):
-            return {
-                ...state,
-                open:true
-            }
+            auth.signout(()=>{
+                return {
+                    ...state,
+                    open:true
+                }
+            })    
+            return {...state};
         default:
             return {
                 ...state
