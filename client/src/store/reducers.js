@@ -94,6 +94,11 @@ const reducers = (state=intialState,action) => {
                 }
             })    
             return {...state};
+        case (actionTypes.ExternalError):
+            return {
+                ...state,
+                error:action.message
+            }
         default:
             return {
                 ...state

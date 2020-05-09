@@ -30,7 +30,8 @@ class Login extends React.PureComponent {
     return this.props.submit();  
     }
     else {
-
+      this.setState({ submitted: true });
+      return this.props.ExternalError("fill required data");
     }
   };
 
@@ -125,7 +126,7 @@ const mapDispatchToProps = dispatch =>{
     change:(name,value)=>dispatch({type:actionTypes.MODIFY,name,value}),
     submit:()=>dispatch({type:actionTypes.LOGIN}),
     InitState:() => dispatch({type:actionTypes.INIT}),
-    ExternalError:(value) => dispatch({type:actionTypes.ExternalError,err:value})
+    ExternalError:(value) => dispatch({type:actionTypes.ExternalError,message:value})
   }
 };
 
