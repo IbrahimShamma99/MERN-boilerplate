@@ -61,7 +61,7 @@ const signout = () => {
     })
     .catch((err) => console.log(err));
 };
-
+console.log("jwt=",sessionStorage.getItem("jwt"))
 const update = (DATA) => {
   console.log(DATA)
   return fetch(apiNames.serverDev + "/user", {
@@ -69,7 +69,7 @@ const update = (DATA) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "Authorization": "Token "+sessionStorage.getItem("jwt")
+      "Authorization": "Token "+ sessionStorage.getItem("jwt")
     },
     withCredentials: true,
     crossdomain: true,
