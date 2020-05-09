@@ -6,3 +6,4 @@ export const LOGOUT = () => "USER_LOGOUT";
 export const REGISTER = () => "USER_REGISTER";
 export const SUCCESS = () => "SUCCESS";
 export const ERROR = () => "ERROR";
+export const ExternalError = () =>"External_Error";

@@ -25,8 +25,13 @@ class Login extends React.PureComponent {
   };
 
   SubmitHandler = () => {
+    if (this.props.email &&this.props.password){
     this.setState({ submitted: true });
-    return this.props.submit();    
+    return this.props.submit();  
+    }
+    else {
+
+    }
   };
 
   render() {
@@ -119,7 +124,9 @@ const mapDispatchToProps = dispatch =>{
   return {
     change:(name,value)=>dispatch({type:actionTypes.MODIFY,name,value}),
     submit:()=>dispatch({type:actionTypes.LOGIN}),
-    InitState:() => dispatch({type:actionTypes.INIT})
+    InitState:() => dispatch({type:actionTypes.INIT}),
+    InitState:(value) => dispatch({type:actionTypes.ERROR,err:value})
+
   }
 };
 
