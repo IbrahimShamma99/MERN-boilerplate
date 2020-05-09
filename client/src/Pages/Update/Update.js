@@ -66,6 +66,13 @@ class Update extends React.Component {
       console.log("props=",this.props)
     return this.props.submit(this.state);
   }
+  onChangeAvatar(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('myfile',e.target.files);
+
+}
+
   render() {
     return (
       <div className="update-container">
@@ -153,6 +160,8 @@ class Update extends React.Component {
           <br />
           <input type="url" id="Github" name="Github"></input>
           <br />
+          <input type="file" className="custom-file-input" 
+          name="avatar" onChange= {this.onChangeAvatar} />
 
           <Button
             size="md"
