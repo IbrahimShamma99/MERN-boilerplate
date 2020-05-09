@@ -59,8 +59,7 @@ class Update extends React.Component {
         user: {
             ...this.state.user,
             [name]: event.target.files 
-        }
-    })
+        }})
     };
     console.log(this.state)
     this.setState({ 
