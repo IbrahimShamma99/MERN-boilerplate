@@ -6,13 +6,15 @@ const auth = {
       return false
 
     if (sessionStorage.getItem('jwt'))
-      return JSON.parse(sessionStorage.getItem('jwt'))
+      return sessionStorage.getItem('jwt')
     else
       return false
   },
   authenticate(jwt, cb) {
+    console.log("PRE JWT=",jwt);
+    console.log("PRE JWT type=",typeof jwt);
     if (typeof window !== "undefined")
-      sessionStorage.setItem('jwt', JSON.stringify(jwt))
+      sessionStorage.setItem('jwt', jwt)
     cb();
   },
   signout(cb) {
