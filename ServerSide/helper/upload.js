@@ -15,3 +15,5 @@ var uploadAvatar = multer({
   storage: AvatarStorage,
   limits: { fileSize: 1024 * 1024 * 5 },
 });
+
+module.exports = {uploadAvatar}

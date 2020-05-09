@@ -2,7 +2,7 @@ var router = require('express').Router();
 const controlers = require('./controlers');
 const Routes = require("./constants");
 const helper = require("../helper/helper");
-
+const {uploadAvatar} = require("../helper/");
 //SECTION add user
 router.post(Routes.AddUser,controlers.adduser);
 
@@ -10,7 +10,7 @@ router.post(Routes.AddUser,controlers.adduser);
 router.post(Routes.Login, controlers.login);
 
 //SECTION update user
-router.put(Routes.update , helper.required , controlers.updateUser);
+router.put(Routes.update , helper.required , uploadAvatar.single("avatar"),controlers.updateUser);
 
 //SECTION follow user
 router.post(Routes.follow , helper.required , controlers.followUser);
