@@ -11,6 +11,7 @@ const intialState = {
     interests:[],
     email:"",
     location:"",
+    avatar:"",
     contacts:[{
         link:"",
         platform:""
