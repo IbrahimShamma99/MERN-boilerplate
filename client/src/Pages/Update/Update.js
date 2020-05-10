@@ -39,6 +39,7 @@ class Update extends React.Component {
         first_name: this.props.first_name,
         last_name: this.props.last_name,
         bio: this.props.bio,
+        avatar:this.props.avatar,
         password: this.props.password,
       }
   };
@@ -55,7 +56,16 @@ class Update extends React.Component {
     this.props.InitState();
   };
   onChangeHandler = (name) => (event) => {
-    this.setState({ 
+    if (name=== "avatar"){
+      return this.setState({ 
+        user: {
+            ...this.state.user,
+            [name]: event.target.files
+        }
+    });  
+    }
+    console.log(this.state)
+    return this.setState({ 
         user: {
             ...this.state.user,
             [name]: event.target.value 
