@@ -83,27 +83,22 @@ const uploadAvatar = (req, res) => {
   });
 };
 
-const updateUser = (req, res, next) => {
-  console.log(req);
+const updateUser = (req, res) => {
   const updateData = req.body.user;
   if (!updateData) {
-    res
-      .status(422)
-      .send({
-        success: false,
-        error: "please provide what you want to update",
-      });
+    res.status(422).send({
+      success: false,
+      error: "please provide what you want to update",
+    });
   }
   console.log(req.file);
   User.findById(updateData._id)
     .then(function (user) {
       if (!user) {
-        return res
-          .sendStatus(401)
-          .send({
-            success: false,
-            error: "please provide what you want to update",
-          });
+        return res.sendStatus(401).send({
+          success: false,
+          error: "please provide what you want to update",
+        });
       }
       user.assignInfo(updateData);
       console.log(user.toAuthJSON());

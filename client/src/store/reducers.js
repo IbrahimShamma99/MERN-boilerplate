@@ -80,8 +80,9 @@ const reducers = (state=intialState,action) => {
                 show:true
             }
         case (actionTypes.UPDATE):
-            update(action.Data).then(
+            update(action.Data,action.avatar).then(
                 (data)=>{
+                    try {
                     console.log("data=",data)
                     if (data.error) {
                         action.asyncDispatch({type:actionTypes.ERROR,message:data.error})
@@ -89,6 +90,8 @@ const reducers = (state=intialState,action) => {
                       else {
                           action.asyncDispatch({type:actionTypes.SUCCESS,user:data.user})
                       }
+                    }
+                    catch(e){return {...state}}
                 })
                 return state;
         case(actionTypes.SUCCESS):

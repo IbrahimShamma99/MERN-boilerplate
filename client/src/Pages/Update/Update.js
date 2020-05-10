@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: (Data) => dispatch({ type: actionTypes.UPDATE,Data}),
+    submit: (Data,avatar) => dispatch({ type: actionTypes.UPDATE,Data,avatar}),
     InitState:() => dispatch({type:actionTypes.REFRESH})
   };
 };
@@ -73,8 +73,9 @@ class Update extends React.Component {
     });
   };
   clickSubmit =()=> {
-      console.log("props=",this.props)
-    return this.props.submit(this.state);
+    console.log("state=",this.state)
+    console.log("this.state.user.avatar=",this.state.user.avatar)
+    return this.props.submit(this.state,this.state.user.avatar);
   }
   render() {
     return (
