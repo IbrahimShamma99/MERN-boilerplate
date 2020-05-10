@@ -17,6 +17,7 @@ const mapStateToProps = (state) => {
     error: state.error,
     show: state.show,
     submitted: state.submitted,
+    avatar:state.avatar
   };
   return RegisterState;
 };
@@ -65,13 +66,6 @@ class Update extends React.Component {
       console.log("props=",this.props)
     return this.props.submit(this.state);
   }
-
-  onChangeAvatarHandler = (event) => {
-    const formData = new FormData();
-    formData.append('avatar',this.state.file);
-    
-  }
-
   render() {
     return (
       <div className="update-container">

@@ -1,4 +1,5 @@
 import apiNames from "../constants/server";
+import axios from 'axios';
 
 const login = (DATA) => {
   return fetch(apiNames.serverDev + "/login", {
@@ -54,9 +55,12 @@ const signout = () => {
     })
     .catch((err) => console.log(err));
 };
+
 console.log("Token ".concat(sessionStorage.getItem("jwt")))
-const update = (DATA) => {
-  console.log(DATA)
+const update = (DATA,avatar) => {
+  const fd = new FormData();
+  fd.append("user",JSON.stringify(DATA.user));
+  fd.append("avatar",avatar);
   return fetch(apiNames.serverDev + "/user", {
     method: "PUT",
     headers: {
@@ -66,7 +70,7 @@ const update = (DATA) => {
     },
     withCredentials: true,
     crossdomain: true,
-    body: JSON.stringify(DATA),
+    body: fd,
   })
     .then((response) => {
       return response.json();
