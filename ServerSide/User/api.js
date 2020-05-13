@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const controlers = require("./controlers");
-const Routes = require("./constants");
+const { Routes, params } = require("./constants");
 const helper = require("../helper/helper");
 const { uploadAvatar } = require("../helper/");
 const userParams = require("./params");
 
-router.param("user", userParams);
+router.param(params.user, userParams);
 
 //SECTION add user
 router.post(Routes.AddUser, controlers.adduser);
