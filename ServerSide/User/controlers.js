@@ -71,29 +71,28 @@ const login = async (req, res, next) => {
 };
 
 const uploadAvatar = (req, res) => {
-  const userEmail = String(req.body.user);
   upload(req, res, function (err) {
     if (err instanceof multer.MulterError) {
       return res.status(500).json(err);
     } else if (err) {
       return res.status(500).json(err);
     }
-    console.log(req.file);
     return res.status(200).send(req.file);
   });
 };
 
 const updateUser = (req, res) => {
   const updateData = req.body.user;
+  const user = req.user;
   if (!updateData) {
     res.status(422).send({
       success: false,
       error: "please provide what you want to update",
     });
-  }
+  };
   console.log(req.file);
-  User.findById(updateData._id)
-    .then(function (user) {
+  // User.findById(updateData._id)
+  //   .then( (user)=> {
       if (!user) {
         return res.sendStatus(401).send({
           success: false,
@@ -106,8 +105,7 @@ const updateUser = (req, res) => {
         return res.status(202).send({
           user: user.toAuthJSON(),
         });
-      });
-    })
+      })
     .catch(() => {
       res.status(422).send({ success: false, error: "couldn't update user" });
     });

@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 
 const userParams = (req, res, next, id) => {
+  console.log(id)
   User.findById(id)
     .then(function (user) {
       if (!user) {
         return res.sendStatus(404);
       }
-      req.body.user = user;
+      req.user = user;
       return next();
     })
     .catch(next);

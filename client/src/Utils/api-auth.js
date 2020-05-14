@@ -56,7 +56,8 @@ const signout = () => {
 };
 
 const update = (DATA) => {
-  return fetch(apiNames.serverDev + "/user", {
+  // console.log("ROUTE=",apiNames.serverDev + "/update/"+DATA._id)
+  return fetch(apiNames.serverDev + "/update/"+DATA.user._id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
