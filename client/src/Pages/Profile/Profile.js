@@ -173,9 +173,9 @@ class Profile extends React.Component {
               <h4>{this.props.profile.location}</h4>
               <h5 className="mobile-info-attribute">Interests</h5>
               <h4>
-                Coding , coffee,
+                {this.props.profile.interests[0]} , {this.props.profile.interests[1]},
                 <br />
-                Deepconversations,Reading
+                {this.props.profile.interests[2]},{this.props.profile.interests[3]}
                 <br />
               </h4>
               <h5 className="mobile-info-attribute">Email</h5>
