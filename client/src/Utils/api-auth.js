@@ -73,8 +73,8 @@ const update = (DATA) => {
 };
 
 const fetchViaUsername = (username) => {
-  return fetch(
-    apiNames.serverDev + "/fetch/"  + "?username=" + username,
+  const QueryRoute = apiNames.serverDev.concat("/fetch/" , "?username=" + username);
+  return fetch(QueryRoute,
     {
       method: "get",
       headers: {

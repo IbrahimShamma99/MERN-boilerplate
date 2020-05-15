@@ -5,7 +5,6 @@ import ContactLogo from "./contacts";
 import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
 import auth from "../../Utils/auth-helper";
-import { fetchViaUsername } from "../../Utils/api-auth";
 import * as actionTypes from "../../store/actions";
 
 const mapStatetoProps = (state) => {
@@ -19,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchUser: (username) => {
       dispatch({ type: actionTypes.USERNAME_FETCH, username });
     },
-    refresh:()=>dispatch({type:actionTypes.REFRESH})
+    refresh: () => dispatch({ type: actionTypes.REFRESH }),
   };
 };
 
@@ -31,19 +30,18 @@ class Profile extends React.Component {
 
   render() {
     return (
-      
       <div className="container">
-      {this.props.show ? (
-        <div className="alert">
-          <span
-            className="closebtn"
-            onClick="this.parentElement.style.display='none';"
-          >
-            &times;
-          </span>
-          {this.props.error}
-        </div>
-      ) : null}
+        {this.props.show ? (
+          <div className="alert">
+            <span
+              className="closebtn"
+              onClick="this.parentElement.style.display='none';"
+            >
+              &times;
+            </span>
+            {this.props.error}
+          </div>
+        ) : null}
 
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
@@ -61,13 +59,14 @@ class Profile extends React.Component {
                 </h3>
               </span>
               <p>{this.props.profile.bio}</p>
-              {auth.isAuthenticated() && this.props._id === this.props.profile._id ?
-              <div className="username-container-button">
-                <a href={RouteNames.update}>
-                  <button className="btn btn-danger">Edit Profile</button>
-                </a>
-              </div>:null
-              }
+              {auth.isAuthenticated() &&
+              this.props._id === this.props.profile._id ? (
+                <div className="username-container-button">
+                  <a href={RouteNames.update}>
+                    <button className="btn btn-danger">Edit Profile</button>
+                  </a>
+                </div>
+              ) : null}
               <div className="contacts-container">
                 <div className="row">
                   {this.props.profile.contacts
@@ -83,9 +82,11 @@ class Profile extends React.Component {
               <h4>{this.props.profile.location}</h4>
               <h5 className="info-attribute">Interests</h5>
               <h4>
-                {this.props.profile.interests[0]} , {this.props.profile.interests[1]},
+                {this.props.profile.interests[0]} ,{" "}
+                {this.props.profile.interests[1]},
                 <br />
-                {this.props.profile.interests[2]},{this.props.profile.interests[3]}
+                {this.props.profile.interests[2]},
+                {this.props.profile.interests[3]}
                 <br />
               </h4>
               <h5 className="info-attribute">Email</h5>
@@ -173,9 +174,11 @@ class Profile extends React.Component {
               <h4>{this.props.profile.location}</h4>
               <h5 className="mobile-info-attribute">Interests</h5>
               <h4>
-                {this.props.profile.interests[0]} , {this.props.profile.interests[1]},
+                {this.props.profile.interests[0]} ,{" "}
+                {this.props.profile.interests[1]},
                 <br />
-                {this.props.profile.interests[2]},{this.props.profile.interests[3]}
+                {this.props.profile.interests[2]},
+                {this.props.profile.interests[3]}
                 <br />
               </h4>
               <h5 className="mobile-info-attribute">Email</h5>
