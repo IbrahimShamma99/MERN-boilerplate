@@ -21,11 +21,11 @@ const naviagtionBar = (props) => (
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          {!auth.isAuthenticated() ? (
+          {auth.isAuthenticated() ? 
             <Nav.Link href={RouteNames.profile}>
               <h5>Profile</h5>
             </Nav.Link>
-          ) : null}
+           : null}
           {!auth.isAuthenticated() ? (
             <Nav.Link href={RouteNames.register}>
               <h5>Register</h5>

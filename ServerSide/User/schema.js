@@ -25,6 +25,11 @@ var UserSchema = new mongoose.Schema({
         required: [true, "can't be blank"],
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
     },
+    username: {
+        type: String,
+        required: [true, "can't be blank"],
+        match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
+    },
     email: {
         type: String,
         lowercase: true,
@@ -68,6 +73,7 @@ UserSchema.methods.toAuthJSON = function() {
 
 UserSchema.methods.assignInfo = function(info){     
     this.first_name = info.first_name;
+    this.username = info.username;
     this.last_name = info.last_name;
     this.bio = info.bio;
     this.email = info.email;

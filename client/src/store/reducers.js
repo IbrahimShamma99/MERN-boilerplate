@@ -5,6 +5,7 @@ import auth from '../Utils/auth-helper';
 const intialState = {
     first_name:"",
     last_name:"",
+    username:"",
     bio:"",
     password:"",
     collections:[{}],

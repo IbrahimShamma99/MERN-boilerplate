@@ -15,6 +15,10 @@ class Signup extends React.Component {
     ok: true,
   };
 
+  componentDidMount(){
+    this.props.refresh()
+  }
+
   Changehandler = (name) => (event) => {
     this.props.change(name, event.target.value);
   };
@@ -82,13 +86,35 @@ class Signup extends React.Component {
               <div className="help-block">Last Name is required</div>
             )}
           </div>
+
+          <div
+          className={
+            "form-group" +
+            (this.state.submitted && !this.props.username
+              ? " has-error"
+              : "")
+          }>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            className="form-control"
+            name="username"
+            value={this.props.username}
+            onChange={this.Changehandler("username")}
+            placeholder="Username"
+          />
+          {this.state.submitted && !this.props.last_name && (
+            <div className="help-block">Username is required</div>
+          )}
+        </div>
+
           <div
             className={
               "form-group" +
               (this.state.submitted && !this.props.email ? " has-error" : "")
             }
           >
-            <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email</label>
             <input
               type="text"
               className="form-control"
@@ -141,6 +167,7 @@ const mapStateToProps = (state) => {
   const RegisterState = {
     email: state.email,
     first_name: state.first_name,
+    username: state.username,
     last_name: state.last_name,
     password: state.password,
     open: state.open,
@@ -156,6 +183,7 @@ const mapDispatchToProps = (dispatch) => {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
     submit: () => dispatch({ type: actionTypes.REGISTER }),
+    refresh:()=>dispatch({type:actionTypes.REFRESH})
   };
 };
 
