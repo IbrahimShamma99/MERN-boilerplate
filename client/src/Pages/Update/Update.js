@@ -8,16 +8,16 @@ import Button from "react-bootstrap/Button";
 const mapStateToProps = (state) => {
   const RegisterState = {
     email: state.email,
-    _id:state._id,
+    _id: state._id,
     first_name: state.first_name,
     last_name: state.last_name,
-    bio:state.bio,
+    bio: state.bio,
     password: state.password,
     open: state.open,
     error: state.error,
     show: state.show,
     submitted: state.submitted,
-    avatar:state.avatar
+    avatar: state.avatar,
   };
   return RegisterState;
 };
@@ -26,22 +26,23 @@ const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: (Data,avatar) => dispatch({ type: actionTypes.UPDATE,Data,avatar}),
-    InitState:() => dispatch({type:actionTypes.REFRESH})
+    submit: (Data, avatar) =>
+      dispatch({ type: actionTypes.UPDATE, Data, avatar }),
+    InitState: () => dispatch({ type: actionTypes.REFRESH }),
   };
 };
 
 class Update extends React.Component {
   state = {
-      user:{
-        email: this.props.email,
-        _id:this.props._id,
-        first_name: this.props.first_name,
-        last_name: this.props.last_name,
-        bio: this.props.bio,
-        avatar:this.props.avatar,
-        password: this.props.password,
-      }
+    user: {
+      email: this.props.email,
+      _id: this.props._id,
+      first_name: this.props.first_name,
+      last_name: this.props.last_name,
+      bio: this.props.bio,
+      avatar: this.props.avatar,
+      password: this.props.password,
+    },
   };
   componentWillMount() {
     if (auth.isAuthenticated()) {
@@ -54,34 +55,34 @@ class Update extends React.Component {
   }
   componentDidMount() {
     this.props.InitState();
-  };
+  }
   onChangeHandler = (name) => (event) => {
-    if (name=== "avatar"){
-      return this.setState({ 
+    if (name === "avatar") {
+      return this.setState({
         user: {
-            ...this.state.user,
-            [name]: event.target.files
-        }
-    });  
+          ...this.state.user,
+          [name]: event.target.files,
+        },
+      });
     }
-    console.log(this.state)
-    return this.setState({ 
-        user: {
-            ...this.state.user,
-            [name]: event.target.value 
-        }
+    console.log(this.state);
+    return this.setState({
+      user: {
+        ...this.state.user,
+        [name]: event.target.value,
+      },
     });
   };
-  clickSubmit =()=> {
-    console.log("state=",this.state)
-    console.log("this.state.user.avatar=",this.state.user.avatar)
-    return this.props.submit(this.state,this.state.user.avatar);
-  }
+  clickSubmit = () => {
+    console.log("state=", this.state);
+    console.log("this.state.user.avatar=", this.state.user.avatar);
+    return this.props.submit(this.state, this.state.user.avatar);
+  };
   render() {
     return (
       <div className="update-container">
         <form>
-        {this.props.show ? (
+          {this.props.show ? (
             <div className="alert">
               <span
                 className="closebtn"
@@ -90,8 +91,8 @@ class Update extends React.Component {
                 &times;
               </span>
               {this.props.error}
-              </div>
-            ) : null}  
+            </div>
+          ) : null}
           <label htmlFor="First">First name:</label>
           <br />
           <input
@@ -111,6 +112,17 @@ class Update extends React.Component {
             type="text"
             id="Last"
             name="Last"
+          ></input>
+          <br />
+
+          <label htmlFor="Username">Username:</label>
+          <br />
+          <input
+            value={this.state.user.username}
+            onChange={this.onChangeHandler("username")}
+            type="text"
+            id="Username"
+            name="Username"
           ></input>
           <br />
 
@@ -166,13 +178,14 @@ class Update extends React.Component {
           <br />
           <label htmlFor="avatar">avatar</label>
 
-          <input type="file" className="" 
-          name="avatar" onChange= {this.onChangeHandler("avatar")} />
+          <input
+            type="file"
+            className=""
+            name="avatar"
+            onChange={this.onChangeHandler("avatar")}
+          />
 
-          <Button
-            size="md"
-            /*style={}*/ variant="flat"
-            onClick={this.clickSubmit}>
+          <Button size="md" variant="flat" onClick={this.clickSubmit}>
             Submit
           </Button>
         </form>

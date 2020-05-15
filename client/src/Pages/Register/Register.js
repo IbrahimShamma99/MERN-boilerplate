@@ -16,7 +16,7 @@ class Signup extends React.Component {
   };
 
   componentDidMount(){
-    this.props.refresh()
+    this.props.refresh();
   }
 
   Changehandler = (name) => (event) => {
@@ -31,7 +31,7 @@ class Signup extends React.Component {
   render() {
     return (
       <div className="signup-form">
-        {this.props.open ? <Redirect to={RouteNames.profile} /> : null}
+        {this.props.open ? <Redirect to={this.props.username} /> : null}
         <Form>
           {this.props.show ? (
             <div className="alert">
