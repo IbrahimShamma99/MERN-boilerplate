@@ -57,7 +57,7 @@ const naviagtionBar = (props) => (
           <NavDropdown.Item href="#action/3.4">Collections</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.4">Users</NavDropdown.Item>
         </NavDropdown>
-*/}
+        */}
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-2" />

@@ -1,23 +1,23 @@
-.input[type=text] {
-    background-color: white;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
+.input[type="text"] {
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
 }
 
 .btn-outline-danger {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 .btn-inherit {
-    color: transparent;
+  color: transparent;
 }
 
-.navbar h5 ,
+.navbar h5,
 .navbar h4 {
-    font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 .btn-outline-danger:hover {
-    border: 2px solid #e93333;
-    background: 0 0;
-    color: black;
+  border: 2px solid #e93333;
+  background: 0 0;
+  color: black;
 }
