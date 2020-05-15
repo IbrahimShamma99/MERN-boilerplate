@@ -56,11 +56,11 @@ const signout = () => {
 };
 
 const update = (DATA) => {
-  return fetch(apiNames.serverDev + "/update/"+DATA.user._id, {
+  return fetch(apiNames.serverDev + "/update/" + DATA.user._id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization":  "Token ".concat( sessionStorage.getItem("jwt"))
+      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
     },
     withCredentials: true,
     crossdomain: true,
@@ -72,4 +72,22 @@ const update = (DATA) => {
     .catch((err) => console.log(err));
 };
 
-export { signout, login, logout, register ,update};
+const fetchViaUsername = (username) => {
+  return fetch(
+    apiNames.serverDev + "/fetch/" + username + "?username=" + username,
+    {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+      crossdomain: true,
+    }
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+export { signout, login, logout, register, update, fetchViaUsername };

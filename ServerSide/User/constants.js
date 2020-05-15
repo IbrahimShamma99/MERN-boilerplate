@@ -7,6 +7,7 @@ const Routes = {
   update: "/update/:user",
   follow: "/follow",
   admin: "/admin",
+  username:"/fetch"
 };
 
 const params = {

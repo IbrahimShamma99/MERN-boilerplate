@@ -1,36 +1,10 @@
 import * as actionTypes from './actions';
 import { login, register,update } from "../Utils/api-auth";
 import auth from '../Utils/auth-helper';
+import {userInitState} from './constants';
 
 const intialState = {
-    first_name:"",
-    last_name:"",
-    username:"",
-    bio:"",
-    password:"",
-    collections:[{}],
-    interests:[],
-    email:"",
-    location:"",
-    avatar:"",
-    contacts:[{
-        link:"",
-        platform:""
-    },{
-        link:"",
-        platform:""
-    },{
-        link:"",
-        platform:""
-    },
-    {
-        link:"",
-        platform:""
-    },
-    {
-        link:"",
-        platform:""
-    }],
+    ...userInitState,
     open: false,
     error: "",
     show: false,

@@ -27,4 +27,7 @@ router.post(Routes.follow, helper.required, controlers.followUser);
 //SECTION logout user
 router.post(Routes.Logout, helper.optional, controlers.logout);
 
+//SECTION fetch via username
+router.post(Routes.username, helper.optional, controlers.fetchUserViaUsername);
+
 module.exports = router;

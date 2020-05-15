@@ -44,6 +44,16 @@ const adduser = (req, res, next) => {
   });
 };
 
+const fetchUserViaUsername = (req,res)=>{
+  const username = req.query.username;
+  User.findOne({username}).then((user)=>{
+    if (!user) {
+      return res.status(422).json({ error: "User not found" });
+    }
+    return res.status(202).json(user.toJSON());
+  })
+};
+
 const login = async (req, res, next) => {
   console.log("body=", req.body);
   const UserInfo = req.body.user;
@@ -89,23 +99,23 @@ const updateUser = (req, res) => {
       success: false,
       error: "please provide what you want to update",
     });
-  };
+  }
   console.log(req.file);
-  // User.findById(updateData._id)
-  //   .then( (user)=> {
-      if (!user) {
-        return res.sendStatus(401).send({
-          success: false,
-          error: "please provide what you want to update",
-        });
-      }
-      user.assignInfo(updateData);
-      console.log(user.toAuthJSON());
-      return user.save().then(function () {
-        return res.status(202).send({
-          user: user.toAuthJSON(),
-        });
-      })
+  if (!user) {
+    return res.sendStatus(401).send({
+      success: false,
+      error: "please provide what you want to update",
+    });
+  }
+  user.assignInfo(updateData);
+  console.log(user.toAuthJSON());
+  return user
+    .save()
+    .then(function () {
+      return res.status(202).send({
+        user: user.toAuthJSON(),
+      });
+    })
     .catch(() => {
       res.status(422).send({ success: false, error: "couldn't update user" });
     });
@@ -163,6 +173,7 @@ const UserControler = {
   logout,
   updateUser,
   followUser,
+  fetchUserViaUsername
 };
 
 module.exports = UserControler;

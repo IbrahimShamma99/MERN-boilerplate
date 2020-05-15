@@ -5,6 +5,8 @@ import ContactLogo from "./contacts";
 import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
 import auth from "../../Utils/auth-helper";
+import { fetchViaUsername } from "../../Utils/api-auth";
+import * as actionTypes from '../../store/actions';
 
 const mapStatetoProps = (state) => {
   return {
@@ -13,20 +15,18 @@ const mapStatetoProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    fetchUser:(username)=>{dispatch({type:actionTypes.USERNAME_FETCH,username})}
+  };
 };
 
 class Profile extends React.Component {
   componentWillMount() {
-    console.log("auth.isAuthenticated=", auth.isAuthenticated());
-    if (auth.isAuthenticated()) {
-      return true;
-    } else {
-      return false;
-    }
+    //fetch username
   }
 
   render() {
+    console.log("params",this.props.match.params.user)
     return (
       <div className="container">
         <Breakpoint medium up>
