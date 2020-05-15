@@ -1,15 +1,13 @@
 import React from 'react';
 import Switcher from "./Switcher";
-import  { BreakpointProvider } from 'react-socks';
 
-function App(props) {
+class App extends React.Component {
+  render(){
   return (
     <React.Fragment>
-      <BreakpointProvider>
         <Switcher/>
-      </BreakpointProvider>
     </React.Fragment>
   );
 }
-
+}
 export default App;
