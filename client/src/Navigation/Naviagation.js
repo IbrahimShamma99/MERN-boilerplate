@@ -21,32 +21,33 @@ const naviagtionBar = (props) => (
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-        {!auth.isAuthenticated() ? (
-          <Nav.Link href={RouteNames.register}>
-            <h5>Register</h5>
-          </Nav.Link>
-        ) : null}
-        {!auth.isAuthenticated() ? (
-          <Nav.Link href={RouteNames.login}>
-            <h5>Login</h5>
-          </Nav.Link>
-        ) : (
-          <Nav.Link href={RouteNames.logout}>
-            <Button
-              variant="inherit"
-              onClick={() => {
-                auth.signout();
-              }}
-            >
-              <h5>Logout</h5>
-            </Button>
-          </Nav.Link>
-        )}
-          {auth.isAuthenticated() ? 
+          {!auth.isAuthenticated() ? (
+            <Nav.Link href={RouteNames.register}>
+              <h5>Register</h5>
+            </Nav.Link>
+          ) : null}
+          {!auth.isAuthenticated() ? (
+            <Nav.Link href={RouteNames.login}>
+              <h5>Login</h5>
+            </Nav.Link>
+          ) : null}
+          {auth.isAuthenticated() ? (
+            <Nav.Link href={RouteNames.logout}>
+              <Button
+                variant="inherit"
+                onClick={() => {
+                  auth.signout();
+                }}
+              >
+                <h5>Logout</h5>
+              </Button>
+            </Nav.Link>
+          ) : null}
+          {auth.isAuthenticated() ? (
             <Nav.Link href={RouteNames.profile}>
               <h5>Profile</h5>
             </Nav.Link>
-           : null}
+          ) : null}
           {/*        
           <NavDropdown title="Find your genre" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1/">Sports</NavDropdown.Item>
