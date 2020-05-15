@@ -25,9 +25,6 @@ const naviagtionBar = (props) => (
             <Nav.Link href={RouteNames.register}>
               <Button
                 variant="inherit"
-                onClick={() => {
-                  auth.signout();
-                }}
               >
                 <h5>Register</h5>
               </Button>
@@ -37,9 +34,6 @@ const naviagtionBar = (props) => (
             <Nav.Link href={RouteNames.login}>
               <Button
                 variant="inherit"
-                onClick={() => {
-                  auth.signout();
-                }}
               >
                 <h5>Login</h5>
               </Button>
@@ -61,9 +55,6 @@ const naviagtionBar = (props) => (
             <Nav.Link href={RouteNames.profile}>
               <Button
                 variant="inherit"
-                onClick={() => {
-                  auth.signout();
-                }}
               >
                 <h5>Profile</h5>
               </Button>

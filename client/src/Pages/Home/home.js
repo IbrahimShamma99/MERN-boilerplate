@@ -1,35 +1,30 @@
 import React from "react";
 import "./home.scss";
-import { Redirect } from "react-router-dom";
-import RouteNames from "../../constants/routes";
 import Aux from "../../hoc";
+import {connect} from 'react-redux';
+import * as actionTypes from '../../store/actions';
 
-export default class Home extends React.Component {
-  state = {
-    Loginredirect: false,
-    Registerredirect: false,
-  };
+const mapStatetoProps = (state) => {
+  //TODO list of whatever the project wants
+  return {
+    open:state.open,
+    error:state.error
 
-  Registerredirect = () => {
-    this.setState({
-      Registerredirect: true,
-    });
   };
+};
 
-  Loginredirect = () => {
-    this.setState({
-      Loginredirect: true,
-    });
+const mapDispatchToProps = (dispatch) => {
+  return {
+    refresh:()=>dispatch({type:actionTypes.REFRESH})
   };
+};
 
-  renderRedirect = () => {
-    if (this.state.Registerredirect) {
-      return <Redirect to={RouteNames.register} />;
-    }
-    if (this.state.Loginredirect) {
-      return <Redirect to={RouteNames.login} />;
-    }
-  };
+
+class Home extends React.Component {
+  
+  componentDidMount(){
+    this.props.refresh();
+  }
 
   render() {
     return (
@@ -42,3 +37,5 @@ export default class Home extends React.Component {
     );
   }
 }
+
+export default connect(mapStatetoProps,mapDispatchToProps)(Home);

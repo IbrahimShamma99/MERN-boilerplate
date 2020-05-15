@@ -17,7 +17,7 @@ class Login extends React.PureComponent {
   };
 
   componentDidMount() {
-    this.props.InitState();
+    this.props.refresh();
   };
 
   Changehandler = (name) => (event) => {
@@ -126,7 +126,8 @@ const mapDispatchToProps = dispatch =>{
     change:(name,value)=>dispatch({type:actionTypes.MODIFY,name,value}),
     submit:()=>dispatch({type:actionTypes.LOGIN}),
     InitState:() => dispatch({type:actionTypes.REFRESH}),
-    ExternalError:(value) => dispatch({type:actionTypes.ExternalError,message:value})
+    ExternalError:(value) => dispatch({type:actionTypes.ExternalError,message:value}),
+    refresh:()=>dispatch({type:actionTypes.REFRESH})
   }
 };
 
