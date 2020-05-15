@@ -22,9 +22,6 @@ const switcher = (props) => {
           <Route path={RouteNames.register} component={Signup}/>
           <Route path={RouteNames.profile} component={Profile}/>
           <Route path={RouteNames.update} component={Update}/>
-          <Route path={RouteNames.base}>
-              <Redirect to={RouteNames.home} />
-          </Route>
         </Switch>
       </Router>
     </div>

@@ -23,12 +23,26 @@ const naviagtionBar = (props) => (
         <Nav className="mr-auto">
           {!auth.isAuthenticated() ? (
             <Nav.Link href={RouteNames.register}>
-              <h5>Register</h5>
+              <Button
+                variant="inherit"
+                onClick={() => {
+                  auth.signout();
+                }}
+              >
+                <h5>Register</h5>
+              </Button>
             </Nav.Link>
           ) : null}
           {!auth.isAuthenticated() ? (
             <Nav.Link href={RouteNames.login}>
-              <h5>Login</h5>
+              <Button
+                variant="inherit"
+                onClick={() => {
+                  auth.signout();
+                }}
+              >
+                <h5>Login</h5>
+              </Button>
             </Nav.Link>
           ) : null}
           {auth.isAuthenticated() ? (
@@ -45,7 +59,14 @@ const naviagtionBar = (props) => (
           ) : null}
           {auth.isAuthenticated() ? (
             <Nav.Link href={RouteNames.profile}>
-              <h5>Profile</h5>
+              <Button
+                variant="inherit"
+                onClick={() => {
+                  auth.signout();
+                }}
+              >
+                <h5>Profile</h5>
+              </Button>
             </Nav.Link>
           ) : null}
           {/*        
