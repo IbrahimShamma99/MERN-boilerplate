@@ -74,7 +74,7 @@ const update = (DATA) => {
 
 const fetchViaUsername = (username) => {
   return fetch(
-    apiNames.serverDev + "/fetch/" + username + "?username=" + username,
+    apiNames.serverDev + "/fetch/"  + "?username=" + username,
     {
       method: "get",
       headers: {

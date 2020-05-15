@@ -34,7 +34,11 @@ const BasicInfoInitState = {
 
 const userInitState = {
     ...BasicInfoInitState,
-    ...contactsInitState
+    ...contactsInitState,
+    profile:{
+        ...BasicInfoInitState,
+        ...contactsInitState    
+    }
 }
 
 export {userInitState};

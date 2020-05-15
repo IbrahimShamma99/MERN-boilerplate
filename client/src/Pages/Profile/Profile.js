@@ -6,7 +6,7 @@ import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
 import auth from "../../Utils/auth-helper";
 import { fetchViaUsername } from "../../Utils/api-auth";
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from "../../store/actions";
 
 const mapStatetoProps = (state) => {
   return {
@@ -16,23 +16,23 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser:(username)=>{dispatch({type:actionTypes.USERNAME_FETCH,username})}
+    fetchUser: (username) => {
+      dispatch({ type: actionTypes.USERNAME_FETCH, username });
+    },
   };
 };
 
 class Profile extends React.Component {
   componentWillMount() {
-    //fetch username
+    this.props.fetchUser(this.props.match.params.user);
   }
 
   render() {
-    console.log("params",this.props.match.params.user)
     return (
       <div className="container">
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
           <div className="profile-container">
-            {console.log(this.props)}
             <img
               className="profile-picture"
               alt="profile"
