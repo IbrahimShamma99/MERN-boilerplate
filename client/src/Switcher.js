@@ -8,7 +8,6 @@ import Signup from "./Pages/Register/";
 import Home from "./Pages/Home";
 import Profile from './Pages/Profile';
 import Update from './Pages/Update';
-import Logout from './Pages/Logout';
 
 const switcher = (props) => {
   return (
@@ -20,7 +19,6 @@ const switcher = (props) => {
           <Route path={RouteNames.register} component={Signup}/>
           <Route path={RouteNames.profile} component={Profile}/>
           <Route path={RouteNames.update} component={Update}/>
-          <Route path={RouteNames.logout} component={Logout}/>
           <Route path={RouteNames.base}>
               <Redirect to={RouteNames.home} />
           </Route>
