@@ -31,7 +31,7 @@ class Signup extends React.Component {
   render() {
     return (
       <div className="signup-form">
-        {this.props.open ? <Redirect to={this.props.username} /> : null}
+        {this.props.open ? <Redirect to={RouteNames.home} /> : null}
         <Form>
           {this.props.show ? (
             <div className="alert">

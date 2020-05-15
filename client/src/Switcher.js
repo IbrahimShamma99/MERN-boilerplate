@@ -8,10 +8,13 @@ import Signup from "./Pages/Register/";
 import Home from "./Pages/Home";
 import Profile from './Pages/Profile';
 import Update from './Pages/Update';
+import NavigationBar from "./Navigation/Naviagation";
 
 const switcher = (props) => {
   return (
     <div>
+    <NavigationBar/>
+
       <Router>
         <Switch>
           <Route path={RouteNames.home} component={Home}/>
