@@ -19,17 +19,32 @@ const mapDispatchToProps = (dispatch) => {
     fetchUser: (username) => {
       dispatch({ type: actionTypes.USERNAME_FETCH, username });
     },
+    refresh:()=>dispatch({type:actionTypes.REFRESH})
   };
 };
 
 class Profile extends React.Component {
   componentWillMount() {
+    this.props.refresh();
     this.props.fetchUser(this.props.match.params.user);
   }
 
   render() {
     return (
+      
       <div className="container">
+      {this.props.show ? (
+        <div className="alert">
+          <span
+            className="closebtn"
+            onClick="this.parentElement.style.display='none';"
+          >
+            &times;
+          </span>
+          {this.props.error}
+        </div>
+      ) : null}
+
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
           <div className="profile-container">
@@ -41,20 +56,22 @@ class Profile extends React.Component {
             <div className="username-container">
               <span>
                 <h3>
-                  {this.props.first_name} <br />
-                  {this.props.last_name}
+                  {this.props.profile.first_name} <br />
+                  {this.props.profile.last_name}
                 </h3>
               </span>
-              <p>{this.props.bio}</p>
+              <p>{this.props.profile.bio}</p>
+              {auth.isAuthenticated() && this.props._id === this.props.profile._id ?
               <div className="username-container-button">
                 <a href={RouteNames.update}>
                   <button className="btn btn-danger">Edit Profile</button>
                 </a>
-              </div>
+              </div>:null
+              }
               <div className="contacts-container">
                 <div className="row">
-                  {this.props.contacts
-                    ? this.props.contacts.map((contact) => {
+                  {this.props.profile.contacts
+                    ? this.props.profile.contacts.map((contact) => {
                         return <ContactLogo contact={contact} />;
                       })
                     : null}
@@ -63,16 +80,16 @@ class Profile extends React.Component {
             </div>
             <div className="info-container">
               <h5 className="info-attribute">Location</h5>
-              <h4>{this.props.location}</h4>
+              <h4>{this.props.profile.location}</h4>
               <h5 className="info-attribute">Interests</h5>
               <h4>
-                {this.props.interests[0]} , {this.props.interests[1]},
+                {this.props.profile.interests[0]} , {this.props.profile.interests[1]},
                 <br />
-                {this.props.interests[2]},{this.props.interests[3]}
+                {this.props.profile.interests[2]},{this.props.profile.interests[3]}
                 <br />
               </h4>
               <h5 className="info-attribute">Email</h5>
-              <h4>{this.props.email}</h4>
+              <h4>{this.props.profile.email}</h4>
             </div>
           </div>
         </Breakpoint>
@@ -87,11 +104,11 @@ class Profile extends React.Component {
             <div className="mobile-username-container">
               <span>
                 <h3>
-                  {this.props.first_name} <br />
-                  {this.props.last_name}
+                  {this.props.profile.first_name} <br />
+                  {this.props.profile.last_name}
                 </h3>
               </span>
-              <p> {this.props.bio} </p>
+              <p> {this.props.profile.bio} </p>
 
               <div className="mobile-contacts-container">
                 <div className="row">
@@ -153,7 +170,7 @@ class Profile extends React.Component {
             </div>
             <div className="mobile-info-container">
               <h5 className="mobile-info-attribute">Location</h5>
-              <h4>{this.props.location}</h4>
+              <h4>{this.props.profile.location}</h4>
               <h5 className="mobile-info-attribute">Interests</h5>
               <h4>
                 Coding , coffee,
@@ -162,7 +179,7 @@ class Profile extends React.Component {
                 <br />
               </h4>
               <h5 className="mobile-info-attribute">Email</h5>
-              <h4>{this.props.email}</h4>
+              <h4>{this.props.profile.email}</h4>
             </div>
           </div>
         </Breakpoint>

@@ -37,6 +37,7 @@ class Login extends React.PureComponent {
 
   render() {
     return (
+      
       <div className="login-form">
         {this.props.open ? <Redirect to={RouteNames.base} /> : null}
         <Form>

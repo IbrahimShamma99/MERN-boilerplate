@@ -30,6 +30,7 @@ const BasicInfoInitState = {
     email:"",
     location:"",
     avatar:"",
+    _id:""
 }
 
 const userInitState = {
