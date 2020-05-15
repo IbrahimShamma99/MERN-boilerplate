@@ -18,6 +18,7 @@ const mapStateToProps = (state) => {
     show: state.show,
     submitted: state.submitted,
     avatar: state.avatar,
+    profile:state.profile
   };
   return RegisterState;
 };
@@ -39,19 +40,15 @@ class Update extends React.Component {
       _id: this.props._id,
       first_name: this.props.first_name,
       last_name: this.props.last_name,
+      username: this.props.username,
       bio: this.props.bio,
       avatar: this.props.avatar,
       password: this.props.password,
     },
   };
   componentWillMount() {
-    if (auth.isAuthenticated()) {
-      console.log("auth");
       return true;
-    } else {
-      console.log("No auth");
-      return false;
-    }
+    
   }
   componentDidMount() {
     this.props.InitState();
@@ -93,6 +90,18 @@ class Update extends React.Component {
               {this.props.error}
             </div>
           ) : null}
+
+          <label htmlFor="First">First name:</label>
+          <br />
+          <input
+            value={this.state.user.username}
+            onChange={this.onChangeHandler("username")}
+            type="text"
+            id="First"
+            name="First"
+          ></input>
+          <br />
+
           <label htmlFor="First">First name:</label>
           <br />
           <input

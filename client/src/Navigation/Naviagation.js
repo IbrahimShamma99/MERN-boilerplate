@@ -1,6 +1,9 @@
 import React from "react";
 import "./Navigation.css";
 import RouteNames from "../constants/routes";
+import auth from "../Utils/auth-helper";
+import * as actionTypes from "../store/actions";
+import { connect } from "react-redux";
 
 //SECTION importing bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,8 +12,19 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
-import auth from "../Utils/auth-helper";
 //import NavDropdown from "react-bootstrap/NavDropdown"
+
+const mapStatetoProps = (state) => {
+  return {
+    username: state.username,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    refresh: () => dispatch({ type: actionTypes.REFRESH }),
+  };
+};
 
 const naviagtionBar = (props) => (
   <div className="navbar">
@@ -23,18 +37,14 @@ const naviagtionBar = (props) => (
         <Nav className="mr-auto">
           {!auth.isAuthenticated() ? (
             <Nav.Link href={RouteNames.register}>
-              <Button
-                variant="inherit"
-              >
+              <Button variant="inherit">
                 <h5>Register</h5>
               </Button>
             </Nav.Link>
           ) : null}
           {!auth.isAuthenticated() ? (
             <Nav.Link href={RouteNames.login}>
-              <Button
-                variant="inherit"
-              >
+              <Button variant="inherit">
                 <h5>Login</h5>
               </Button>
             </Nav.Link>
@@ -52,10 +62,8 @@ const naviagtionBar = (props) => (
             </Nav.Link>
           ) : null}
           {auth.isAuthenticated() ? (
-            <Nav.Link href={RouteNames.profile}>
-              <Button
-                variant="inherit"
-              >
+            <Nav.Link href={props.username}>
+              <Button variant="inherit">
                 <h5>Profile</h5>
               </Button>
             </Nav.Link>
@@ -80,4 +88,4 @@ const naviagtionBar = (props) => (
   </div>
 );
 
-export default naviagtionBar;
+export default connect(mapStatetoProps, mapDispatchToProps)(naviagtionBar);

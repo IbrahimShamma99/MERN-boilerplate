@@ -21,8 +21,9 @@ class switcher extends React.Component {
             <Route path={RouteNames.home} component={Home} />
             <Route path={RouteNames.login} component={Login} />
             <Route path={RouteNames.register} component={Signup} />
-            <Route path={RouteNames.profile} component={Profile} />
             <Route path={RouteNames.update} component={Update} />
+            <Route path={RouteNames.profile} component={Profile} />
+
           </Switch>
         </Router>
       </div>
