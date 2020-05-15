@@ -9,6 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
+import auth from '../Utils/auth-helper';
 //import NavDropdown from "react-bootstrap/NavDropdown"
 
 const naviagtionBar = (props) => (
@@ -18,10 +19,19 @@ const naviagtionBar = (props) => (
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
-        <Nav.Link href={RouteNames.profile}><h5>Profile</h5></Nav.Link>
-        <Nav.Link href={RouteNames.register}><h5>Register</h5></Nav.Link>
-        <Nav.Link href={RouteNames.login}><h5>Login</h5></Nav.Link>
-        <Nav.Link href={RouteNames.logout}><h5>Logout</h5></Nav.Link>
+      {!auth.isAuthenticated()?     
+        <Nav.Link href={RouteNames.profile}><h5>Profile</h5></Nav.Link>:null}
+        {!auth.isAuthenticated()?
+        <Nav.Link href={RouteNames.register}><h5>Register</h5></Nav.Link>:null
+        }{!auth.isAuthenticated()?
+        <Nav.Link href={RouteNames.login}><h5>Login</h5></Nav.Link>:        
+        <Nav.Link href={RouteNames.logout}>
+        <Button variant="inherit" onClick={() => {
+          auth.signout()
+        }}
+        ><h5>Logout</h5></Button>
+        
+        </Nav.Link>}   
 
 {/*        
           <NavDropdown title="Find your genre" id="basic-nav-dropdown">

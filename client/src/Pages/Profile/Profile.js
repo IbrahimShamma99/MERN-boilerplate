@@ -4,8 +4,8 @@ import { Breakpoint } from "react-socks";
 import ContactLogo from "./contacts";
 import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
-import auth from '../../Utils/auth-helper';
-console.log("sessionStorage=",sessionStorage);
+import auth from "../../Utils/auth-helper";
+
 const mapStatetoProps = (state) => {
   return {
     ...state,
@@ -17,17 +17,14 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Profile extends React.Component {
-
-  componentWillMount(){
-    if (auth.isAuthenticated()){
-      console.log("componentWillMount")
+  componentWillMount() {
+    console.log("auth.isAuthenticated=", auth.isAuthenticated());
+    if (auth.isAuthenticated()) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
-
 
   render() {
     return (
@@ -56,11 +53,11 @@ class Profile extends React.Component {
               </div>
               <div className="contacts-container">
                 <div className="row">
-                  {this.props.contacts?
-                    this.props.contacts.map((contact) => {
-                    return <ContactLogo contact={contact} />;
-                  }):null
-                }
+                  {this.props.contacts
+                    ? this.props.contacts.map((contact) => {
+                        return <ContactLogo contact={contact} />;
+                      })
+                    : null}
                 </div>
               </div>
             </div>

@@ -7,6 +7,11 @@
 .btn-outline-danger {
     border-radius: 20px;
 }
+
+.btn-inherit {
+    color: transparent;
+}
+
 .navbar h5 ,
 .navbar h4 {
     font-family: 'Times New Roman', Times, serif;
