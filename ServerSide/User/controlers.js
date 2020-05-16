@@ -4,6 +4,7 @@ var fs = require("fs");
 
 const adduser = (req, res, next) => {
   const UserInfo = req.body.user;
+  console.log("UserInfo=",UserInfo)
   if (!UserInfo) {
     return res
       .status(422)
@@ -21,7 +22,7 @@ const adduser = (req, res, next) => {
   }
   const user = new User();
   try {
-    user.assignInfo(UserInfo);
+    user.initInfo(UserInfo);
   } catch (e) {
     console.log(e);
     return res.status(422).send({

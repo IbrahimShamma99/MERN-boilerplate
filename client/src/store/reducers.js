@@ -22,6 +22,7 @@ const reducers = (state = intialState, action) => {
         open: false,
       };
     case actionTypes.LOGIN:
+      userData.profile = undefined;
       login(userData).then((data) => {
         if (data.error) {
           action.asyncDispatch({
@@ -59,7 +60,9 @@ const reducers = (state = intialState, action) => {
         [action.name]: action.value,
       };
     case actionTypes.REGISTER:
+
       register(userData).then((data) => {
+        userData.profile = undefined;
         if (data.error) {
           action.asyncDispatch({
             type: actionTypes.ERROR,

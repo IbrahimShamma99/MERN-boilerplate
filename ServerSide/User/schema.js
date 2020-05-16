@@ -107,6 +107,15 @@ UserSchema.methods.toAuthJSON = function () {
   };
 };
 
+UserSchema.methods.initInfo = function(info){
+  this.first_name = info.first_name;
+  this.email = info.email;
+  this.last_name = info.last_name;
+  this.username = info.username;
+  this.token = this.generateJWT();
+  this.setPassword(info.password);
+}
+
 UserSchema.methods.assignInfo = function (info) {
   Object.keys(info).map((key) => {
     if (key === "password") {
