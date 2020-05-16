@@ -96,9 +96,9 @@ const reducers = (state = intialState, action) => {
       console.log("action User=", action.user);
       auth.authenticate(action.user.token, () => {
         window.location.reload(false);
-        return { ...state, ...action.user, open: true };
+        return { ...state, ...action.user,profile:{}, open: true };
       });
-      return { ...state, ...action.user, open: true };
+      return { ...state, ...action.user,profile:{}, open: true };
     case actionTypes.LOGOUT:
       auth.signout(() => {
         return {
