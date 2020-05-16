@@ -42,6 +42,17 @@ var UserSchema = new mongoose.Schema({
     contacts: [],
     bio: String,
     profileImg: {contentType: String},
+    avatar: {
+        fieldname: String,
+        originalname:String,
+        encoding: String,
+        mimetype: String,
+        destination: String,
+        filename: String,
+        path: String,
+        size: Number,
+        data:Buffer
+    },
     hash: String,
     salt: String,
     interests:[{required:false}]

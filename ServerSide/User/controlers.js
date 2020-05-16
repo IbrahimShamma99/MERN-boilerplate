@@ -51,6 +51,7 @@ const fetchUserViaUsername = (req, res) => {
     if (!user) {
       return res.status(422).json({ error: "User not found" });
     }
+    console.log(user)
     if (!user.avatar) {
       return res.status(202).json(user.toJSON());
     }
@@ -111,13 +112,14 @@ const updateUser = (req, res) => {
       success: false,
       error: "please provide what you want to update",
     });
-  }
+  };
   if (!user) {
     return res.sendStatus(401).send({
       success: false,
       error: "please provide what you want to update",
     });
   }
+  if (req.file){user.avatar=req.file}
   user.assignInfo(updateData);
   return user
     .save()
