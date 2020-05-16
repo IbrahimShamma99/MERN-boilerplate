@@ -74,9 +74,7 @@ UserSchema.methods.generateJWT = function () {
     config.secret
   );
 };
-
 UserSchema.methods.toJSON = function () {
-  //TODO Clean
   return {
     first_name: this.first_name,
     last_name: this.last_name,
@@ -86,12 +84,10 @@ UserSchema.methods.toJSON = function () {
     _id: this._id,
     bio: this.bio,
     interests: this.interests,
-    "createdAt":this.createdAt ,
-    "updatedAt": this.updatedAt,
-  
+    createdAt: this.createdAt,
+    updatedAt: this.updatedAt,
   };
 };
-
 
 UserSchema.methods.toAuthJSON = function () {
   //TODO Clean
@@ -113,8 +109,10 @@ UserSchema.methods.assignInfo = function (info) {
     if (key === "password") {
       return this.setPassword(info.password);
     }
-    if (key === "avatar"){return;}
-    console.log(key)
+    if (key === "avatar") {
+      return;
+    }
+    console.log(key);
     this[key] = info[key];
   });
   this.token = this.generateJWT();
