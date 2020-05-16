@@ -3,6 +3,7 @@ import "./Update.css";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/actions";
 import Button from "react-bootstrap/Button";
+import { uploadAvatar } from "../../Utils/api-auth";
 
 const mapStateToProps = (state) => {
   const RegisterState = {
@@ -18,7 +19,7 @@ const mapStateToProps = (state) => {
     show: state.show,
     submitted: state.submitted,
     avatar: state.avatar,
-    profile:state.profile
+    profile: state.profile,
   };
   return RegisterState;
 };
@@ -27,8 +28,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: (Data, avatar) =>
-      dispatch({ type: actionTypes.UPDATE, Data, avatar }),
+    submit: (Data) =>
+      dispatch({ type: actionTypes.UPDATE, Data}),
     InitState: () => dispatch({ type: actionTypes.REFRESH }),
   };
 };
@@ -42,24 +43,21 @@ class Update extends React.Component {
       last_name: this.props.last_name,
       username: this.props.username,
       bio: this.props.bio,
-      avatar: this.props.avatar,
       password: this.props.password,
     },
+    avatar: this.props.avatar,
   };
   componentWillMount() {
-      return true;
-    
+    return true;
   }
   componentDidMount() {
     this.props.InitState();
   }
   onChangeHandler = (name) => (event) => {
+    event.preventDefault();
     if (name === "avatar") {
       return this.setState({
-        user: {
-          ...this.state.user,
-          [name]: event.target.files,
-        },
+          avatar: event.target.files[0],
       });
     }
     console.log(this.state);
@@ -70,13 +68,12 @@ class Update extends React.Component {
       },
     });
   };
-  clickSubmit = () => {
-    console.log("state=", this.state);
-    console.log("this.state.user.avatar=", this.state.user.avatar);
-    return this.props.submit(this.state, this.state.user.avatar);
+  clickSubmit = (e) => {
+    e.preventDefault();
+    uploadAvatar(this.state.user._id, this.state.avatar);
+    return this.props.submit(this.state);
   };
   render() {
-    console.log("avatar=",this.state.user.avatar)
     return (
       <div className="update-container">
         <form>
@@ -91,7 +88,6 @@ class Update extends React.Component {
               {this.props.error}
             </div>
           ) : null}
-
 
           <label htmlFor="First">First name:</label>
           <br />

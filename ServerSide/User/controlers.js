@@ -92,6 +92,7 @@ const uploadAvatar = (req, res) => {
 };
 
 const updateUser = (req, res) => {
+  console.log(req.file);
   const updateData = req.body.user;
   const user = req.user;
   if (!updateData) {
@@ -100,7 +101,6 @@ const updateUser = (req, res) => {
       error: "please provide what you want to update",
     });
   }
-  console.log(req.file);
   if (!user) {
     return res.sendStatus(401).send({
       success: false,
@@ -108,7 +108,6 @@ const updateUser = (req, res) => {
     });
   }
   user.assignInfo(updateData);
-  console.log(user.toAuthJSON());
   return user
     .save()
     .then(function () {

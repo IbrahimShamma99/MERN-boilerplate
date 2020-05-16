@@ -59,6 +59,7 @@ UserSchema.methods.generateJWT = function() {
 };
 
 UserSchema.methods.toAuthJSON = function() {
+//TODO Clean
     return {
         first_name:this.first_name,
         last_name:this.last_name,

@@ -11,7 +11,7 @@ const logger = require("morgan");
  * get the same cached copy of the module sent back to you.
  */
 var app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());

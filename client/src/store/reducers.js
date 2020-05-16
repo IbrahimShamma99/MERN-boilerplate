@@ -77,7 +77,7 @@ const reducers = (state = intialState, action) => {
         show: true,
       };
     case actionTypes.UPDATE:
-      update(action.Data, action.avatar).then((data) => {
+      update(action.Data).then((data) => {
         console.log("data=", data);
         if (data.error) {
           action.asyncDispatch({
@@ -95,7 +95,7 @@ const reducers = (state = intialState, action) => {
     case actionTypes.SUCCESS:
       console.log("action User=", action.user);
       auth.authenticate(action.user.token, () => {
-        window.location.reload(false);
+        // window.location.reload(false);
         return { ...state, ...action.user, open: true };
       });
       return { ...state, ...action.user, open: true };
