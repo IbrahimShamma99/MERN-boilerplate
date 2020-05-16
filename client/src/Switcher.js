@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import RouteNames from "./constants/routes";
 
 //SECTION Pages
@@ -14,16 +19,17 @@ class switcher extends React.Component {
   render() {
     return (
       <div>
-        <NavigationBar />
-
+          <NavigationBar />
         <Router>
           <Switch>
             <Route path={RouteNames.home} component={Home} />
             <Route path={RouteNames.login} component={Login} />
             <Route path={RouteNames.register} component={Signup} />
+            <Route path={RouteNames.logout}>
+              <Redirect to={RouteNames.home} />
+            </Route>
             <Route path={RouteNames.update} component={Update} />
             <Route path={RouteNames.profile} component={Profile} />
-
           </Switch>
         </Router>
       </div>

@@ -27,19 +27,20 @@ class Login extends React.PureComponent {
   SubmitHandler = () => {
     if (this.props.email &&this.props.password){
     this.setState({ submitted: true });
-    return this.props.submit();  
+    return this.props.submit(()=>{this.refreshPage()});  
     }
     else {
       this.setState({ submitted: true });
       return this.props.ExternalError("fill required data");
     }
-  };
+  };  
 
   render() {
     return (
       
       <div className="login-form">
-        {this.props.open ? <Redirect to={RouteNames.base} /> : null}
+        {this.props.open ? 
+          <Redirect to={RouteNames.base} /> : null}
         <Form>
         {this.props.show ? (
           <div className="alert">
@@ -67,6 +68,7 @@ class Login extends React.PureComponent {
           onChange={this.Changehandler("email")}
           placeholder="Email"
         />
+        
         {this.state.submitted && !this.props.email && (
           <div className="help-block">Email is required</div>
         )}
@@ -125,7 +127,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>{
   return {
     change:(name,value)=>dispatch({type:actionTypes.MODIFY,name,value}),
-    submit:()=>dispatch({type:actionTypes.LOGIN}),
+    submit:(cb)=>dispatch({type:actionTypes.LOGIN}),
     InitState:() => dispatch({type:actionTypes.REFRESH}),
     ExternalError:(value) => dispatch({type:actionTypes.ExternalError,message:value}),
     refresh:()=>dispatch({type:actionTypes.REFRESH})

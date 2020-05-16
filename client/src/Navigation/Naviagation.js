@@ -26,49 +26,55 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const naviagtionBar = (props) => (
-  <div className="navbar">
-    <Navbar fixed="top" className="input" bg="black" expand="lg">
-      <Navbar.Brand href={RouteNames.home}>
-        <h4>App</h4>
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          {!auth.isAuthenticated() ? (
-            <Nav.Link href={RouteNames.register}>
-              <Button variant="inherit">
-                <h5>Register</h5>
-              </Button>
-            </Nav.Link>
-          ) : null}
-          {!auth.isAuthenticated() ? (
-            <Nav.Link href={RouteNames.login}>
-              <Button variant="inherit">
-                <h5>Login</h5>
-              </Button>
-            </Nav.Link>
-          ) : null}
-          {auth.isAuthenticated() ? (
-            <Nav.Link href={RouteNames.logout}>
-              <Button
-                variant="inherit"
-                onClick={() => {
-                  auth.signout();
-                }}
-              >
-                <h5>Logout</h5>
-              </Button>
-            </Nav.Link>
-          ) : null}
-          {auth.isAuthenticated() ? (
-            <Nav.Link href={props.username}>
-              <Button variant="inherit">
-                <h5>Profile</h5>
-              </Button>
-            </Nav.Link>
-          ) : null}
-          {/*        
+class naviagtionBar extends React.Component {
+  
+  componentDidMount(){
+    this.props.refresh();
+  }
+  render() {
+    return (
+      <div className="navbar">
+        <Navbar fixed="top" className="input" bg="black" expand="lg">
+          <Navbar.Brand href={RouteNames.home}>
+            <h4>App</h4>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              {!auth.isAuthenticated() ? (
+                <Nav.Link href={RouteNames.register}>
+                  <Button variant="inherit">
+                    <h5>Register</h5>
+                  </Button>
+                </Nav.Link>
+              ) : null}
+              {!auth.isAuthenticated() ? (
+                <Nav.Link href={RouteNames.login}>
+                  <Button variant="inherit">
+                    <h5>Login</h5>
+                  </Button>
+                </Nav.Link>
+              ) : null}
+              {auth.isAuthenticated() ? (
+                <Nav.Link href={RouteNames.logout}>
+                  <Button
+                    variant="inherit"
+                    onClick={() => {
+                      auth.signout();
+                    }}
+                  >
+                    <h5>Logout</h5>
+                  </Button>
+                </Nav.Link>
+              ) : null}
+              {auth.isAuthenticated() ? (
+                <Nav.Link href={this.props.username}>
+                  <Button variant="inherit">
+                    <h5>Profile</h5>
+                  </Button>
+                </Nav.Link>
+              ) : null}
+              {/*        
           <NavDropdown title="Find your genre" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1/">Sports</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Cars</NavDropdown.Item>
@@ -78,14 +84,15 @@ const naviagtionBar = (props) => (
           <NavDropdown.Item href="#action/3.4">Users</NavDropdown.Item>
         </NavDropdown>
         */}
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-2" />
-          <Button variant="outline-danger">Search</Button>
-        </Form>
-      </Navbar.Collapse>
-    </Navbar>
-  </div>
-);
-
+            </Nav>
+            <Form inline>
+              <FormControl type="text" placeholder="Search" className="mr-2" />
+              <Button variant="outline-danger">Search</Button>
+            </Form>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+    );
+  }
+}
 export default connect(mapStatetoProps, mapDispatchToProps)(naviagtionBar);

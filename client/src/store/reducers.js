@@ -98,6 +98,7 @@ const reducers = (state = intialState, action) => {
       auth.authenticate(action.user.token, () => {
         return { ...state, ...action.user, open: true };
       });
+      window.location.reload(false);
       return { ...state, ...action.user, open: true };
     case actionTypes.LOGOUT:
       auth.signout(() => {
