@@ -4,7 +4,6 @@ var fs = require("fs");
 
 const adduser = (req, res, next) => {
   const UserInfo = req.body.user;
-  console.log(req.body.user);
   if (!UserInfo) {
     return res
       .status(422)
@@ -20,7 +19,7 @@ const adduser = (req, res, next) => {
       .status(422)
       .send({ error: "please provide password", success: false });
   }
-  var user = new User();
+  const user = new User();
   try {
     user.assignInfo(UserInfo);
   } catch (e) {

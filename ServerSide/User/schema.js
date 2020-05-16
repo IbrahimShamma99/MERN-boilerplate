@@ -20,13 +20,16 @@ var UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "can't be blank"],
       match: [/^[a-zA-Z0-9]+$/, "is invalid"],
+      trim:true
     },
     last_name: {
+      trim:true,
       type: String,
       required: [true, "can't be blank"],
       match: [/^[a-zA-Z0-9]+$/, "is invalid"],
     },
     username: {
+      trim:true,
       type: String,
       unique: true,
       required: [true, "can't be blank"],
@@ -112,7 +115,6 @@ UserSchema.methods.assignInfo = function (info) {
     if (key === "avatar") {
       return;
     }
-    console.log(key);
     this[key] = info[key];
   });
   this.token = this.generateJWT();
