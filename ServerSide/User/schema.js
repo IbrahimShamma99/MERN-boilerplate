@@ -75,6 +75,24 @@ UserSchema.methods.generateJWT = function () {
   );
 };
 
+UserSchema.methods.toJSON = function () {
+  //TODO Clean
+  return {
+    first_name: this.first_name,
+    last_name: this.last_name,
+    username: this.username,
+    email: this.email,
+    avatar: this.avatar,
+    _id: this._id,
+    bio: this.bio,
+    interests: this.interests,
+    "createdAt":this.createdAt ,
+    "updatedAt": this.updatedAt,
+  
+  };
+};
+
+
 UserSchema.methods.toAuthJSON = function () {
   //TODO Clean
   return {
@@ -84,7 +102,7 @@ UserSchema.methods.toAuthJSON = function () {
     email: this.email,
     token: this.generateJWT(),
     bio: this.bio,
-    avatar: this.image,
+    avatar: this.avatar,
     _id: this._id,
     interests: this.interests,
   };
@@ -95,6 +113,8 @@ UserSchema.methods.assignInfo = function (info) {
     if (key === "password") {
       return this.setPassword(info.password);
     }
+    if (key === "avatar"){return;}
+    console.log(key)
     this[key] = info[key];
   });
   this.token = this.generateJWT();

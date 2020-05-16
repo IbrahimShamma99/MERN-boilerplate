@@ -53,15 +53,14 @@ const fetchUserViaUsername = (req, res) => {
     }
     if (!user.avatar.path) {
       return res.status(202).json(user.toJSON());
-    }
-    else {
+    } else {
       fs.readFile(user.avatar.path, "utf8", function (err, contents) {
         user.avatar.data = contents;
         return res.status(202).send({
-          user
+          user,
         });
-    })
-  }
+      });
+    }
   });
 };
 
@@ -103,24 +102,36 @@ const uploadAvatar = (req, res) => {
 };
 
 const updateUser = (req, res) => {
-  console.log(req.file);
   const updateData = req.body.user;
+  console.log("updateData=", updateData);
   const user = req.user;
   if (!updateData) {
     res.status(422).send({
       success: false,
       error: "please provide what you want to update",
     });
-  };
+  }
   if (!user) {
     return res.sendStatus(401).send({
       success: false,
       error: "please provide what you want to update",
     });
   }
-  if (req.file){user.avatar=req.file}
-  console.log(user);
+  if (req.file) {
+    user.avatar = req.file;
+    return user
+      .save()
+      .then(function () {
+        return res.status(202).send({
+          user: user.toAuthJSON(),
+        });
+      })
+      .catch(() => {
+        res.status(422).send({ success: false, error: "couldn't update user" });
+      });
+  }
   user.assignInfo(updateData);
+  console.log(user);
   return user
     .save()
     .then(function () {

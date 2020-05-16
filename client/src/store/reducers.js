@@ -51,7 +51,7 @@ const reducers = (state = intialState, action) => {
     case actionTypes.FETCH_PROFILE:
       return {
         ...state,
-        profile: { ...action.profile },
+        profile: { ...action.profile.user },
       };
     case actionTypes.MODIFY:
       return {
