@@ -52,7 +52,7 @@ const fetchUserViaUsername = (req, res) => {
       return res.status(422).json({ error: "User not found" });
     }
     if (!user.avatar.path) {
-      return res.status(202).json(user.toJSON());
+      return res.status(202).send({user:user.toJSON()});
     } else {
       fs.readFile(user.avatar.path, "utf8", function (err, contents) {
         user.avatar.data = contents;
