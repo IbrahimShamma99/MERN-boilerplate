@@ -34,22 +34,25 @@ const reducers = (state = intialState, action) => {
       });
       return { ...state };
     case actionTypes.USERNAME_FETCH:
-        fetchViaUsername(action.username).then((data) => {
+      fetchViaUsername(action.username).then((data) => {
         if (data.error) {
           action.asyncDispatch({
             type: actionTypes.ERROR,
             message: data.error,
           });
         } else {
-          action.asyncDispatch({ type: actionTypes.FETCH_PROFILE, profile: data });
+          action.asyncDispatch({
+            type: actionTypes.FETCH_PROFILE,
+            profile: data,
+          });
         }
       });
       return { ...state };
     case actionTypes.FETCH_PROFILE:
-        return {
-            ...state,
-            profile:{...action.profile}
-        }
+      return {
+        ...state,
+        profile: { ...action.profile },
+      };
     case actionTypes.MODIFY:
       return {
         ...state,
@@ -75,30 +78,26 @@ const reducers = (state = intialState, action) => {
       };
     case actionTypes.UPDATE:
       update(action.Data, action.avatar).then((data) => {
-        try {
-          console.log("data=", data);
-          if (data.error) {
-            action.asyncDispatch({
-              type: actionTypes.ERROR,
-              message: data.error,
-            });
-          } else {
-            action.asyncDispatch({
-              type: actionTypes.SUCCESS,
-              user: data.user,
-            });
-          }
-        } catch (e) {
-          return { ...state };
+        console.log("data=", data);
+        if (data.error) {
+          action.asyncDispatch({
+            type: actionTypes.ERROR,
+            message: data.error,
+          });
+        } else {
+          action.asyncDispatch({
+            type: actionTypes.SUCCESS,
+            user: data.user,
+          });
         }
       });
       return state;
     case actionTypes.SUCCESS:
-      console.log("action User", action.user);
+      console.log("action User=", action.user);
       auth.authenticate(action.user.token, () => {
+        window.location.reload(false);
         return { ...state, ...action.user, open: true };
       });
-      window.location.reload(false);
       return { ...state, ...action.user, open: true };
     case actionTypes.LOGOUT:
       auth.signout(() => {

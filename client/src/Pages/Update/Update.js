@@ -1,6 +1,5 @@
 import React from "react";
 import "./Update.css";
-import auth from "../../Utils/auth-helper";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/actions";
 import Button from "react-bootstrap/Button";
@@ -11,6 +10,7 @@ const mapStateToProps = (state) => {
     _id: state._id,
     first_name: state.first_name,
     last_name: state.last_name,
+    username: state.username,
     bio: state.bio,
     password: state.password,
     open: state.open,
@@ -76,6 +76,7 @@ class Update extends React.Component {
     return this.props.submit(this.state, this.state.user.avatar);
   };
   render() {
+    console.log("avatar=",this.state.user.avatar)
     return (
       <div className="update-container">
         <form>
@@ -91,16 +92,6 @@ class Update extends React.Component {
             </div>
           ) : null}
 
-          <label htmlFor="First">First name:</label>
-          <br />
-          <input
-            value={this.state.user.username}
-            onChange={this.onChangeHandler("username")}
-            type="text"
-            id="First"
-            name="First"
-          ></input>
-          <br />
 
           <label htmlFor="First">First name:</label>
           <br />
