@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
+var fs = require("fs");
 
 const adduser = (req, res, next) => {
   const UserInfo = req.body.user;
@@ -44,14 +45,24 @@ const adduser = (req, res, next) => {
   });
 };
 
-const fetchUserViaUsername = (req,res)=>{
+const fetchUserViaUsername = (req, res) => {
   const username = req.query.username;
-  User.findOne({username}).then((user)=>{
+  User.findOne({ username }).then((user) => {
     if (!user) {
       return res.status(422).json({ error: "User not found" });
     }
-    return res.status(202).json(user.toJSON());
-  })
+    if (!user.avatar) {
+      return res.status(202).json(user.toJSON());
+    }
+    else {
+      fs.readFile(user.avatar.path, "utf8", function (err, contents) {
+        user.avatar.data = contents;
+        return res.status(202).send({
+          user
+        });
+    })
+  }
+  });
 };
 
 const login = async (req, res, next) => {
@@ -172,7 +183,7 @@ const UserControler = {
   logout,
   updateUser,
   followUser,
-  fetchUserViaUsername
+  fetchUserViaUsername,
 };
 
 module.exports = UserControler;
