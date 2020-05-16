@@ -112,7 +112,6 @@ const updateUser = (req, res) => {
       error: "please provide what you want to update",
     });
   };
-  console.log(user)
   if (!user) {
     return res.sendStatus(401).send({
       success: false,
@@ -120,6 +119,7 @@ const updateUser = (req, res) => {
     });
   }
   if (req.file){user.avatar=req.file}
+  console.log(user);
   user.assignInfo(updateData);
   return user
     .save()
