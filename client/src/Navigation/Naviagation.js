@@ -68,7 +68,7 @@ class naviagtionBar extends React.Component {
                 </Nav.Link>
               ) : null}
               {auth.isAuthenticated() ? (
-                <Nav.Link href={this.props.username}>
+                <Nav.Link href={"/"+this.props.username}>
                   <Button variant="inherit">
                     <h5>Profile</h5>
                   </Button>
