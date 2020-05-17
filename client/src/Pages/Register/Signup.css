@@ -1,14 +1,3 @@
-.signup-form {
-    position: absolute;
-    top: 42%;
-    left: 50%;
-    margin: -170px 0 0 -150px;
-    width: 330px;
-    height: 500px;
-    padding: 20px;
-    border-radius: 1%;
-    background-color: bisque;
-}
 .tst {
     background-color: #e93333;
 }

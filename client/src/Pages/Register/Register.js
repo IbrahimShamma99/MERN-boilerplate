@@ -2,12 +2,47 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "./Signup.css";
+//import "./Signup.css";
 // import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/actions";
+import styled from "styled-components";
+
+const RegisterForm = styled.div`
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  margin: -170px 0 0 -150px;
+  width: 330px;
+  height: auto;
+  padding: 20px;
+  border-radius: 1%;
+  background-color: bisque;
+`;
+
+const label = styled.label`
+  color: black;
+  font-weight: bold;
+`;
+
+const ButtonWrapper = styled.div`
+  background-color: rgb(180, 55, 55) section;
+  color: black;
+  width: 120px;
+  border-radius: 6px;
+  outline: invert;
+  margin-left: 75px;
+  margin-right: auto;
+  &:hover ${Button} {
+    border: 2px solid #e93333;
+    background: 0 0;
+    color: black;
+  }  
+`;
+
+const input = styled.input``;
 
 class Signup extends React.Component {
   state = {
@@ -15,7 +50,7 @@ class Signup extends React.Component {
     ok: true,
   };
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.refresh();
   }
 
@@ -30,7 +65,7 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <div className="signup-form">
+      <RegisterForm>
         {this.props.open ? <Redirect to={RouteNames.home} /> : null}
         <Form>
           {this.props.show ? (
@@ -88,25 +123,24 @@ class Signup extends React.Component {
           </div>
 
           <div
-          className={
-            "form-group" +
-            (this.state.submitted && !this.props.username
-              ? " has-error"
-              : "")
-          }>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            className="form-control"
-            name="username"
-            value={this.props.username}
-            onChange={this.Changehandler("username")}
-            placeholder="Username"
-          />
-          {this.state.submitted && !this.props.last_name && (
-            <div className="help-block">Username is required</div>
-          )}
-        </div>
+            className={
+              "form-group" +
+              (this.state.submitted && !this.props.username ? " has-error" : "")
+            }
+          >
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              className="form-control"
+              name="username"
+              value={this.props.username}
+              onChange={this.Changehandler("username")}
+              placeholder="Username"
+            />
+            {this.state.submitted && !this.props.last_name && (
+              <div className="help-block">Username is required</div>
+            )}
+          </div>
 
           <div
             className={
@@ -114,7 +148,7 @@ class Signup extends React.Component {
               (this.state.submitted && !this.props.email ? " has-error" : "")
             }
           >
-          <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
               className="form-control"
@@ -149,16 +183,17 @@ class Signup extends React.Component {
               <div className="help-block">Password is required</div>
             )}
           </div>
-
-          <Button
-            size="md"
-            /*style={}*/ variant="flat"
-            onClick={this.clickSubmit}
-          >
-            Submit
-          </Button>
+          <ButtonWrapper>
+            <Button
+              size="md"
+              /*style={}*/ variant="flat"
+              onClick={this.clickSubmit}
+            >
+              Submit
+            </Button>
+          </ButtonWrapper>
         </Form>
-      </div>
+      </RegisterForm>
     );
   }
 }
@@ -183,7 +218,7 @@ const mapDispatchToProps = (dispatch) => {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
     submit: () => dispatch({ type: actionTypes.REGISTER }),
-    refresh:()=>dispatch({type:actionTypes.REFRESH})
+    refresh: () => dispatch({ type: actionTypes.REFRESH }),
   };
 };
 

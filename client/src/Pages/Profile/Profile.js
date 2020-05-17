@@ -2,7 +2,7 @@ import React from "react";
 import "./Profile.css";
 import { Breakpoint } from "react-socks";
 import ContactLogo from "./contacts";
-import RouteNames from "../../constants/routes";
+// import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
 import auth from "../../Utils/auth-helper";
 import * as actionTypes from "../../store/actions";
@@ -46,20 +46,27 @@ class Profile extends React.Component {
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
           <div className="profile-container">
-          {//FIXME 
-          }
-          {this.props.profile.avatar.filename?
-            <img
-              className="profile-picture"
-              alt="profile"
-              src={"http://localhost:5000/"+this.props.profile.avatar.filename}
-            ></img>:
-            <img
-            className="profile-picture"
-            alt="profile"
-            src={require("../../logos/profile.jpg")}
-          ></img>
-          }
+            {
+              //FIXME
+            }
+            {this.props.profile.avatar ? (
+              this.props.profile.avatar.filename ? (
+                <img
+                  className="profile-picture"
+                  alt="profile"
+                  src={
+                    "http://localhost:5000/" +
+                    this.props.profile.avatar.filename
+                  }
+                ></img>
+              ) : (
+                <img
+                  className="profile-picture"
+                  alt="profile"
+                  src={require("../../logos/profile.jpg")}
+                ></img>
+              )
+            ) : null}
             <div className="username-container">
               <span>
                 <h3>
@@ -71,7 +78,7 @@ class Profile extends React.Component {
               {auth.isAuthenticated() &&
               this.props._id === this.props.profile._id ? (
                 <div className="username-container-button">
-                  <a href={"/"+this.props.username+"/update"}>
+                  <a href={"/" + this.props.username + "/update"}>
                     <button className="btn btn-danger">Edit Profile</button>
                   </a>
                 </div>
@@ -90,15 +97,16 @@ class Profile extends React.Component {
               <h5 className="info-attribute">Location</h5>
               <h4>{this.props.profile.location}</h4>
               <h5 className="info-attribute">Interests</h5>
-              {this.props.profile?
-              <h4>
-                {this.props.profile.interests[0]} ,{" "}
-                {this.props.profile.interests[1]},
-                <br />
-                {this.props.profile.interests[2]},
-                {this.props.profile.interests[3]}
-                <br />
-              </h4>:null}
+              {this.props.profile ? (
+                <h4>
+                  {this.props.profile.interests[0]} ,{" "}
+                  {this.props.profile.interests[1]},
+                  <br />
+                  {this.props.profile.interests[2]},
+                  {this.props.profile.interests[3]}
+                  <br />
+                </h4>
+              ) : null}
               <h5 className="info-attribute">Email</h5>
               <h4>{this.props.profile.email}</h4>
             </div>
@@ -106,18 +114,19 @@ class Profile extends React.Component {
         </Breakpoint>
         <Breakpoint small down>
           <div className="mobile-profile-container container-fluid">
-          {this.props.profile?
-            <img
-              className="mobile-profile-picture"
-              alt="profile"
-              src={{uri:"https://localhost:5000/1589683215388-cat.jpg"}}
-            ></img>
-            :<img
-              className="mobile-profile-picture"
-              alt="profile"
-              src={require("../../logos/profile.jpg")}
-            ></img>
-          }
+            {this.props.profile ? (
+              <img
+                className="mobile-profile-picture"
+                alt="profile"
+                src={{ uri: "https://localhost:5000/1589683215388-cat.jpg" }}
+              ></img>
+            ) : (
+              <img
+                className="mobile-profile-picture"
+                alt="profile"
+                src={require("../../logos/profile.jpg")}
+              ></img>
+            )}
             <div className="mobile-username-container">
               <span>
                 <h3>
