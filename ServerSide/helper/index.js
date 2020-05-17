@@ -1,4 +1,4 @@
 const {uploadAvatar} = require("./upload");
+const paths = require("./paths");
 
-
-module.exports = {uploadAvatar};
+module.exports = {uploadAvatar,paths};
