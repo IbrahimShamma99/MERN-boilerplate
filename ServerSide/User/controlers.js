@@ -1,10 +1,9 @@
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
-var fs = require("fs");
 
 const adduser = (req, res, next) => {
   const UserInfo = req.body.user;
-  console.log("UserInfo=",UserInfo)
+  console.log("UserInfo=", UserInfo);
   if (!UserInfo) {
     return res
       .status(422)
@@ -51,16 +50,8 @@ const fetchUserViaUsername = (req, res) => {
     if (!user) {
       return res.status(422).json({ error: "User not found" });
     }
-    if (!user.avatar.path) {
-      return res.status(202).send({user:user.toJSON()});
-    } else {
-      fs.readFile(user.avatar.path, "utf8", function (err, contents) {
-        user.avatar.data = contents;
-        return res.status(202).send({
-          user,
-        });
-      });
-    }
+
+    return res.status(202).send({ user: user.toJSON() });
   });
 };
 
@@ -105,12 +96,6 @@ const updateUser = (req, res) => {
   const updateData = req.body.user;
   console.log("updateData=", updateData);
   const user = req.user;
-  // if (!updateData) {
-  //   res.status(422).send({
-  //     success: false,
-  //     error: "please provide what you want to update",
-  //   });
-  // }
   if (!user) {
     return res.sendStatus(401).send({
       success: false,
