@@ -48,7 +48,7 @@ class Profile extends React.Component {
           <div className="profile-container">
           {//FIXME 
           }
-          {this.props.profile.avatar?
+          {this.props.profile.avatar.filename?
             <img
               className="profile-picture"
               alt="profile"
