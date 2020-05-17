@@ -1,10 +1,9 @@
 var path = require("path");
 
-const exportedAvatarPath = path.join(__dirname, "../public/avatar/")
-
+const exportedAvatarPath = path.join(__dirname, "../public/avatar/");
 
 const paths = {
-    userAvatar:exportedAvatarPath
-}
+  userAvatar: exportedAvatarPath,
+};
 
 module.exports = paths;

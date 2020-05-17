@@ -3,7 +3,6 @@ var path = require("path");
 
 var AvatarStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    console.log(path.join(__dirname, "../public/avatar/"));
     cb(null, path.join(__dirname, "../public/avatar/"));
   },
   filename: function (req, file, cb) {

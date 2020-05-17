@@ -11,8 +11,6 @@ const auth = {
       return false
   },
   authenticate(jwt, cb) {
-    console.log("PRE JWT=",jwt);
-    console.log("PRE JWT type=",typeof jwt);
     if (typeof window !== "undefined")
       sessionStorage.setItem('jwt', jwt)
     cb();

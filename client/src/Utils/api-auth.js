@@ -40,7 +40,6 @@ const register = (user) => {
     body: JSON.stringify(user),
   })
     .then((response) => {
-      console.log(response);
       return response.json();
     })
     .catch((err) => console.log(err));
@@ -57,7 +56,6 @@ const signout = () => {
 };
 
 const update = (DATA) => {
-  console.log("DATA=",DATA)
   return fetch(apiNames.serverDev + "/update/" + DATA.user._id, {
     method: "PUT",
     headers: {

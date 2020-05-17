@@ -3,7 +3,6 @@ var User = mongoose.model("User");
 
 const adduser = (req, res, next) => {
   const UserInfo = req.body.user;
-  console.log("UserInfo=", UserInfo);
   if (!UserInfo) {
     return res
       .status(422)
@@ -56,7 +55,6 @@ const fetchUserViaUsername = (req, res) => {
 };
 
 const login = async (req, res, next) => {
-  console.log("body=", req.body);
   const UserInfo = req.body.user;
   if (!UserInfo.email) {
     return res.send(422).json({ error: "please provide email " });
@@ -69,7 +67,6 @@ const login = async (req, res, next) => {
       if (!user) {
         return res.status(422).json({ error: "User not found" });
       }
-      console.log(user.toAuthJSON());
       if (user.validPassword(UserInfo.password)) {
         return res.status(202).json(user.toAuthJSON());
       } else {
@@ -94,7 +91,6 @@ const uploadAvatar = (req, res) => {
 
 const updateUser = (req, res) => {
   const updateData = req.body.user;
-  console.log("updateData=", updateData);
   const user = req.user;
   if (!user) {
     return res.sendStatus(401).send({
@@ -116,7 +112,6 @@ const updateUser = (req, res) => {
       });
   }
   user.assignInfo(updateData);
-  console.log(user);
   return user
     .save()
     .then(function () {

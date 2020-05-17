@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 
 const userParams = (req, res, next, id) => {
-  console.log(id)
   User.findById(id)
     .then(function (user) {
       if (!user) {

@@ -81,7 +81,6 @@ const reducers = (state = intialState, action) => {
       };
     case actionTypes.UPDATE:
       update(action.Data).then((data) => {
-        console.log("data=", data);
         if (data.error) {
           action.asyncDispatch({
             type: actionTypes.ERROR,
@@ -96,7 +95,6 @@ const reducers = (state = intialState, action) => {
       });
       return state;
     case actionTypes.SUCCESS:
-      console.log("action User=", action.user);
       auth.authenticate(action.user.token, () => {
         //window.location.reload(false);
         return { ...state, ...action.user,profile:{}, open: true };

@@ -60,7 +60,6 @@ class Update extends React.Component {
           avatar: event.target.files[0],
       });
     }
-    console.log(this.state);
     return this.setState({
       user: {
         ...this.state.user,

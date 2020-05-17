@@ -30,7 +30,6 @@ const contactLogo = (props) => {
         default:
             break; 
     }
-    console.log(path)
     return (
         <div className="col">
         <a href={props.contact.path}><img alt={props.contact.platform} src={path}></img></a>
