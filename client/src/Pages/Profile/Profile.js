@@ -46,11 +46,20 @@ class Profile extends React.Component {
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
           <div className="profile-container">
+          {//FIXME 
+          }
+          {this.props.profile.avatar?
             <img
               className="profile-picture"
               alt="profile"
-              src={require("../../logos/profile.jpg")}
-            ></img>
+              src={"http://localhost:5000/"+this.props.profile.avatar.filename}
+            ></img>:
+            <img
+            className="profile-picture"
+            alt="profile"
+            src={require("../../logos/profile.jpg")}
+          ></img>
+          }
             <div className="username-container">
               <span>
                 <h3>
@@ -95,14 +104,20 @@ class Profile extends React.Component {
             </div>
           </div>
         </Breakpoint>
-
         <Breakpoint small down>
           <div className="mobile-profile-container container-fluid">
+          {this.props.profile?
             <img
+              className="mobile-profile-picture"
+              alt="profile"
+              src={{uri:"https://localhost:5000/1589683215388-cat.jpg"}}
+            ></img>
+            :<img
               className="mobile-profile-picture"
               alt="profile"
               src={require("../../logos/profile.jpg")}
             ></img>
+          }
             <div className="mobile-username-container">
               <span>
                 <h3>

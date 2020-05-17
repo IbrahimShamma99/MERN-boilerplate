@@ -4,6 +4,7 @@ const session = require("express-session");
 const helmet = require('helmet')
 const cors = require('cors');
 const logger = require("morgan");
+const path = require("path");
 /**NOTE We are passing app to the server because
  * When you call the “require” function in Node, it uses 
  * the path of the required file as a cache key. If you require 
@@ -11,6 +12,7 @@ const logger = require("morgan");
  * get the same cached copy of the module sent back to you.
  */
 var app = express();
+app.use(express.static(path.join(__dirname, "../public/avatar/")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());

@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware , combineReducers} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import userReducer from './user.reducers';
@@ -11,9 +11,7 @@ const persistConfig = {
   storage: storage,
 };
 
-const rootReducer = combineReducers({user:userReducer});
-
-const pReducer = persistReducer(persistConfig, rootReducer);
+const pReducer = persistReducer(persistConfig, userReducer);
 
 const loggerMiddleware = createLogger();
 

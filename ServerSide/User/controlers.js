@@ -105,12 +105,12 @@ const updateUser = (req, res) => {
   const updateData = req.body.user;
   console.log("updateData=", updateData);
   const user = req.user;
-  if (!updateData) {
-    res.status(422).send({
-      success: false,
-      error: "please provide what you want to update",
-    });
-  }
+  // if (!updateData) {
+  //   res.status(422).send({
+  //     success: false,
+  //     error: "please provide what you want to update",
+  //   });
+  // }
   if (!user) {
     return res.sendStatus(401).send({
       success: false,
