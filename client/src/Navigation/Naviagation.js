@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navigation.css";
+//import "./Navigation.css";
 import RouteNames from "../constants/routes";
 import auth from "../Utils/auth-helper";
 import * as actionTypes from "../store/actions";
@@ -12,7 +12,14 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
-//import NavDropdown from "react-bootstrap/NavDropdown"
+import styled from "styled-components";
+
+const H4 = styled.h4`
+  font-family: "Times New Roman", Times, serif;
+`;
+const H5 = styled.h5`
+  font-family: "Times New Roman", Times, serif;
+`;
 
 const mapStatetoProps = (state) => {
   return {
@@ -36,22 +43,22 @@ class naviagtionBar extends React.Component {
       <div className="navbar">
         <Navbar fixed="top" className="input" bg="black" expand="lg">
           <Navbar.Brand href={RouteNames.home}>
-            <h4>App</h4>
+            <H4>App</H4>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               {!auth.isAuthenticated() ? (
                 <Nav.Link href={RouteNames.register}>
-                  <Button variant="inherit">
-                    <h5>Register</h5>
-                  </Button>
+                    <Button variant="inherit">
+                      <H5>Register</H5>
+                    </Button>
                 </Nav.Link>
               ) : null}
               {!auth.isAuthenticated() ? (
                 <Nav.Link href={RouteNames.login}>
                   <Button variant="inherit">
-                    <h5>Login</h5>
+                    <H5>Login</H5>
                   </Button>
                 </Nav.Link>
               ) : null}
@@ -63,14 +70,14 @@ class naviagtionBar extends React.Component {
                       auth.signout();
                     }}
                   >
-                    <h5>Logout</h5>
+                    <H5>Logout</H5>
                   </Button>
                 </Nav.Link>
               ) : null}
               {auth.isAuthenticated() ? (
                 <Nav.Link href={"/" + this.props.username}>
                   <Button variant="inherit">
-                    <h5>Profile</h5>
+                    <H5>Profile</H5>
                   </Button>
                 </Nav.Link>
               ) : null}

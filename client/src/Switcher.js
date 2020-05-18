@@ -13,7 +13,7 @@ import Signup from "./Pages/Register/";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import Update from "./Pages/Update";
-import NavigationBar from "./Navigation/Naviagation";
+import NavigationBar from "./Navigation/";
 
 class switcher extends React.Component {
   render() {
