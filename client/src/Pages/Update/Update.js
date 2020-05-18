@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
     last_name: state.last_name,
     username: state.username,
     bio: state.bio,
+    birth_date:state.birth_date,
     password: state.password,
     open: state.open,
     error: state.error,
@@ -148,6 +149,7 @@ class Update extends React.Component {
           <br />
           <input
             onChange={this.onChangeHandler("birth_date")}
+            value={this.props.birth_date}
             type="date"
             id="date"
             name="date"
