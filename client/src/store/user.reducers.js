@@ -98,6 +98,7 @@ const reducers = (state = intialState, action) => {
       return state;
     case actionTypes.SUCCESS:
       auth.authenticate(action.user.token, () => {
+        window.location.reload()
         return { ...state, ...action.user,profile:{}, open: true };
       });
       return { ...state, ...action.user,profile:{}, open: true };

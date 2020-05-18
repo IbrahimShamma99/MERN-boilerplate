@@ -31,6 +31,7 @@ class naviagtionBar extends React.Component {
   componentDidMount(){
     this.props.refresh();
   }
+  
   render() {
     return (
       <div className="navbar">

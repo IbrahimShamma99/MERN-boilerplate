@@ -99,16 +99,12 @@ class Profile extends React.Component {
               <h5 className="info-attribute">Location</h5>
               <h4>{this.props.profile.location}</h4>
               <h5 className="info-attribute">Interests</h5>
-              {this.props.profile ? (
-                <h4>
-                  {this.props.profile.interests[0]} ,{" "}
-                  {this.props.profile.interests[1]},
-                  <br />
-                  {this.props.profile.interests[2]},
-                  {this.props.profile.interests[3]}
-                  <br />
+              <h4>
+              {this.props.profile.interests ?
+                this.props.profile.interests.map(intr=>(
+                  intr        
+                )): null}
                 </h4>
-              ) : null}
               <h5 className="info-attribute">Email</h5>
               <h4>{this.props.profile.email}</h4>
             </div>

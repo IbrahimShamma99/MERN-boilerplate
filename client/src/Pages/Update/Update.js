@@ -28,8 +28,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: (Data) =>
-      dispatch({ type: actionTypes.UPDATE, Data}),
+    submit: (Data) => dispatch({ type: actionTypes.UPDATE, Data }),
     InitState: () => dispatch({ type: actionTypes.REFRESH }),
   };
 };
@@ -57,7 +56,7 @@ class Update extends React.Component {
     event.preventDefault();
     if (name === "avatar") {
       return this.setState({
-          avatar: event.target.files[0],
+        avatar: event.target.files[0],
       });
     }
     return this.setState({
@@ -140,6 +139,18 @@ class Update extends React.Component {
             type="password"
             id="Password"
             name="Password"
+          ></input>
+          <br />
+
+          <label min="1950-01-01" htmlFor="date">
+            Born
+          </label>
+          <br />
+          <input
+            onChange={this.onChangeHandler("birth_date")}
+            type="date"
+            id="date"
+            name="date"
           ></input>
           <br />
 

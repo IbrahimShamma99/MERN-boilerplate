@@ -28,6 +28,7 @@ const BasicInfoInitState = {
   last_name: "",
   username: "",
   bio: "",
+  birth_date:"",
   password: "",
   collections: [{}],
   interests: [],

@@ -70,12 +70,17 @@ class Login extends React.PureComponent {
       return this.props.ExternalError("fill required data");
     }
   };
+  
 
   render() {
+
+    const { from } = this.props.location.state || RouteNames.base;
+    if (this.props.open){
+      return <Redirect to={from} />
+    }
     return (
       <>
         <LoginForm>
-          {this.props.open ? <Redirect to={RouteNames.base} /> : null}
           <Form>
             {this.props.show ? (
               <div className="alert">

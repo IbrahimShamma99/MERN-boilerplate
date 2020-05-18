@@ -19,11 +19,10 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Home extends React.Component {
-
   render() {
     return (
       <Aux className="container">
-        <div className="col">
+      <div className="col">
           <div className="row"></div>{" "}
         </div>{" "}
       </Aux>

@@ -35,6 +35,7 @@ var UserSchema = new mongoose.Schema(
       required: [true, "can't be blank"],
       match: [/^[a-zA-Z0-9]+$/, "is invalid"],
     },
+    birth_date:{type:String},
     email: {
       type: String,
       lowercase: true,
