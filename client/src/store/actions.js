@@ -4,6 +4,7 @@ export const LOGIN = ()=> "USER_LOGIN";
 export const USERNAME_FETCH = ()=> "USERNAME_FETCH";
 export const FETCH_PROFILE = ()=> "FETCH_PROFILE";
 export const UPDATE = () => "USER_UPDATE";
+export const FETCH_UPDATE = () => "FETCH_USER_UPDATE";
 export const LOGOUT = () => "USER_LOGOUT";
 export const REGISTER = () => "USER_REGISTER";
 export const SUCCESS = () => "SUCCESS";

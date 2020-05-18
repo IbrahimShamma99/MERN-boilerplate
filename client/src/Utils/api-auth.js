@@ -72,52 +72,43 @@ const update = (DATA) => {
     .catch((err) => console.log(err));
 };
 
-const uploadAvatar = (ID,avatar) => {
+const uploadAvatar = (ID, avatar) => {
   const formData = new FormData();
   formData.append("avatar", avatar);
   const config = {
     headers: {
       "content-type": "multipart/form-data",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),      
+      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
     },
   };
-  axios
-    .put(apiNames.serverDev + "/update/" + ID, formData, config)
-    .then((response) => {
-      return response.json();
-    })
-    // .catch((err) => console.log(err));
-  // return fetch(apiNames.serverDev + "/update/" + ID, {
-  //   method: "PUT",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
-  //   },
-  //   withCredentials: true,
-  //   crossdomain: true,
-  //   body: fd,
-  // })
-
-  };
-
-
+  axios.put(apiNames.serverDev + "/update/" + ID, formData, config);
+};
 
 const fetchViaUsername = (username) => {
-  const QueryRoute = apiNames.serverDev.concat("/fetch/" , "?username=" + username);
-  return fetch(QueryRoute,
-    {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-      crossdomain: true,
-    }
-  )
+  const QueryRoute = apiNames.serverDev.concat(
+    "/fetch/",
+    "?username=" + username
+  );
+  return fetch(QueryRoute, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+    crossdomain: true,
+  })
     .then((response) => {
       return response.json();
     })
     .catch((err) => console.log(err));
 };
 
-export { signout, login, logout,uploadAvatar, register, update, fetchViaUsername };
+export {
+  signout,
+  login,
+  logout,
+  uploadAvatar,
+  register,
+  update,
+  fetchViaUsername,
+};

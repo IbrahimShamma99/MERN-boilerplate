@@ -85,7 +85,7 @@ UserSchema.methods.toJSON = function () {
     username: this.username,
     email: this.email,
     avatar: this.avatar,
-    birth_date:thsi.birth_date,
+    birth_date:this.birth_date,
     _id: this._id,
     bio: this.bio,
     interests: this.interests,

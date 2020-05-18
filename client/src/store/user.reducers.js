@@ -24,7 +24,7 @@ const reducers = (state = intialState, action) => {
       };
     case actionTypes.LOGIN:
       userData.profile = undefined;
-      console.log("User",action)
+      console.log("User", action);
       login(userData).then((data) => {
         if (data.error) {
           action.asyncDispatch({
@@ -62,7 +62,6 @@ const reducers = (state = intialState, action) => {
         [action.name]: action.value,
       };
     case actionTypes.REGISTER:
-
       register(userData).then((data) => {
         userData.profile = undefined;
         if (data.error) {
@@ -90,18 +89,24 @@ const reducers = (state = intialState, action) => {
           });
         } else {
           action.asyncDispatch({
-            type: actionTypes.SUCCESS,
+            type: actionTypes.FETCH_UPDATE,
             user: data.user,
           });
         }
       });
       return state;
+    case actionTypes.FETCH_UPDATE:
+      auth.authenticate(action.user.token, () => {
+        return { ...state, ...action.user, profile: {}, open: true };
+      });
+      return { ...state, ...action.user, profile: {}, open: true };
+
     case actionTypes.SUCCESS:
       auth.authenticate(action.user.token, () => {
-        window.location.reload()
-        return { ...state, ...action.user,profile:{}, open: true };
+        window.location.reload();
+        return { ...state, ...action.user, profile: {}, open: true };
       });
-      return { ...state, ...action.user,profile:{}, open: true };
+      return { ...state, ...action.user, profile: {}, open: true };
     case actionTypes.LOGOUT:
       auth.signout(() => {
         return {
