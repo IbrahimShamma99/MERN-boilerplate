@@ -21,6 +21,7 @@ const reducers = (state = intialState, action) => {
         show: false,
         error: "",
         open: false,
+        success:""
       };
     case actionTypes.LOGIN:
       userData.profile = undefined;
