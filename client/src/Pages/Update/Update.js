@@ -43,6 +43,7 @@ class Update extends React.Component {
       last_name: this.props.last_name,
       username: this.props.username,
       bio: this.props.bio,
+      birth_date:this.props.birth_date,
       password: this.props.password,
     },
     avatar: this.props.avatar,
@@ -149,7 +150,7 @@ class Update extends React.Component {
           <br />
           <input
             onChange={this.onChangeHandler("birth_date")}
-            value={this.props.birth_date}
+            value={this.state.birth_date}
             type="date"
             id="date"
             name="date"
