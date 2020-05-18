@@ -7,7 +7,7 @@
     color: white;
     margin-bottom: 15px;
   }
-  
+
 .profile-container {
     vertical-align: middle;
     align-content:middle ;
@@ -47,6 +47,13 @@
     visibility: visible;
     background:#e93333;
     border: 3px solid #e93333;
+    overflow: hidden; 
+    transition: transform .5s ease;
+}
+.profile-container img:hover {
+    transition: transform 0.8s ease; 
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+    transform: scale(1.05);
 }
 
 .user-highlight {

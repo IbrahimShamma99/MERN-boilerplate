@@ -22,7 +22,7 @@ class switcher extends React.Component {
           <NavigationBar />
         <Router>
           <Switch>
-            <Route path={RouteNames.home} component={Home} />
+            <Route exact path={RouteNames.home} component={()=><Home/>} />
             <Route path={RouteNames.login} component={Login} />
             <Route path={RouteNames.register} component={Signup} />
             <Route path={RouteNames.logout}>

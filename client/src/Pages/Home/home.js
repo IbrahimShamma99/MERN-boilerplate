@@ -19,9 +19,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 class Home extends React.Component {
-  componentDidMount() {
-    this.props.refresh();
-  }
+
   render() {
     return (
       <Aux className="container">

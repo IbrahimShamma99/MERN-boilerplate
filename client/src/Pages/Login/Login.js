@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import "./Login.css";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
@@ -23,9 +24,26 @@ const LoginForm = styled.div`
 `;
 
 const Label = styled.label`
-color: black;
-font-weight: bold;
-`
+  color: black;
+  font-weight: bold;
+`;
+
+const styledButton = styled.button`
+  background-color: rgb(180, 55, 55);
+  color: black;
+  width: 120px;
+  height: 38px;
+  border-radius: 6px;
+  font-weight: bolder;
+  outline: invert;
+  margin-left: 75px;
+  margin-right: auto;
+  &:hover {
+    border: 2px solid #e93333;
+    background: 0 0;
+    color: black;
+  }
+`;
 
 class Login extends React.PureComponent {
   state = {
@@ -55,71 +73,82 @@ class Login extends React.PureComponent {
 
   render() {
     return (
-      <LoginForm>
-        {this.props.open ? <Redirect to={RouteNames.base} /> : null}
-        <Form>
-          {this.props.show ? (
-            <div className="alert">
-              <span
-                className="closebtn"
-                onClick="this.parentElement.style.display='none';"
-              >
-                &times;
-              </span>
-              {this.props.error}
+      <>
+        <LoginForm>
+          {this.props.open ? <Redirect to={RouteNames.base} /> : null}
+          <Form>
+            {this.props.show ? (
+              <div className="alert">
+                <span
+                  className="closebtn"
+                  onClick="this.parentElement.style.display='none';"
+                >
+                  &times;
+                </span>
+                {this.props.error}
+              </div>
+            ) : null}
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.props.email ? " has-error" : "")
+              }
+            >
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                className="form-control"
+                name="email"
+                value={this.props.email}
+                onChange={this.Changehandler("email")}
+                placeholder="Email"
+              />
+
+              {this.state.submitted && !this.props.email && (
+                <div className="help-block">Email is required</div>
+              )}
             </div>
-          ) : null}
-          <div
-            className={
-              "form-group" +
-              (this.state.submitted && !this.props.email ? " has-error" : "")
-            }
-          >
-            <Label htmlFor="email">Email</Label>
-            <input
-              type="text"
-              className="form-control"
-              name="email"
-              value={this.props.email}
-              onChange={this.Changehandler("email")}
-              placeholder="Email"
-            />
-
-            {this.state.submitted && !this.props.email && (
-              <div className="help-block">Email is required</div>
-            )}
-          </div>
-
-          <div
-            className={
-              "form-group" +
-              (this.state.submitted && !this.props.last_name
-                ? " has-error"
-                : "")
-            }
-          >
-            <Label htmlFor="password">Password</Label>
-            <input
-              type="password"
-              className="form-control"
-              name="password"
-              value={this.props.password}
-              onChange={this.Changehandler("password")}
-              placeholder="Password"
-            />
-            {this.state.submitted && !this.props.password && (
-              <div className="help-block">Password is required</div>
-            )}
-          </div>
-          <Button
-            size="md"
-            /*style={}*/ variant="flat"
-            onClick={this.SubmitHandler}
-          >
-            Submit
-          </Button>
-        </Form>
-      </LoginForm>
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.props.last_name
+                  ? " has-error"
+                  : "")
+              }
+            >
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                value={this.props.password}
+                onChange={this.Changehandler("password")}
+                placeholder="Password"
+              />
+              {this.state.submitted && !this.props.password && (
+                <div className="help-block">Password is required</div>
+              )}
+            </div>
+            <Button
+              size="md"
+              /*style={}*/ variant="flat"
+              onClick={this.SubmitHandler}
+            >
+              Submit
+            </Button>
+            {
+              //             <Button1
+              //               size="md"
+              //               /*style={}*/ variant="flat"
+              //               type="button"
+              //               onClick={() => this.SubmitHandler}
+              //             >
+              //               Submit
+              //             </Button1>
+            }{" "}
+          </Form>
+        </LoginForm>
+      </>
     );
   }
 }
@@ -130,6 +159,7 @@ Login.propTypes = {
 };
 
 const mapStateToProps = (state) => {
+  console.log("mapStateToProps=", state);
   return {
     email: state.email,
     password: state.password,

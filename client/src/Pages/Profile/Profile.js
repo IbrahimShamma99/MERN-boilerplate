@@ -51,6 +51,7 @@ class Profile extends React.Component {
             }
             {this.props.profile.avatar ? (
               this.props.profile.avatar.filename ? (
+                <div class="view overlay zoom">
                 <img
                   className="profile-picture"
                   alt="profile"
@@ -59,6 +60,7 @@ class Profile extends React.Component {
                     this.props.profile.avatar.filename
                   }
                 ></img>
+                </div>
               ) : (
                 <img
                   className="profile-picture"

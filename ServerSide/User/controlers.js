@@ -68,8 +68,10 @@ const login = async (req, res, next) => {
         return res.status(422).json({ error: "User not found" });
       }
       if (user.validPassword(UserInfo.password)) {
+        console.log("Valid")
         return res.status(202).json(user.toAuthJSON());
       } else {
+        console.log("Not valid")
         return res.status(422).send({ error: "authentication error" });
       }
     })

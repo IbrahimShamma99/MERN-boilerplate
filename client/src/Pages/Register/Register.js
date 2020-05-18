@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 //import "./Signup.css";
 // import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
@@ -27,19 +27,21 @@ const label = styled.label`
   font-weight: bold;
 `;
 
-const ButtonWrapper = styled.div`
-  background-color: rgb(180, 55, 55) section;
+const Button = styled.button`
+  background-color: rgb(180, 55, 55);
   color: black;
   width: 120px;
+  height:38px;
   border-radius: 6px;
+  font-weight:bolder;
   outline: invert;
   margin-left: 75px;
   margin-right: auto;
-  &:hover ${Button} {
+  &:hover{
     border: 2px solid #e93333;
     background: 0 0;
     color: black;
-  }  
+  }
 `;
 
 const input = styled.input``;
@@ -183,15 +185,13 @@ class Signup extends React.Component {
               <div className="help-block">Password is required</div>
             )}
           </div>
-          <ButtonWrapper>
-            <Button
+          <Button
               size="md"
-              /*style={}*/ variant="flat"
               onClick={this.clickSubmit}
             >
               Submit
             </Button>
-          </ButtonWrapper>
+
         </Form>
       </RegisterForm>
     );
