@@ -2,6 +2,7 @@ import * as actionTypes from "./actions";
 import { login, register, update, fetchViaUsername } from "../Utils/api-auth";
 import auth from "../Utils/auth-helper";
 import { userInitState } from "./constants";
+import { PURGE, REHYDRATE } from "redux-persist";
 
 const intialState = {
   ...userInitState,
@@ -12,7 +13,7 @@ const intialState = {
 };
 
 const reducers = (state = intialState, action) => {
-  const userData = { user: { ...state } };
+  const userData = { user: { ...state.user } };
   switch (action.type) {
     case actionTypes.REFRESH:
       return {
@@ -21,8 +22,16 @@ const reducers = (state = intialState, action) => {
         show: false,
         error: "",
         open: false,
-        success:""
+        success: "",
       };
+    // This added just to show that this action type also exists, can be omitted.
+    case REHYDRATE:
+      console.log("REHYDRATING!!!!");
+      return state;
+    case PURGE:
+      console.log("PURGING!!!!");
+      return {}; // Return the initial state of this reducer to 'reset' the app
+
     case actionTypes.LOGIN:
       userData.profile = undefined;
       console.log("User", action);
@@ -33,7 +42,11 @@ const reducers = (state = intialState, action) => {
             message: data.error,
           });
         } else {
-          action.asyncDispatch({ type: actionTypes.SUCCESS, user: data });
+          action.asyncDispatch({
+            type: actionTypes.SUCCESS,
+            user: data,
+            message: "Registered successfully",
+          });
         }
       });
       return { ...state };
@@ -60,7 +73,10 @@ const reducers = (state = intialState, action) => {
     case actionTypes.MODIFY:
       return {
         ...state,
-        [action.name]: action.value,
+        user: {
+          ...state.user,
+          [action.name]: action.value,
+        },
       };
     case actionTypes.REGISTER:
       register(userData).then((data) => {
@@ -105,15 +121,19 @@ const reducers = (state = intialState, action) => {
     case actionTypes.SUCCESS:
       auth.authenticate(action.user.token, () => {
         window.location.reload();
-        return { ...state, ...action.user, profile: {}, open: true };
+        return { ...state, ...action, profile: {}, open: true };
       });
-      return { ...state, ...action.user, profile: {}, open: true };
+      return { ...state, ...action, profile: {}, open: true };
     case actionTypes.LOGOUT:
-      auth.signout(() => {
-        return {
-          open: true,
-        };
-      });
+      // auth.signout(() => {
+      //   return {
+      //     open: true,
+      //   };
+      // });
+      action.asyncDispatch({ 
+        type: PURGE,
+        key: "root",
+       result: () => null});
       return { ...state };
     case actionTypes.ExternalError:
       return {

@@ -28,7 +28,7 @@ const BasicInfoInitState = {
   last_name: "",
   username: "",
   bio: "",
-  birth_date:"",
+  birth_date: "",
   password: "",
   collections: [{}],
   interests: [],
@@ -39,8 +39,10 @@ const BasicInfoInitState = {
 };
 
 const userInitState = {
-  ...BasicInfoInitState,
-  ...contactsInitState,
+  user: {
+    ...BasicInfoInitState,
+    ...contactsInitState,
+  } ,
   profile: {
     ...BasicInfoInitState,
     ...contactsInitState,

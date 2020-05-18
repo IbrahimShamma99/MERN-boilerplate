@@ -166,8 +166,8 @@ Login.propTypes = {
 const mapStateToProps = (state) => {
   console.log("mapStateToProps=", state);
   return {
-    email: state.email,
-    password: state.password,
+    email: state.user.email,
+    password: state.user.password,
     error: state.error,
     open: state.open,
     show: state.show,

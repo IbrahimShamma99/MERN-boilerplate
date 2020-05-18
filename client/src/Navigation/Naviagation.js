@@ -42,7 +42,7 @@ class naviagtionBar extends React.Component {
     return (
       <div className="navbar">
         <Navbar fixed="top" className="input" bg="black" expand="lg">
-          <Navbar.Brand href={RouteNames.home}>
+          <Navbar.Brand href={RouteNames.base}>
             <H4>App</H4>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

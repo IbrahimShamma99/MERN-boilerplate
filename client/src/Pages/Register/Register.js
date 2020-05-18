@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-//import "./Signup.css";
+import Button from "react-bootstrap/Button";
+import "./Signup.css";
 // import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/routes";
@@ -27,7 +27,7 @@ const label = styled.label`
   font-weight: bold;
 `;
 
-const Button = styled.button`
+const ButtonStyled = styled.button`
   background-color: rgb(180, 55, 55);
   color: black;
   width: 120px;
@@ -187,6 +187,7 @@ class Signup extends React.Component {
           </div>
           <Button
               size="md"
+              variant="flat"
               onClick={this.clickSubmit}
             >
               Submit
@@ -200,11 +201,11 @@ class Signup extends React.Component {
 
 const mapStateToProps = (state) => {
   const RegisterState = {
-    email: state.email,
-    first_name: state.first_name,
-    username: state.username,
-    last_name: state.last_name,
-    password: state.password,
+    email: state.user.email,
+    first_name: state.user.first_name,
+    username: state.user.username,
+    last_name: state.user.last_name,
+    password: state.user.password,
     open: state.open,
     error: state.error,
     show: state.show,
