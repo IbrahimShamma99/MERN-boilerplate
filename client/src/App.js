@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Switcher from "./USER/Pages/Switcher";
+import UserComponent from "./USER/";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./Styles/theme";
 import { GlobalStyles } from "./Styles/global";
@@ -35,7 +35,7 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <React.Fragment>
-        <Switcher
+        <UserComponent
           switchTheme={<Layout checked={checked} onChange={toggleCheck} />}
         />
       </React.Fragment>
