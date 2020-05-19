@@ -19,8 +19,10 @@ class switcher extends React.Component {
   render() {
     return (
       <div>
-{//        <NavigationBar switchTheme={this.props.switchTheme} />
-}        <Router>
+        {
+          //        <NavigationBar switchTheme={this.props.switchTheme} />
+        }{" "}
+        <Router>
           <Switch>
             <Route exact path={RouteNames.base} component={Home} />
             <Route path={RouteNames.login} component={Login} />

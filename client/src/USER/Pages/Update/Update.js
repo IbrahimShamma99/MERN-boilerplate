@@ -1,7 +1,7 @@
 import React from "react";
 import "./Update.css";
 import { connect } from "react-redux";
-import * as actionTypes from "../../store/user.actions";
+import * as actionTypes from "../../Store/user.actions";
 import Button from "react-bootstrap/Button";
 import { uploadAvatar } from "../../Utils/api-auth";
 

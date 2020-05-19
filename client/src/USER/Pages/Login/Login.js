@@ -6,7 +6,7 @@ import "./Login.css";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/user.routes";
 import { connect } from "react-redux";
-import * as actionTypes from "../../store/user.actions";
+import * as actionTypes from "../../Store/user.actions";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
