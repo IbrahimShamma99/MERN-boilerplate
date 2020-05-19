@@ -1,7 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware , combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import userReducer from '../USER/Store/user.reducers';
+import utileReducer from './util.reducers';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -11,7 +12,12 @@ const persistConfig = {
   storage: storage,
 };
 
-const pReducer = persistReducer(persistConfig, userReducer);
+const rootReducer =combineReducers({
+  util:utileReducer,
+  user:userReducer
+})
+
+const pReducer = persistReducer(persistConfig, rootReducer);
 
 const loggerMiddleware = createLogger();
 

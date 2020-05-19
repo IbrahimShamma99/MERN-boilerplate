@@ -28,6 +28,29 @@ const label = styled.label`
 `;
 
 const input = styled.input``;
+const mapStateToProps = (state) => {
+  const RegisterState = {
+    email: state.user.user.email,
+    first_name: state.user.user.first_name,
+    username: state.user.user.username,
+    last_name: state.user.user.last_name,
+    password: state.user.user.password,
+    open: state.user.open,
+    error: state.user.error,
+    show: state.user.show,
+    submitted: state.user.submitted,
+  };
+  return RegisterState;
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    change: (name, value) =>
+      dispatch({ type: actionTypes.MODIFY, name, value }),
+    submit: () => dispatch({ type: actionTypes.REGISTER }),
+    refresh: () => dispatch({ type: actionTypes.REFRESH }),
+  };
+};
 
 class Signup extends React.Component {
   state = {
@@ -176,29 +199,5 @@ class Signup extends React.Component {
     );
   }
 }
-
-const mapStateToProps = (state) => {
-  const RegisterState = {
-    email: state.user.email,
-    first_name: state.user.first_name,
-    username: state.user.username,
-    last_name: state.user.last_name,
-    password: state.user.password,
-    open: state.open,
-    error: state.error,
-    show: state.show,
-    submitted: state.submitted,
-  };
-  return RegisterState;
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    change: (name, value) =>
-      dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: () => dispatch({ type: actionTypes.REGISTER }),
-    refresh: () => dispatch({ type: actionTypes.REFRESH }),
-  };
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

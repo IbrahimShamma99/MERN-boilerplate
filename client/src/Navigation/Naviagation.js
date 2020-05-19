@@ -25,7 +25,7 @@ const H5 = styled.h5`
 
 const mapStatetoProps = (state) => {
   return {
-    username: state.user.username,
+    username: state.user.user.username,
   };
 };
 

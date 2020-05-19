@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
-import StoreComponent from './store/';
+import StoreComponent from './Store/';
 import { PersistGate } from 'redux-persist/integration/react'
 import  { BreakpointProvider } from 'react-socks';
 

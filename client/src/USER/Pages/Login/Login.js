@@ -27,6 +27,27 @@ const Label = styled.label`
   color: black;
   font-weight: bold;
 `;
+const mapStateToProps = (state) => {
+  return {
+    email: state.user.user.email,
+    password: state.user.user.password,
+    error: state.user.user.error,
+    open: state.user.user.open,
+    show: state.user.user.show,
+    submitted: state.user.user.submitted,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    change: (name, value) =>
+      dispatch({ type: actionTypes.MODIFY, name, value }),
+    submit: (cb) => dispatch({ type: actionTypes.LOGIN }),
+    InitState: () => dispatch({ type: actionTypes.REFRESH }),
+    ExternalError: (value) =>
+      dispatch({ type: actionTypes.ExternalError, message: value }),
+    refresh: () => dispatch({ type: actionTypes.REFRESH }),
+  };
+};
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -48,11 +69,10 @@ class Login extends React.PureComponent {
     if (this.props.email && this.props.password) {
       this.setState({ submitted: true });
       return this.props.submit(() => {
-        this.refreshPage();
+        // this.refreshPage();
       });
     } else {
       this.setState({ submitted: true });
-      return this.props.ExternalError("fill required data");
     }
   };
 
@@ -124,17 +144,7 @@ class Login extends React.PureComponent {
               onClick={this.SubmitHandler}
             >
               Submit
-            </Button>
-            {
-              //             <Button1
-              //               size="md"
-              //               /*style={}*/ variant="flat"
-              //               type="button"
-              //               onClick={() => this.SubmitHandler}
-              //             >
-              //               Submit
-              //             </Button1>
-            }{" "}
+            </Button>{" "}
           </Form>
         </LoginForm>
       </>
@@ -145,29 +155,6 @@ class Login extends React.PureComponent {
 Login.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string,
-};
-
-const mapStateToProps = (state) => {
-  console.log("mapStateToProps=", state);
-  return {
-    email: state.user.email,
-    password: state.user.password,
-    error: state.error,
-    open: state.open,
-    show: state.show,
-    submitted: state.submitted,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    change: (name, value) =>
-      dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: (cb) => dispatch({ type: actionTypes.LOGIN }),
-    InitState: () => dispatch({ type: actionTypes.REFRESH }),
-    ExternalError: (value) =>
-      dispatch({ type: actionTypes.ExternalError, message: value }),
-    refresh: () => dispatch({ type: actionTypes.REFRESH }),
-  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

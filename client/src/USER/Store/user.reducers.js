@@ -24,13 +24,8 @@ const reducers = (state = intialState, action) => {
         open: false,
         success: "",
       };
-    // This added just to show that this action type also exists, can be omitted.
-    // case REHYDRATE:
-    //   console.log("REHYDRATING!!!!");
-    //   return state;
     case PURGE:
-      console.log("PURGING!!!!");
-      return {}; // Return the initial state of this reducer to 'reset' the app
+      return {};
 
     case actionTypes.LOGIN:
       userData.profile = undefined;
@@ -86,8 +81,11 @@ const reducers = (state = intialState, action) => {
             message: data.error,
           });
         } else {
-          action.asyncDispatch({ type: actionTypes.SUCCESS, user: 
-            data.user,message:"Registered successfully" });
+          action.asyncDispatch({
+            type: actionTypes.SUCCESS,
+            user: data.user,
+            message: "Registered successfully",
+          });
         }
       });
       return { ...state };
@@ -119,8 +117,8 @@ const reducers = (state = intialState, action) => {
       return { ...state, ...action.user, profile: {}, open: true };
 
     case actionTypes.SUCCESS:
+      console.log("action=",action)
       auth.authenticate(action.user.token, () => {
-        //window.location.reload();
         return { ...state, ...action, profile: {}, open: true };
       });
       return { ...state, ...action, profile: {}, open: true };
@@ -131,7 +129,7 @@ const reducers = (state = intialState, action) => {
           open: true,
         };
       });
-      return {  };
+      return {};
     case actionTypes.ExternalError:
       return {
         ...state,
