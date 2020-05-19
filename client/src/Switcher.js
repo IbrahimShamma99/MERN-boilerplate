@@ -19,7 +19,7 @@ class switcher extends React.Component {
   render() {
     return (
       <div>
-          <NavigationBar />
+        <NavigationBar />
         <Router>
           <Switch>
             <Route exact path={RouteNames.base} component={Home} />

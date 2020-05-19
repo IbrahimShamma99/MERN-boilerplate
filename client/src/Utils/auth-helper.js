@@ -16,10 +16,15 @@ const auth = {
     cb();
   },
   signout(cb) {
-    if (typeof window !== "undefined")
+    if (typeof window !== "undefined"){
       sessionStorage.removeItem('jwt');
+      localStorage.clear();
+    }
+      
     cb()
     signout().then((data) => {
+      sessionStorage.removeItem('jwt');
+      localStorage.clear();
       document.cookie = "t=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
     })
   }

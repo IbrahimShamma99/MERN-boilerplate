@@ -120,7 +120,7 @@ const reducers = (state = intialState, action) => {
 
     case actionTypes.SUCCESS:
       auth.authenticate(action.user.token, () => {
-        window.location.reload();
+        //window.location.reload();
         return { ...state, ...action, profile: {}, open: true };
       });
       return { ...state, ...action, profile: {}, open: true };
@@ -131,7 +131,7 @@ const reducers = (state = intialState, action) => {
           open: true,
         };
       });
-      return { ...state };
+      return {  };
     case actionTypes.ExternalError:
       return {
         ...state,

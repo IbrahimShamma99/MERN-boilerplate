@@ -46,11 +46,13 @@ const styledButton = styled.button`
 `;
 
 class Login extends React.PureComponent {
-  state = {
-    submitted: false,
-    ok: true,
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      submitted: false,
+      ok: true,
+    };
+  }
   componentDidMount() {
     this.props.refresh();
   }
@@ -70,14 +72,12 @@ class Login extends React.PureComponent {
       return this.props.ExternalError("fill required data");
     }
   };
-  
 
   render() {
-
-    const from  = this.props.location.state || RouteNames.base;
-    console.log("from=",from)
-    if (this.props.open){
-      return <Redirect to={from} />
+    const from = this.props.location.state || RouteNames.base;
+    console.log("from=", from);
+    if (this.props.open) {
+      return <Redirect to={from} />;
     }
     return (
       <>
@@ -135,6 +135,7 @@ class Login extends React.PureComponent {
                 <div className="help-block">Password is required</div>
               )}
             </div>
+            
             <Button
               size="md"
               /*style={}*/ variant="flat"
