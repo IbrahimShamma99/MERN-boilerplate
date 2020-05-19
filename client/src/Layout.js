@@ -59,7 +59,7 @@ class Layout extends React.Component {
               ),
             }}
             checked={this.props.checked}
-            // onChange={(e) =>}
+            onChange={this.props.onChange}
           />
         ) : (
           <div style={{ height: "24px" }} />
