@@ -65,7 +65,7 @@ class Profile extends React.Component {
                 <img
                   className="profile-picture"
                   alt="profile"
-                  src={require("../../logos/profile.jpg")}
+                  src={require("../../Assets/profile.jpg")}
                 ></img>
               )
             ) : null}
@@ -122,7 +122,7 @@ class Profile extends React.Component {
               <img
                 className="mobile-profile-picture"
                 alt="profile"
-                src={require("../../logos/profile.jpg")}
+                src={require("../../Assets/profile.jpg")}
               ></img>
             )}
             <div className="mobile-username-container">
@@ -140,7 +140,7 @@ class Profile extends React.Component {
                     <a href="/">
                       <img
                         alt="pinterest"
-                        src={require("../../logos/pinterest.svg")}
+                        src={require("../../Assets/pinterest.svg")}
                       ></img>
                     </a>
                   </div>
@@ -149,7 +149,7 @@ class Profile extends React.Component {
                     <a href="/">
                       <img
                         alt="github"
-                        src={require("../../logos/github.png")}
+                        src={require("../../Assets/github.png")}
                       ></img>
                     </a>
                   </div>
@@ -158,7 +158,7 @@ class Profile extends React.Component {
                     <a href="/">
                       <img
                         alt="dev"
-                        src={require("../../logos/dev-brands.png")}
+                        src={require("../../Assets/dev-brands.png")}
                       ></img>
                     </a>
                   </div>
@@ -167,7 +167,7 @@ class Profile extends React.Component {
                     <a href="/">
                       <img
                         alt="twitter"
-                        src={require("../../logos/twitter.svg")}
+                        src={require("../../Assets/twitter.svg")}
                       ></img>
                     </a>
                   </div>
@@ -176,7 +176,7 @@ class Profile extends React.Component {
                     <a href="/">
                       <img
                         alt="linkedin"
-                        src={require("../../logos/linkedin.png")}
+                        src={require("../../Assets/linkedin.png")}
                       ></img>
                     </a>
                   </div>
@@ -185,7 +185,7 @@ class Profile extends React.Component {
                     <a href="/">
                       <img
                         alt="user"
-                        src={require("../../logos/user-circle-solid.svg")}
+                        src={require("../../Assets/user-circle-solid.svg")}
                       ></img>
                     </a>
                   </div>
