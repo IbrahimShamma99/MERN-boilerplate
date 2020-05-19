@@ -6,23 +6,15 @@ import Button from "react-bootstrap/Button";
 import { uploadAvatar } from "../../Utils/api-auth";
 
 const mapStateToProps = (state) => {
-  const RegisterState = {
-    email: state.email,
-    _id: state._id,
-    first_name: state.first_name,
-    last_name: state.last_name,
-    username: state.username,
-    bio: state.bio,
-    birth_date:state.birth_date,
-    password: state.password,
+  const UpdateState = {
+    user:state.user,
+    profile: state.profile,
     open: state.open,
     error: state.error,
     show: state.show,
     submitted: state.submitted,
-    avatar: state.avatar,
-    profile: state.profile,
   };
-  return RegisterState;
+  return UpdateState;
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -36,17 +28,8 @@ const mapDispatchToProps = (dispatch) => {
 
 class Update extends React.Component {
   state = {
-    user: {
-      email: this.props.email,
-      _id: this.props._id,
-      first_name: this.props.first_name,
-      last_name: this.props.last_name,
-      username: this.props.username,
-      bio: this.props.bio,
-      birth_date:this.props.birth_date,
-      password: this.props.password,
-    },
-    avatar: this.props.avatar,
+    user: {...this.props.user},
+    avatar: this.props.user.avatar,
   };
   componentWillMount() {
     return true;
