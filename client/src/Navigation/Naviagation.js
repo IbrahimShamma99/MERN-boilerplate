@@ -93,12 +93,8 @@ class naviagtionBar extends React.Component {
         </NavDropdown>
         */}   
         {` `}
+            </Nav>            
             {this.props.switchTheme}
-            </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-2" />
-              <Button variant="outline-danger">Search</Button>
-            </Form>
           </Navbar.Collapse>
         </Navbar>
       </div>
