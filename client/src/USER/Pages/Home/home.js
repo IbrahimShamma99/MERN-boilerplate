@@ -1,6 +1,5 @@
 import React from "react";
 import "./home.scss";
-import Aux from "../../hoc";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/user.actions";
 
@@ -21,11 +20,11 @@ const mapDispatchToProps = (dispatch) => {
 class Home extends React.Component {
   render() {
     return (
-      <Aux className="container">
+      <div className="container">
       <div className="col">
           <div className="row"></div>{" "}
         </div>{" "}
-      </Aux>
+      </div>
     );
   }
 }

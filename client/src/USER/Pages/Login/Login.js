@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 import { Redirect } from "react-router-dom";
-import RouteNames from "../../constants/routes";
+import RouteNames from "../../constants/user.routes";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/user.actions";
 import PropTypes from "prop-types";

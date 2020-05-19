@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import "./Signup.css";
 // import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
-import RouteNames from "../../constants/routes";
+import RouteNames from "../../constants/user.routes";
 import { connect } from "react-redux";
 import * as actionTypes from "../../store/user.actions";
 import styled from "styled-components";
