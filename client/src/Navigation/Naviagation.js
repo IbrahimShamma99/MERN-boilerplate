@@ -1,7 +1,9 @@
+//FIXME
+
 import React from "react";
 //import "./Navigation.css";
 import RouteNames from "../USER/constants/user.routes";
-import auth from "../Utils/auth-helper";
+import auth from "../USER/Utils/auth-helper";
 import * as actionTypes from "../USER/Store/user.actions";
 import { connect } from "react-redux";
 

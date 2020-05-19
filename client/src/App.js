@@ -36,9 +36,8 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <React.Fragment>
-        <UserComponent
-          switchTheme={<Layout checked={checked} onChange={toggleCheck} />}
-        />
+      <NavigationBar switchTheme={<Layout checked={checked} onChange={toggleCheck} />}/>
+        <UserComponent/>
       </React.Fragment>
     </ThemeProvider>
   );
