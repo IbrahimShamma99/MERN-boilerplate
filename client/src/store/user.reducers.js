@@ -2,7 +2,7 @@ import * as actionTypes from "./actions";
 import { login, register, update, fetchViaUsername } from "../Utils/api-auth";
 import auth from "../Utils/auth-helper";
 import { userInitState } from "./constants";
-import { PURGE, REHYDRATE } from "redux-persist";
+import { PURGE } from "redux-persist";
 
 const intialState = {
   ...userInitState,
@@ -25,16 +25,15 @@ const reducers = (state = intialState, action) => {
         success: "",
       };
     // This added just to show that this action type also exists, can be omitted.
-    case REHYDRATE:
-      console.log("REHYDRATING!!!!");
-      return state;
+    // case REHYDRATE:
+    //   console.log("REHYDRATING!!!!");
+    //   return state;
     case PURGE:
       console.log("PURGING!!!!");
       return {}; // Return the initial state of this reducer to 'reset' the app
 
     case actionTypes.LOGIN:
       userData.profile = undefined;
-      console.log("User", action);
       login(userData).then((data) => {
         if (data.error) {
           action.asyncDispatch({
@@ -45,7 +44,7 @@ const reducers = (state = intialState, action) => {
           action.asyncDispatch({
             type: actionTypes.SUCCESS,
             user: data,
-            message: "Registered successfully",
+            message: "Logged successfully",
           });
         }
       });
@@ -87,7 +86,8 @@ const reducers = (state = intialState, action) => {
             message: data.error,
           });
         } else {
-          action.asyncDispatch({ type: actionTypes.SUCCESS, user: data.user });
+          action.asyncDispatch({ type: actionTypes.SUCCESS, user: 
+            data.user,message:"Registered successfully" });
         }
       });
       return { ...state };
@@ -119,21 +119,19 @@ const reducers = (state = intialState, action) => {
       return { ...state, ...action.user, profile: {}, open: true };
 
     case actionTypes.SUCCESS:
+      console.log("action=",action)      
       auth.authenticate(action.user.token, () => {
         window.location.reload();
         return { ...state, ...action, profile: {}, open: true };
       });
       return { ...state, ...action, profile: {}, open: true };
     case actionTypes.LOGOUT:
-      // auth.signout(() => {
-      //   return {
-      //     open: true,
-      //   };
-      // });
-      action.asyncDispatch({ 
-        type: PURGE,
-        key: "root",
-       result: () => null});
+      auth.signout(() => {
+        return {
+          open: true,
+        };
+      });
+      localStorage.clear();
       return { ...state };
     case actionTypes.ExternalError:
       return {

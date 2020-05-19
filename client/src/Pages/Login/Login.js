@@ -74,7 +74,8 @@ class Login extends React.PureComponent {
 
   render() {
 
-    const { from } = this.props.location.state || RouteNames.base;
+    const from  = this.props.location.state || RouteNames.base;
+    console.log("from=",from)
     if (this.props.open){
       return <Redirect to={from} />
     }

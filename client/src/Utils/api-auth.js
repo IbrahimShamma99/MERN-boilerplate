@@ -21,6 +21,7 @@ const login = (DATA) => {
 const logout = () => {
   return fetch(apiNames.serverDev + "/logout", {
     method: "GET",
+    body:JSON.stringify({})
   })
     .then((response) => {
       return response.json();

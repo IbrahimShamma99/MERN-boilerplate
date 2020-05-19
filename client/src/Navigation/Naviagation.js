@@ -23,7 +23,7 @@ const H5 = styled.h5`
 
 const mapStatetoProps = (state) => {
   return {
-    username: state.username,
+    username: state.user.username,
   };
 };
 
@@ -39,6 +39,7 @@ class naviagtionBar extends React.Component {
   }
 
   render() {
+    console.log("Username from nav=",this.props.username);
     return (
       <div className="navbar">
         <Navbar fixed="top" className="input" bg="black" expand="lg">

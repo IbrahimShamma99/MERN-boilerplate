@@ -56,6 +56,7 @@ const fetchUserViaUsername = (req, res) => {
 
 const login = async (req, res, next) => {
   const UserInfo = req.body.user;
+  console.log(UserInfo);
   if (!UserInfo.email) {
     return res.send(422).json({ error: "please provide email " });
   }
