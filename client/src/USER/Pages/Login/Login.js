@@ -31,10 +31,9 @@ const mapStateToProps = (state) => {
   return {
     email: state.user.user.email,
     password: state.user.user.password,
-    error: state.user.user.error,
-    open: state.user.user.open,
-    show: state.user.user.show,
-    submitted: state.user.user.submitted,
+    error: state.user.error,
+    open: state.user.open,
+    show: state.user.show,
   };
 };
 const mapDispatchToProps = (dispatch) => {
