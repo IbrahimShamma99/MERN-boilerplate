@@ -5,7 +5,7 @@ import ContactLogo from "./contacts";
 // import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
 import auth from "../../Utils/auth-helper";
-import * as actionTypes from "../../store/actions";
+import * as actionTypes from "../../store/user.actions";
 
 const mapStatetoProps = (state) => {
   return {

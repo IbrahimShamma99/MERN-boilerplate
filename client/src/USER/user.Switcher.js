@@ -5,22 +5,22 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import RouteNames from "./constants/routes";
+import RouteNames from "";
 
 //SECTION Pages
-import Login from "./Pages/Login/";
-import Signup from "./Pages/Register/";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Register";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import Update from "./Pages/Update";
-import NavigationBar from "./Navigation/";
+// import NavigationBar from "../Navigation";
 
 class switcher extends React.Component {
   render() {
     return (
       <div>
-        <NavigationBar switchTheme={this.props.switchTheme} />
-        <Router>
+{//        <NavigationBar switchTheme={this.props.switchTheme} />
+}        <Router>
           <Switch>
             <Route exact path={RouteNames.base} component={Home} />
             <Route path={RouteNames.login} component={Login} />

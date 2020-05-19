@@ -2,7 +2,7 @@ import React from "react";
 import "./home.scss";
 import Aux from "../../hoc";
 import { connect } from "react-redux";
-import * as actionTypes from "../../store/actions";
+import * as actionTypes from "../../store/user.actions";
 
 const mapStatetoProps = (state) => {
   //TODO list of whatever the project wants

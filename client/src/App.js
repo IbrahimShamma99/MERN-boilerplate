@@ -1,10 +1,22 @@
 import React, { useState } from "react";
-import Switcher from "./Switcher";
+import Switcher from "./USER/Pages/Switcher";
 import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./theme";
-import { GlobalStyles } from "./global";
-import Layout from "./Layout";
+import { lightTheme, darkTheme } from "./Styles/theme";
+import { GlobalStyles } from "./Styles/global";
+import Layout from "./Components/Layout";
+import { connect } from "react-redux";
 
+const mapStateToProps = (state) => {
+  return {
+    theme: state.theme,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ToggleTheme: () => dispatch({ type: "TOGGLE_THEME" }),
+  };
+};
 function App() {
   const [theme, setTheme] = useState("light");
   const [checked, setCheck] = useState(true);
@@ -30,4 +42,4 @@ function App() {
     </ThemeProvider>
   );
 }
-export default App;
+export default connect(mapStateToProps,mapDispatchToProps)(App);

@@ -1,8 +1,8 @@
 import React from "react";
 //import "./Navigation.css";
-import RouteNames from "../constants/routes";
+import RouteNames from "../USER/constants/user.routes";
 import auth from "../Utils/auth-helper";
-import * as actionTypes from "../store/actions";
+import * as actionTypes from "../USER/Store/user.actions";
 import { connect } from "react-redux";
 
 //SECTION importing bootstrap
@@ -91,9 +91,9 @@ class naviagtionBar extends React.Component {
           <NavDropdown.Item href="#action/3.4">Collections</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.4">Users</NavDropdown.Item>
         </NavDropdown>
-        */}   
-        {` `}
-            </Nav>            
+        */}
+              {` `}
+            </Nav>
             {this.props.switchTheme}
           </Navbar.Collapse>
         </Navbar>

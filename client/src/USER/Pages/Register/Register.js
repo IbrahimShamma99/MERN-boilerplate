@@ -7,7 +7,7 @@ import "./Signup.css";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/routes";
 import { connect } from "react-redux";
-import * as actionTypes from "../../store/actions";
+import * as actionTypes from "../../store/user.actions";
 import styled from "styled-components";
 
 const RegisterForm = styled.div`

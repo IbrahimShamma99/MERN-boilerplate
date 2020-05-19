@@ -1,36 +1,15 @@
 import React from "react";
-import moon from "./logos/moon.png";
-import sun from "./logos/sun.png";
+import moon from "../logos/moon.png";
+import sun from "../logos/sun.png";
 import Toggle from "./Toggle";
 
-/**
- *   const [theme, setTheme] = useState('light');
-  const [checked,setCheck] = useState(true);
-  const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  }
-  const toggleCheck = ()=>{
-    if (checked){
-      setCheck(false);
-      setTheme("dark");
-    }
-    else{
-      setCheck(true);
-      setTheme("light");
-    }
-  }
-
- */
-
 class Layout extends React.Component {
-
   componentDidMount() {
-    if (this.props.theme === "light") {this.setState({ theme: "dark" });}
-    else {this.setState({ theme: "light" });}
+    if (this.props.theme === "light") {
+      this.setState({ theme: "dark" });
+    } else {
+      this.setState({ theme: "light" });
+    }
   }
   render() {
     return (
