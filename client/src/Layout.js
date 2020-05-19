@@ -2,7 +2,6 @@ import React from "react";
 import moon from "./logos/moon.png";
 import sun from "./logos/sun.png";
 import Toggle from "./Toggle";
-import { lightTheme, darkTheme } from "./theme";
 
 /**
  *   const [theme, setTheme] = useState('light');
@@ -41,6 +40,7 @@ class Layout extends React.Component {
             icons={{
               checked: (
                 <img
+                  alt="dark mode"
                   src={moon}
                   width="16"
                   height="16"
@@ -51,6 +51,7 @@ class Layout extends React.Component {
               unchecked: (
                 <img
                   src={sun}
+                  alt="light mode"
                   width="16"
                   height="16"
                   role="presentation"

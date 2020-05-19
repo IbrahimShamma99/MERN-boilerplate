@@ -28,23 +28,6 @@ const Label = styled.label`
   font-weight: bold;
 `;
 
-const styledButton = styled.button`
-  background-color: rgb(180, 55, 55);
-  color: black;
-  width: 120px;
-  height: 38px;
-  border-radius: 6px;
-  font-weight: bolder;
-  outline: invert;
-  margin-left: 75px;
-  margin-right: auto;
-  &:hover {
-    border: 2px solid #e93333;
-    background: 0 0;
-    color: black;
-  }
-`;
-
 class Login extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -100,7 +83,7 @@ class Login extends React.PureComponent {
                 (this.state.submitted && !this.props.email ? " has-error" : "")
               }
             >
-              <label htmlFor="email">Email</label>
+              <Label htmlFor="email">Email</Label>
               <input
                 type="text"
                 className="form-control"
@@ -122,7 +105,7 @@ class Login extends React.PureComponent {
                   : "")
               }
             >
-              <label htmlFor="password">Password</label>
+              <Label htmlFor="password">Password</Label>
               <input
                 type="password"
                 className="form-control"
@@ -135,7 +118,6 @@ class Login extends React.PureComponent {
                 <div className="help-block">Password is required</div>
               )}
             </div>
-            
             <Button
               size="md"
               /*style={}*/ variant="flat"

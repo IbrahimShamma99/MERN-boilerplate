@@ -27,23 +27,6 @@ const label = styled.label`
   font-weight: bold;
 `;
 
-const ButtonStyled = styled.button`
-  background-color: rgb(180, 55, 55);
-  color: black;
-  width: 120px;
-  height:38px;
-  border-radius: 6px;
-  font-weight:bolder;
-  outline: invert;
-  margin-left: 75px;
-  margin-right: auto;
-  &:hover{
-    border: 2px solid #e93333;
-    background: 0 0;
-    color: black;
-  }
-`;
-
 const input = styled.input``;
 
 class Signup extends React.Component {
@@ -185,14 +168,9 @@ class Signup extends React.Component {
               <div className="help-block">Password is required</div>
             )}
           </div>
-          <Button
-              size="md"
-              variant="flat"
-              onClick={this.clickSubmit}
-            >
-              Submit
-            </Button>
-
+          <Button size="md" variant="flat" onClick={this.clickSubmit}>
+            Submit
+          </Button>
         </Form>
       </RegisterForm>
     );

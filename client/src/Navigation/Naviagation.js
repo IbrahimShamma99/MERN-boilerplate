@@ -7,11 +7,11 @@ import { connect } from "react-redux";
 
 //SECTION importing bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import Form from "react-bootstrap/Form";
+// import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-import FormControl from "react-bootstrap/FormControl";
+// import FormControl from "react-bootstrap/FormControl";
 import styled from "styled-components";
 
 const H4 = styled.h4`
