@@ -39,7 +39,7 @@ class naviagtionBar extends React.Component {
   }
 
   render() {
-    console.log("Username from nav=",this.props.username);
+    console.log("Username from nav=", this.props.username);
     return (
       <div className="navbar">
         <Navbar fixed="top" className="input" bg="black" expand="lg">
@@ -51,9 +51,9 @@ class naviagtionBar extends React.Component {
             <Nav className="mr-auto">
               {!auth.isAuthenticated() ? (
                 <Nav.Link href={RouteNames.register}>
-                    <Button variant="inherit">
-                      <H5>Register</H5>
-                    </Button>
+                  <Button variant="inherit">
+                    <H5>Register</H5>
+                  </Button>
                 </Nav.Link>
               ) : null}
               {!auth.isAuthenticated() ? (
@@ -91,7 +91,9 @@ class naviagtionBar extends React.Component {
           <NavDropdown.Item href="#action/3.4">Collections</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.4">Users</NavDropdown.Item>
         </NavDropdown>
-        */}
+        */}   
+        {` `}
+            {this.props.switchTheme}
             </Nav>
             <Form inline>
               <FormControl type="text" placeholder="Search" className="mr-2" />
