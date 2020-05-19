@@ -5,6 +5,7 @@ import { lightTheme, darkTheme } from "./Styles/theme";
 import { GlobalStyles } from "./Styles/global";
 import Layout from "./Components/Layout";
 import { connect } from "react-redux";
+import NavigationBar from "./Navigation";
 
 const mapStateToProps = (state) => {
   return {

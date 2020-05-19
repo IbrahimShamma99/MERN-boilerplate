@@ -1,2 +1,2 @@
-import Switcher from './user.Switcher';
-export default {UserComponent:Switcher};
+import UserComponent from './user.Switcher';
+export default UserComponent;

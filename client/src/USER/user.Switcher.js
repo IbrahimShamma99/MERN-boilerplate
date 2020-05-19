@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import RouteNames from "";
+import RouteNames from "./constants/user.routes";
 
 //SECTION Pages
 import Login from "./Pages/Login";
@@ -13,9 +13,8 @@ import Signup from "./Pages/Register";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
 import Update from "./Pages/Update";
-// import NavigationBar from "../Navigation";
 
-class switcher extends React.Component {
+class UserComponent extends React.Component {
   render() {
     return (
       <div>
@@ -38,4 +37,4 @@ class switcher extends React.Component {
     );
   }
 }
-export default switcher;
+export default UserComponent;
