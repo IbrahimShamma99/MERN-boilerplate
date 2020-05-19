@@ -119,19 +119,18 @@ const reducers = (state = intialState, action) => {
       return { ...state, ...action.user, profile: {}, open: true };
 
     case actionTypes.SUCCESS:
-      console.log("action=",action)      
       auth.authenticate(action.user.token, () => {
         window.location.reload();
         return { ...state, ...action, profile: {}, open: true };
       });
       return { ...state, ...action, profile: {}, open: true };
     case actionTypes.LOGOUT:
+      localStorage.clear();
       auth.signout(() => {
         return {
           open: true,
         };
       });
-      localStorage.clear();
       return { ...state };
     case actionTypes.ExternalError:
       return {
