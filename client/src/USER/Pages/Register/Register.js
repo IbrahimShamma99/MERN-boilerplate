@@ -74,7 +74,7 @@ class Signup extends React.Component {
   render() {
     return (
       <RegisterForm>
-        {this.props.open ? <Redirect to={RouteNames.home} /> : null}
+        {this.props.open ? <Redirect to={RouteNames.base} /> : null}
         <Form>
           {this.props.show ? (
             <div className="alert">

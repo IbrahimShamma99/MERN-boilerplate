@@ -29,11 +29,11 @@ const Label = styled.label`
 `;
 const mapStateToProps = (state) => {
   return {
-    email: state.user.user.email,
-    password: state.user.user.password,
-    error: state.user.error,
-    open: state.user.open,
-    show: state.user.show,
+    email: state.UserState.user.email,
+    password: state.UserState.user.password,
+    error: state.UserState.error,
+    open: state.UserState.open,
+    show: state.UserState.show,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -77,7 +77,6 @@ class Login extends React.PureComponent {
 
   render() {
     const from = this.props.location.state || RouteNames.base;
-    console.log("from=", from);
     if (this.props.open) {
       return <Redirect to={from} />;
     }

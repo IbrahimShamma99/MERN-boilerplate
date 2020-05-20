@@ -8,6 +8,7 @@ import auth from "../../Utils/auth-helper";
 import * as actionTypes from "../../Store/user.actions";
 
 const mapStatetoProps = (state) => {
+  console.log("state.user", state.user);
   return {
     ...state.user,
   };
@@ -24,7 +25,6 @@ const mapDispatchToProps = (dispatch) => {
 
 class Profile extends React.Component {
   componentWillMount() {
-    this.props.refresh();
     this.props.fetchUser(this.props.match.params.user);
   }
 
@@ -52,14 +52,14 @@ class Profile extends React.Component {
             {this.props.profile.avatar ? (
               this.props.profile.avatar.filename ? (
                 <div class="view overlay zoom">
-                <img
-                  className="profile-picture"
-                  alt="profile"
-                  src={
-                    "http://localhost:5000/" +
-                    this.props.profile.avatar.filename
-                  }
-                ></img>
+                  <img
+                    className="profile-picture"
+                    alt="profile"
+                    src={
+                      "http://localhost:5000/" +
+                      this.props.profile.avatar.filename
+                    }
+                  ></img>
                 </div>
               ) : (
                 <img
@@ -77,8 +77,8 @@ class Profile extends React.Component {
                 </h3>
               </span>
               <p>{this.props.profile.bio}</p>
-              {console.log("auth?",this.props.user._id)}
-              {console.log("auth?",this.props.profile._id)}
+              {console.log("auth?", this.props.user._id)}
+              {console.log("auth?", this.props.user._id)}
               {auth.isAuthenticated() &&
               this.props.user._id === this.props.profile._id ? (
                 <div className="username-container-button">
@@ -102,11 +102,10 @@ class Profile extends React.Component {
               <h4>{this.props.profile.location}</h4>
               <h5 className="info-attribute">Interests</h5>
               <h4>
-              {this.props.profile.interests ?
-                this.props.profile.interests.map(intr=>(
-                  intr        
-                )): null}
-                </h4>
+                {this.props.profile.interests
+                  ? this.props.profile.interests.map((intr) => intr)
+                  : null}
+              </h4>
               <h5 className="info-attribute">Email</h5>
               <h4>{this.props.profile.email}</h4>
             </div>
@@ -199,11 +198,10 @@ class Profile extends React.Component {
               <h4>{this.props.profile.location}</h4>
               <h5 className="mobile-info-attribute">Interests</h5>
               <h4>
-              {this.props.profile.interests ?
-                this.props.profile.interests.map(intr=>(
-                  intr        
-                )): null}
-                </h4>
+                {this.props.profile.interests
+                  ? this.props.profile.interests.map((intr) => intr)
+                  : null}
+              </h4>
               <h5 className="mobile-info-attribute">Email</h5>
               <h4>{this.props.profile.email}</h4>
             </div>

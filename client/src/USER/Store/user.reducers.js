@@ -60,6 +60,10 @@ const reducers = (state = intialState, action) => {
       });
       return { ...state };
     case actionTypes.FETCH_PROFILE:
+      console.log("BITCHFETCH=",{
+        ...state,
+        profile: { ...action.profile.user },
+      })
       return {
         ...state,
         profile: { ...action.profile.user },
