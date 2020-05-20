@@ -7,8 +7,8 @@ import { uploadAvatar } from "../../Utils/api-auth";
 
 const mapStateToProps = (state) => {
   const UpdateState = {
-    user:state.user,
-    profile: state.profile,
+    user:state.UserState.user,
+    profile: state.UserState.profile,
     open: state.open,
     error: state.error,
     show: state.show,

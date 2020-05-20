@@ -30,15 +30,15 @@ const label = styled.label`
 const input = styled.input``;
 const mapStateToProps = (state) => {
   const RegisterState = {
-    email: state.user.user.email,
-    first_name: state.user.user.first_name,
-    username: state.user.user.username,
-    last_name: state.user.user.last_name,
-    password: state.user.user.password,
-    open: state.user.open,
-    error: state.user.error,
-    show: state.user.show,
-    submitted: state.user.submitted,
+    email: state.UserState.user.email,
+    first_name: state.UserState.user.first_name,
+    username: state.UserState.user.username,
+    last_name: state.UserState.user.last_name,
+    password: state.UserState.user.password,
+    open: state.UserState.open,
+    error: state.UserState.error,
+    show: state.UserState.show,
+    submitted: state.UserState.submitted,
   };
   return RegisterState;
 };

@@ -10,7 +10,7 @@ import * as actionTypes from "../../Store/user.actions";
 const mapStatetoProps = (state) => {
   console.log("state.user", state.user);
   return {
-    ...state.user,
+    ...state.UserState,
   };
 };
 
