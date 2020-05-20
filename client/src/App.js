@@ -6,7 +6,7 @@ import { GlobalStyles } from "./Styles/global";
 import Layout from "./Components/Layout";
 import { connect } from "react-redux";
 import NavigationBar from "./Navigation";
-import * as utilTypes from "./Store/util.actions";
+import * as utilTypes from "./UtilStore/util.actions";
 const mapStateToProps = (state) => {
   return {
     theme: state.util.theme,

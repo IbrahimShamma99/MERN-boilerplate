@@ -1,5 +1,5 @@
 import userReducer from "../USER/Store/user.reducers";
-import utileReducer from "./util.reducers";
+import utileReducer from "../UtilStore/util.reducers";
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
