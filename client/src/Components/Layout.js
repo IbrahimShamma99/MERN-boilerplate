@@ -4,13 +4,7 @@ import sun from "../logos/sun.png";
 import Toggle from "./Toggle";
 
 class Layout extends React.Component {
-  componentDidMount() {
-    if (this.props.theme === "light") {
-      this.setState({ theme: "dark" });
-    } else {
-      this.setState({ theme: "light" });
-    }
-  }
+  
   render() {
     return (
       <div>

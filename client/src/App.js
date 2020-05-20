@@ -6,19 +6,20 @@ import { GlobalStyles } from "./Styles/global";
 import Layout from "./Components/Layout";
 import { connect } from "react-redux";
 import NavigationBar from "./Navigation";
-
+import * as utilTypes from "./Store/util.actions";
 const mapStateToProps = (state) => {
   return {
-    theme: state.theme,
+    theme: state.util.theme,
+    checked: state.util.checked,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    ToggleTheme: () => dispatch({ type: "TOGGLE_THEME" }),
+    ToggleTheme: () => dispatch({ type: utilTypes.TOGGLE_THEME}),
   };
 };
-function App() {
+function App(props) {
   const [theme, setTheme] = useState("light");
   const [checked, setCheck] = useState(true);
 
@@ -33,10 +34,12 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={props.theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <React.Fragment>
-      <NavigationBar switchTheme={<Layout checked={checked} onChange={toggleCheck} />}/>
+      <NavigationBar switchTheme={<Layout 
+        checked={props.checked} 
+        onChange={props.ToggleTheme} />}/>
         <UserComponent/>
       </React.Fragment>
     </ThemeProvider>

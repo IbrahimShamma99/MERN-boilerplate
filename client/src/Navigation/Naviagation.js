@@ -1,19 +1,17 @@
 //FIXME
 
 import React from "react";
-//import "./Navigation.css";
 import RouteNames from "../USER/constants/user.routes";
 import auth from "../USER/Utils/auth-helper";
 import * as actionTypes from "../USER/Store/user.actions";
 import { connect } from "react-redux";
+import Layout from ".././Components/Layout";
 
 //SECTION importing bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-// import FormControl from "react-bootstrap/FormControl";
 import styled from "styled-components";
 
 const H4 = styled.h4`
@@ -41,7 +39,6 @@ class naviagtionBar extends React.Component {
   }
 
   render() {
-    console.log("Username from nav=", this.props.username);
     return (
       <div className="navbar">
         <Navbar fixed="top" className="input" bg="black" expand="lg">
