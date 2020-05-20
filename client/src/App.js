@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import UserComponent from "./USER/";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./Styles/theme";
@@ -16,33 +16,22 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    ToggleTheme: () => dispatch({ type: utilTypes.TOGGLE_THEME}),
+    ToggleTheme: () => dispatch({ type: utilTypes.TOGGLE_THEME }),
   };
 };
 function App(props) {
-  const [theme, setTheme] = useState("light");
-  const [checked, setCheck] = useState(true);
-
-  const toggleCheck = () => {
-    if (checked) {
-      setCheck(false);
-      setTheme("dark");
-    } else {
-      setCheck(true);
-      setTheme("light");
-    }
-  };
-
   return (
     <ThemeProvider theme={props.theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <React.Fragment>
-      <NavigationBar switchTheme={<Layout 
-        checked={props.checked} 
-        onChange={props.ToggleTheme} />}/>
-        <UserComponent/>
+        <NavigationBar
+          switchTheme={
+            <Layout checked={props.checked} onChange={props.ToggleTheme} />
+          }
+        />
+        <UserComponent />
       </React.Fragment>
     </ThemeProvider>
   );
 }
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

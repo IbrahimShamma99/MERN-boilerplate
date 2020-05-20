@@ -5,7 +5,6 @@ import RouteNames from "../USER/constants/user.routes";
 import auth from "../USER/Utils/auth-helper";
 import * as actionTypes from "../USER/Store/user.actions";
 import { connect } from "react-redux";
-import Layout from ".././Components/Layout";
 
 //SECTION importing bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
