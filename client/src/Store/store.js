@@ -1,75 +1,40 @@
-import { createStore, applyMiddleware , combineReducers } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
+import { createStore ,applyMiddleware, compose } from 'redux';
+import { persistStore, persistCombineReducers } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 import userReducer from '../USER/Store/user.reducers';
 import utileReducer from './util.reducers';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+
+const composeEnhancers =
+  (window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
 const persistConfig = {
   key: 'root',
   storage: storage,
 };
 
-const rootReducer =combineReducers({
-  util:utileReducer,
-  UserState:userReducer
-})
 
-const pReducer = persistReducer(persistConfig, rootReducer);
+// const rootReducer = { 
+//   util:utileReducer,
+//   UserState:userReducer
+// }
+export default ( {history, extraReducers={}, extraMiddlewares=[] } ) => {
 
-const loggerMiddleware = createLogger();
+  const rootReducer = {
+    ...userReducer,
+    ...utileReducer
+  };
 
-const asyncDispatchMiddleware = store => next => action => {
-    let syncActivityFinished = false;
-    let actionQueue = [];
-  
-    function flushQueue() {
-      actionQueue.forEach(a => store.dispatch(a)); // flush queue
-      actionQueue = [];
-    }
-  
-    function asyncDispatch(asyncAction) {
-      actionQueue = actionQueue.concat([asyncAction]);
-  
-      if (syncActivityFinished) {
-        flushQueue();
-      }
-    }
-  
-    const actionWithAsyncDispatch =
-        Object.assign({}, action, { asyncDispatch });
-  
-    next(actionWithAsyncDispatch);
-    syncActivityFinished = true;
-    flushQueue();
-  };   
+  const historyMiddleware = routerMiddleware(history); // Build the middleware for intercepting and dispatching navigation actions
+  const persistCombinedReducers = persistCombineReducers(persistConfig, rootReducer);
 
+  const store = createStore(
+    connectRouter(history)(persistCombinedReducers),
+    composeEnhancers(composeWithDevTools(getMiddleware())
+  ))
 
+  const persistor = persistStore(store);
 
-const getMiddleware = () => {
-    if (process.env.NODE_ENV === 'production') 
-    {
-        return applyMiddleware(
-            thunkMiddleware,
-            asyncDispatchMiddleware
-        )
-    }
-    else {
-        return applyMiddleware(
-            thunkMiddleware,
-            loggerMiddleware,
-            asyncDispatchMiddleware
-        )
-    }
-}
-
-const store = createStore(
-  pReducer,composeWithDevTools(getMiddleware()) 
-);
-const persistor = persistStore(store);
-
-const StoreComponent = {persistor ,store};
-
-export default StoreComponent;
+  return {store, persistor};
+};
