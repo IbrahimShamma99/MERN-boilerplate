@@ -30,9 +30,7 @@ class naviagtionBar extends React.Component {
   componentDidMount() {
     this.props.refresh();
   }
-  componentDidUpdate() {
-    this.Styles = StyleComponent(this.props.theme);
-  }
+
   Styles = StyleComponent(this.props.theme);
 
   render() {
