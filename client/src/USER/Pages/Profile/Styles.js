@@ -1,66 +1,9 @@
 import styled from "styled-components";
 
-/**
- * 
- * .username-container p {
-  position: absolute;
-  top: 50%;
-  left: 25%;
-  font-size: 24px;
-  color: rgb(30, 30, 30);
-  font-weight: lighter;
-  max-width: 40%;
-  overflow: visible;
-}
+const BaseComponent;
+const MediumUpComponent;
+const SmallUpComponent;
 
-.username-container h3 {
-  position: absolute;
-  top: 10%;
-  word-break: break-word;
-  display: block;
-  left: 20%;
-  font-size: 60px;
-  color: rgb(30, 30, 30);
-  font-weight: bolder;
-  max-width: 40%;
-}
-
-.username-container img {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 70%;
-  left: 23%;
-}
-
-.username-container-button button {
-  width: 160px;
-  height: 50px;
-  font-size: x-large;
-  position: relative;
-  font-weight: bolder;
-  position: absolute;
-  top: 70%;
-  left: 4%;
-  margin-top: 10px;
-  color: rgb(0, 0, 0);
-  background-color: #c93333;
-  margin-top: auto;
-  border-radius: 8px;
-}
-
-.username-container-button a {
-  color: black;
-}
-
-.username-container-button button:hover {
-  text-shadow: 0 0 2em rgba(255, 255, 255, 1);
-  color: rgb(50, 0, 0);
-  border-color: rgb(202, 28, 28);
-  background-color: #ffffff;
-  border: #c93333 solid 2px;
-}
- */
 
 const Styles = (theme) => {
   if (theme === "light") {
