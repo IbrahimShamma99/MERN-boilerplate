@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Styles = (theme) => {
+  console.log("theme=",theme)
   if (theme === "light") {
     return {
       H4: styled.h4`

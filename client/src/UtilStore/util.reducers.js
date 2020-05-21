@@ -8,6 +8,7 @@ const intialState = {
 const reducers = (state = intialState, action) => {
   switch (action.type) {
     case UtilActions.TOGGLE_THEME:
+
       if (state.checked) {
         return {
           ...state,

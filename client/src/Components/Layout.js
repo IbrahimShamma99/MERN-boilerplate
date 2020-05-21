@@ -4,7 +4,6 @@ import sun from "../logos/sun.png";
 import Toggle from "./Toggle";
 
 class Layout extends React.Component {
-  
   render() {
     return (
       <div>
