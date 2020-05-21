@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 function App(props) {
   return (
-    <ThemeProvider theme={props.theme === "light" ? lightTheme : darkTheme}>
+    <ThemeProvider key={props.theme} theme={props.theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <React.Fragment>
         <NavigationBar

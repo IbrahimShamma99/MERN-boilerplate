@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class naviagtionBar extends React.PureComponent {
+class naviagtionBar extends React.Component {
   componentDidMount() {
     this.props.refresh();
   }
