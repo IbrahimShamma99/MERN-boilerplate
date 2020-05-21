@@ -1,10 +1,9 @@
 import { createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import { persistStore } from "redux-persist";
-import rootReducer from './Reducer';
-import getMiddleware from './Middlewares';
+import rootReducer from "./Reducer";
+import Middleware from "./Middleware";
 
-const store = createStore(rootReducer, composeWithDevTools(getMiddleware()));
+const store = createStore(rootReducer,Middleware);
 const persistor = persistStore(store);
 
 const StoreComponent = { persistor, store };

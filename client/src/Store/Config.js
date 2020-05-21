@@ -5,10 +5,10 @@ const persistConfig = {
     key: "user",
     storage: storage,
   },
-  util:{
-      key:"util",
-      storage: storage,  
-  }
+  util: {
+    key: "util",
+    storage: storage,
+  },
 };
 
 export default persistConfig;

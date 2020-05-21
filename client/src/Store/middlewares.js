@@ -28,16 +28,14 @@ const asyncDispatchMiddleware = (store) => (next) => (action) => {
   flushQueue();
 };
 
-const getMiddleware = () => {
-  if (process.env.NODE_ENV === "production") {
-    return applyMiddleware(thunkMiddleware, asyncDispatchMiddleware);
-  } else {
-    return applyMiddleware(
-      thunkMiddleware,
-      loggerMiddleware,
-      asyncDispatchMiddleware
-    );
-  }
-};
+const DevMiddlewares = applyMiddleware(
+  thunkMiddleware,
+  asyncDispatchMiddleware
+);
+const ProdMiddlewares = applyMiddleware(
+  thunkMiddleware,
+  loggerMiddleware,
+  asyncDispatchMiddleware
+);
 
-export default getMiddleware;
+export default { DevMiddlewares, ProdMiddlewares };
