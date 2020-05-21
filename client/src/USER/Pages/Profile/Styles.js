@@ -104,11 +104,6 @@ const Styles = (theme) => {
         position: relative;
       `,
       Img: styled.img`
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        top: 70%;
-        left: 23%;
         margin-top: 40px;
         margin-left: 40px;
         border-radius: 50%;
