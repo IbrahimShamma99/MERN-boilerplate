@@ -1,4 +1,4 @@
-import apiNames from "../constants/server";
+import apiNames from "../../constants/server";
 import axios from "axios";
 
 const login = (DATA) => {
