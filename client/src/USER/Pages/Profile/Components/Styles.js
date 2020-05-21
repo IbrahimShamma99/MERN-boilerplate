@@ -1,32 +1,10 @@
 import styled from "styled-components";
-
-// const MediumUpComponent;
-// const SmallUpComponent;
+import BaseComponent from "./Base";
 
 const Styles = (theme) => {
   if (theme === "light") {
     return {
-      ProfileContainer: styled.div`
-        vertical-align: middle;
-        align-content: middle;
-        position: absolute;
-        margin: 10px;
-        top: 40%;
-        left: 50%;
-        width: 100%;
-        height: 60%;
-        transform: translateX(-50%) translateY(-50%);
-        max-width: 95%;
-        max-height: 100%;
-        border-width: 2px 4px 4px 2px; /*top left bottom right */
-        border-style: solid;
-        border-color: #c93333;
-        border-radius: 5px;
-        background: bisque;
-        background-color: bisque;
-        font-family: "Times New Roman", Times, serif;
-        overflow: hidden;
-      `,
+      ...BaseComponent,
       alert: styled.div`
         padding: 20px;
         background-color: #f44336; /* Red */
@@ -114,27 +92,7 @@ const Styles = (theme) => {
     };
   } else {
     return {
-      ProfileContainer: styled.div`
-        vertical-align: middle;
-        align-content: middle;
-        position: absolute;
-        margin: 10px;
-        top: 40%;
-        left: 50%;
-        width: 100%;
-        height: 60%;
-        transform: translateX(-50%) translateY(-50%);
-        max-width: 95%;
-        max-height: 100%;
-        border-width: 2px 4px 4px 2px; /*top left bottom right */
-        border-style: solid;
-        border-color: #c93333;
-        border-radius: 5px;
-        background: bisque;
-        background-color: bisque;
-        font-family: "Times New Roman", Times, serif;
-        overflow: hidden;
-      `,
+      ...BaseComponent,
       alert: styled.div`
         padding: 20px;
         background-color: #f44336; /* Red */
@@ -149,7 +107,7 @@ const Styles = (theme) => {
       InfoH4: styled.h4`
         overflow: auto;
         display: block;
-        color: black;
+        color: beige;
         font-weight: bold;
         position: relative;
       `,
@@ -176,7 +134,7 @@ const Styles = (theme) => {
         top: 50%;
         left: 25%;
         font-size: 24px;
-        color: rgb(30, 30, 30);
+        color: azure;
         font-weight: lighter;
         max-width: 40%;
         overflow: visible;
@@ -188,7 +146,7 @@ const Styles = (theme) => {
         display: block;
         left: 20%;
         font-size: 60px;
-        color: rgb(30, 30, 30);
+        color: azure;
         font-weight: bolder;
         max-width: 40%;
       `,
@@ -219,7 +177,7 @@ const Styles = (theme) => {
       InfoAttributes: styled.h5`
         font-weight: lighter;
         width: 100%;
-        color: black;
+        color: beige;
       `,
     };
   }

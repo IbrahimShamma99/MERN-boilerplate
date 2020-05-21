@@ -17,8 +17,7 @@ const BaseComponent = {
     border-style: solid;
     border-color: #c93333;
     border-radius: 5px;
-    background: bisque;
-    background-color: bisque;
+    background: ${props => props.primary? "bisque": "black"};
     font-family: "Times New Roman", Times, serif;
     overflow: hidden;
   `,

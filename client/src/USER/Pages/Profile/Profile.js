@@ -50,10 +50,7 @@ class Profile extends React.Component {
 
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
-          <this.Styles.ProfileContainer>
-            {
-              //FIXME
-            }
+          <this.Styles.ProfileContainer primary={this.props.theme==="light"? true :null}>
             {this.props.profile.avatar ? (
               this.props.profile.avatar.filename ? (
                 <div class="view overlay zoom">
