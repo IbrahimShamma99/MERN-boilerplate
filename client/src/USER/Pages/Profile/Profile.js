@@ -1,5 +1,5 @@
 import React from "react";
-import "./Profile.css";
+//import "./Profile.css";
 import { Breakpoint } from "react-socks";
 import ContactLogo from "./contacts";
 // import RouteNames from "../../constants/routes";
@@ -7,11 +7,13 @@ import { connect } from "react-redux";
 import auth from "../../Utils/auth-helper";
 import * as actionTypes from "../../Store/user.actions";
 import ServerDir from "../../../constants/server";
+import StyleComponents from "./Components/Styles";
 
 const mapStatetoProps = (state) => {
   console.log("state.user", state.user);
   return {
     ...state.UserState,
+    theme: state.util.theme,
   };
 };
 
@@ -28,32 +30,34 @@ class Profile extends React.Component {
   componentWillMount() {
     this.props.fetchUser(this.props.match.params.user);
   }
-
+  Styles = StyleComponents(this.props.theme);
   render() {
     return (
       <div className="container">
         {this.props.show ? (
-          <div className="alert">
-            <span
-              className="closebtn"
-              onClick="this.parentElement.style.display='none';"
-            >
-              &times;
-            </span>
-            {this.props.error}
-          </div>
+          <this.Styles.alert>
+            <div className="alert">
+              <span
+                className="closebtn"
+                onClick="this.parentElement.style.display='none';"
+              >
+                &times;
+              </span>
+              {this.props.error}
+            </div>
+          </this.Styles.alert>
         ) : null}
 
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
-          <div className="profile-container">
+          <this.Styles.ProfileContainer>
             {
               //FIXME
             }
             {this.props.profile.avatar ? (
               this.props.profile.avatar.filename ? (
                 <div class="view overlay zoom">
-                  <img
+                  <this.Styles.Img
                     className="profile-picture"
                     alt="profile"
                     src={
@@ -61,29 +65,33 @@ class Profile extends React.Component {
                       "/" +
                       this.props.profile.avatar.filename
                     }
-                  ></img>
+                  ></this.Styles.Img>
                 </div>
               ) : (
-                <img
+                <this.Styles.Img
                   className="profile-picture"
                   alt="profile"
                   src={require("../../Assets/profile.jpg")}
-                ></img>
+                ></this.Styles.Img>
               )
             ) : null}
             <div className="username-container">
               <span>
-                <h3>
+                <this.Styles.usernameContainerH3>
                   {this.props.profile.first_name} <br />
                   {this.props.profile.last_name}
-                </h3>
+                </this.Styles.usernameContainerH3>
               </span>
-              <p>{this.props.profile.bio}</p>
+              <this.Styles.usernameContainerP>
+                {this.props.profile.bio}
+              </this.Styles.usernameContainerP>
               {auth.isAuthenticated() &&
               this.props.user._id === this.props.profile._id ? (
                 <div className="username-container-button">
                   <a href={"/" + this.props.username + "/update"}>
-                    <button className="btn btn-danger">Edit Profile</button>
+                    <this.Styles.usernameContainerButton>
+                      Edit Profile
+                    </this.Styles.usernameContainerButton>
                   </a>
                 </div>
               ) : null}
@@ -97,19 +105,25 @@ class Profile extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="info-container">
-              <h5 className="info-attribute">Location</h5>
-              <h4>{this.props.profile.location}</h4>
-              <h5 className="info-attribute">Interests</h5>
-              <h4>
-                {this.props.profile.interests
-                  ? this.props.profile.interests.map((intr) => intr)
-                  : null}
-              </h4>
-              <h5 className="info-attribute">Email</h5>
-              <h4>{this.props.profile.email}</h4>
-            </div>
-          </div>
+            <this.Styles.InfoContainer>
+              <this.Styles.InfoAttributes>Location</this.Styles.InfoAttributes>
+              <this.Styles.InfoH4>
+                {this.props.profile.location}
+              </this.Styles.InfoH4>
+              {this.props.profile.interests ? (
+                <div>
+                  <this.Styles.InfoAttributes>Interests</this.Styles.InfoAttributes>
+                  <this.Styles.InfoH4>
+                    {this.props.profile.interests.map((intr) => intr)}
+                  </this.Styles.InfoH4>
+                </div>
+              ) : null}
+              <this.Styles.InfoAttributes>Email</this.Styles.InfoAttributes>
+              <this.Styles.InfoH4>
+                {this.props.profile.email}
+              </this.Styles.InfoH4>
+            </this.Styles.InfoContainer>
+          </this.Styles.ProfileContainer>
         </Breakpoint>
         <Breakpoint small down>
           <div className="mobile-profile-container container-fluid">
