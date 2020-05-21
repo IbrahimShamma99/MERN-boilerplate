@@ -77,8 +77,6 @@ class Profile extends React.Component {
                 </h3>
               </span>
               <p>{this.props.profile.bio}</p>
-              {console.log("auth?", this.props.user._id)}
-              {console.log("auth?", this.props.user._id)}
               {auth.isAuthenticated() &&
               this.props.user._id === this.props.profile._id ? (
                 <div className="username-container-button">

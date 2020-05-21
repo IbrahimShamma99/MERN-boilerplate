@@ -11,18 +11,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-import styled from "styled-components";
-
-const H4 = styled.h4`
-  font-family: "Times New Roman", Times, serif;
-`;
-const H5 = styled.h5`
-  font-family: "Times New Roman", Times, serif;
-`;
+import StyleComponent from "./Styles";
 
 const mapStatetoProps = (state) => {
   return {
     username: state.UserState.user.username,
+    theme: state.util.theme,
   };
 };
 
@@ -32,17 +26,20 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class naviagtionBar extends React.Component {
+class naviagtionBar extends React.PureComponent {
   componentDidMount() {
     this.props.refresh();
+  };
+  componentDidUpdate(){
+   this.Styles = StyleComponent(this.props.theme);
   }
-
+  Styles = StyleComponent(this.props.theme);
   render() {
     return (
       <div className="navbar">
         <Navbar fixed="top" className="input" bg="black" expand="lg">
           <Navbar.Brand href={RouteNames.base}>
-            <H4>App</H4>
+            <this.Styles.H4>App</this.Styles.H4>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -50,14 +47,14 @@ class naviagtionBar extends React.Component {
               {!auth.isAuthenticated() ? (
                 <Nav.Link href={RouteNames.register}>
                   <Button variant="inherit">
-                    <H5>Register</H5>
+                    <this.Styles.H5>Register</this.Styles.H5>
                   </Button>
                 </Nav.Link>
               ) : null}
               {!auth.isAuthenticated() ? (
                 <Nav.Link href={RouteNames.login}>
                   <Button variant="inherit">
-                    <H5>Login</H5>
+                    <this.Styles.H5>Login</this.Styles.H5>
                   </Button>
                 </Nav.Link>
               ) : null}
@@ -69,14 +66,14 @@ class naviagtionBar extends React.Component {
                       auth.signout();
                     }}
                   >
-                    <H5>Logout</H5>
+                    <this.Styles.H5>Logout</this.Styles.H5>
                   </Button>
                 </Nav.Link>
               ) : null}
               {auth.isAuthenticated() ? (
                 <Nav.Link href={"/" + this.props.username}>
                   <Button variant="inherit">
-                    <H5>Profile</H5>
+                    <this.Styles.H5>Profile</this.Styles.H5>
                   </Button>
                 </Nav.Link>
               ) : null}
