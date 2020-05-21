@@ -10,7 +10,7 @@ import * as utilTypes from "./UtilStore/util.actions";
 const mapStateToProps = (state) => {
   return {
     theme: state.util.theme,
-    checked: state.util.checked,
+    checked: state.util.checked
   };
 };
 
