@@ -29,10 +29,11 @@ const mapDispatchToProps = (dispatch) => {
 class naviagtionBar extends React.PureComponent {
   componentDidMount() {
     this.props.refresh();
-  };
-  componentDidUpdate(){
-   this.Styles = StyleComponent(this.props.theme);
   }
+  componentDidUpdate() {
+    this.Styles = StyleComponent(this.props.theme);
+  }
+
   Styles = StyleComponent(this.props.theme);
   render() {
     return (
