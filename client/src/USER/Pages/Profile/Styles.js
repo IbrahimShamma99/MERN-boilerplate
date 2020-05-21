@@ -114,7 +114,7 @@ const Styles = (theme) => {
     return {
       alert: styled.div`
         padding: 20px;
-        background-color: #f44336; /* Red */
+        background-color: #f44336;
         color: white;
         margin-bottom: 15px;
       `,

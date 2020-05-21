@@ -6,6 +6,7 @@ import ContactLogo from "./contacts";
 import { connect } from "react-redux";
 import auth from "../../Utils/auth-helper";
 import * as actionTypes from "../../Store/user.actions";
+import ServerDir from "../../../constants/server";
 
 const mapStatetoProps = (state) => {
   console.log("state.user", state.user);
@@ -56,7 +57,8 @@ class Profile extends React.Component {
                     className="profile-picture"
                     alt="profile"
                     src={
-                      "http://localhost:5000/" +
+                      ServerDir.serverDev +
+                      "/" +
                       this.props.profile.avatar.filename
                     }
                   ></img>
@@ -115,7 +117,9 @@ class Profile extends React.Component {
               <img
                 className="mobile-profile-picture"
                 alt="profile"
-                src={{ uri: "https://localhost:5000/1589683215388-cat.jpg" }}
+                src={
+                  ServerDir.serverDev + "/" + this.props.profile.avatar.filename
+                }
               ></img>
             ) : (
               <img

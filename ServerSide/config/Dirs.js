@@ -11,9 +11,12 @@ const CreateDir = (Dir) => {
   }
 };
 
+const Dirs = [PublicDir, AvatarDir];
+
 const CreateDirs = () => {
-  CreateDir(PublicDir);
-  CreateDir(AvatarDir);
+  Dirs.map((dir) => {
+    CreateDir(dir);
+  });
 };
 
 module.exports = CreateDirs;
