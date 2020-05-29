@@ -3,6 +3,7 @@ const Routes = {
   AddUser: "/register",
   Login: "/login",
   Logout: "/logout",
+  users:"/users",
   user: "/users/:user",
   update: "/update/:user",
   follow: "/follow",

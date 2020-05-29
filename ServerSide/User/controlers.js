@@ -172,9 +172,13 @@ const logout = (req, res) => {
   });
 };
 
+
+const usersFeed = (req,res)=>{}
+
 const UserControler = {
   adduser,
   login,
+  usersFeed,
   uploadAvatar,
   logout,
   updateUser,

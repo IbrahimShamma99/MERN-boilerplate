@@ -30,4 +30,7 @@ router.post(Routes.Logout, helper.optional, controlers.logout);
 //SECTION fetch via username
 router.get(Routes.username, helper.optional, controlers.fetchUserViaUsername);
 
+//SECTION fetch all users and add filter
+router.get(Routes.users,helper.required, controlers.usersFeed);
+
 module.exports = router;
