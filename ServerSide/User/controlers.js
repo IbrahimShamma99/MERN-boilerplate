@@ -69,10 +69,10 @@ const login = async (req, res, next) => {
         return res.status(422).json({ error: "User not found" });
       }
       if (user.validPassword(UserInfo.password)) {
-        console.log("Valid")
+        console.log("Valid");
         return res.status(202).json(user.toAuthJSON());
       } else {
-        console.log("Not valid")
+        console.log("Not valid");
         return res.status(422).send({ error: "authentication error" });
       }
     })
@@ -172,8 +172,31 @@ const logout = (req, res) => {
   });
 };
 
-
-const usersFeed = (req,res)=>{}
+const usersFeed = (req, res) => {
+  var limit = 20;
+  var offset = 0;
+  if (typeof req.query.limit !== "undefined") {
+    limit = req.query.limit;
+  }
+  if (typeof req.query.offset !== "undefined") {
+    offset = req.query.offset;
+  }
+  //Multiple of async for one promise
+  Promise.all([
+    User.find().limit(Number(limit)).skip(Number(offset)).populate().exec(),
+  ])
+    .then(function (results) {
+      const users = results[0];
+      const projectsCount = users.length;
+      return res.send({
+        projects: projects.map((project) => {
+          return project.toJSON();
+        }),
+        projectsCount: projectsCount,
+      });
+    })
+    .catch(next);
+};
 
 const UserControler = {
   adduser,
