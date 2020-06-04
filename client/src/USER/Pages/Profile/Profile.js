@@ -58,9 +58,7 @@ class Profile extends React.Component {
                     className="profile-picture"
                     alt="profile"
                     src={
-                      ServerDir.serverDev +
-                      "/" +
-                      this.props.profile.avatar.filename
+                      ServerDir.concat("/",this.props.profile.avatar.filename)
                     }
                   ></this.Styles.Img>
                 </div>

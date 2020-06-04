@@ -2,7 +2,7 @@ import apiNames from "../../constants/server";
 import axios from "axios";
 
 const login = (DATA) => {
-  return fetch(apiNames.serverDev + "/login", {
+  return fetch(apiNames.concat("/login"), {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -19,9 +19,9 @@ const login = (DATA) => {
 };
 
 const logout = () => {
-  return fetch(apiNames.serverDev + "/logout", {
+  return fetch(apiNames.concat("/logout"), {
     method: "GET",
-    body:JSON.stringify({})
+    body: JSON.stringify({}),
   })
     .then((response) => {
       return response.json();
@@ -30,7 +30,7 @@ const logout = () => {
 };
 
 const register = (user) => {
-  return fetch(apiNames.serverDev + "/register", {
+  return fetch(apiNames.concat("/register"), {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -47,7 +47,7 @@ const register = (user) => {
 };
 
 const signout = () => {
-  return fetch(apiNames.serverDev + "/logout", {
+  return fetch(apiNames.concat("/logout"), {
     method: "GET",
   })
     .then((response) => {
@@ -57,11 +57,11 @@ const signout = () => {
 };
 
 const update = (DATA) => {
-  return fetch(apiNames.serverDev + "/update/" + DATA.user._id, {
+  return fetch(apiNames.concat("/update/", DATA.user._id), {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
     withCredentials: true,
     crossdomain: true,
@@ -79,17 +79,14 @@ const uploadAvatar = (ID, avatar) => {
   const config = {
     headers: {
       "content-type": "multipart/form-data",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
   };
-  axios.put(apiNames.serverDev + "/update/" + ID, formData, config);
+  axios.put(apiNames.concat("/update/", ID, formData, config));
 };
 
 const fetchViaUsername = (username) => {
-  const QueryRoute = apiNames.serverDev.concat(
-    "/fetch/",
-    "?username=" + username
-  );
+  const QueryRoute = apiNames.concat("/fetch/", "?username=" , username);
   return fetch(QueryRoute, {
     method: "get",
     headers: {
