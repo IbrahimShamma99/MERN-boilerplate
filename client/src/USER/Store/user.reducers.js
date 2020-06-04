@@ -117,9 +117,10 @@ const reducers = (state = intialState, action) => {
       return { ...state, ...action.user, profile: {}, open: true };
 
     case actionTypes.SUCCESS:
-      console.log("action=", action);
       auth.authenticate(action.user.token, () => {
-        return { ...state, ...action, profile: {}, open: true };
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 100);
       });
       return { ...state, ...action, profile: {}, open: true };
     case actionTypes.LOGOUT:
