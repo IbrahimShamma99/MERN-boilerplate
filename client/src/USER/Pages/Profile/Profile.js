@@ -51,6 +51,8 @@ class Profile extends React.Component {
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
           <this.Styles.ProfileContainer primary={this.props.theme==="light"? true :null}>
+          {this.props.profile?(
+            <div>
             {this.props.profile.avatar ? (
               this.props.profile.avatar.filename ? (
                 <div class="view overlay zoom">
@@ -117,8 +119,11 @@ class Profile extends React.Component {
               <this.Styles.InfoH4>
                 {this.props.profile.email}
               </this.Styles.InfoH4>
-            </this.Styles.InfoContainer>
+            </this.Styles.InfoContainer></div>
+            ):null
+          }
           </this.Styles.ProfileContainer>
+          
         </Breakpoint>
         <Breakpoint small down>
           <div className="mobile-profile-container container-fluid">
