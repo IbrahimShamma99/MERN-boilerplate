@@ -11,24 +11,24 @@ const loggerMiddleware = createLogger();
 
 const DevMiddlewares = applyMiddleware(
   thunkMiddleware,
+  loggerMiddleware,
   asyncDispatchMiddleware
 );
 const ProdMiddlewares = applyMiddleware(
   thunkMiddleware,
-  loggerMiddleware,
   asyncDispatchMiddleware
 );
 
 const getMiddleware = () => {
-    if (process.env.NODE_ENV === "production") {
-      return ProdMiddlewares;
-    } else {
-      return DevMiddlewares;
-    }
-  };
-  
+  if (process.env.NODE_ENV === "production") {
+    return ProdMiddlewares;
+  } else {
+    return DevMiddlewares;
+  }
+};
+
 const middlewares = composeWithDevTools(getMiddleware());
-  
+
 const store = createStore(rootReducer, middlewares);
 const persistor = persistStore(store);
 
