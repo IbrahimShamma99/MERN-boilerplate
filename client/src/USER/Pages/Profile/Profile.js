@@ -127,7 +127,7 @@ class Profile extends React.Component {
                 className="mobile-profile-picture"
                 alt="profile"
                 src={
-                  ServerDir.serverDev + "/" + this.props.profile.avatar.filename
+                  ServerDir.concat("/",this.props.profile.avatar.filename)
                 }
               ></img>
             ) : (
