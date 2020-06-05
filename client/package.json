@@ -35,9 +35,11 @@
     "start": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "plop": "plop"
   },
   "devDependencies": {
+    "plop": "^2.7.1",
     "react-scripts": "latest"
   },
   "eslintConfig": {
