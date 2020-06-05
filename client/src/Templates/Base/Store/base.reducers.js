@@ -1,5 +1,5 @@
-import * as actionTypes from "./user.actions";
-import { login, register, update, fetchViaUsername } from "../Utils/api-auth";
+import * as actionTypes from "./base.actions";
+import * as api from "../Utils/api-auth";
 import auth from "../Utils/auth-helper";
 import { userInitState } from "./user.constants";
 import { PURGE } from "redux-persist";
