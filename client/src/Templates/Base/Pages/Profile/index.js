@@ -1,5 +1,6 @@
 import Profile from './Profile';
 import { connect } from "react-redux";
+//import actionTypes from "../../Store/base.actions";
 
 const mapStatetoProps = (state) => {
     console.log("state.user", state.user);
