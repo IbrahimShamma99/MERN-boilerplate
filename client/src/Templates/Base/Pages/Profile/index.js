@@ -1,2 +1,21 @@
-import profile from './Profile';
-export default profile;
+import Profile from './Profile';
+import { connect } from "react-redux";
+
+const mapStatetoProps = (state) => {
+    console.log("state.user", state.user);
+    return {
+      ...state.UserState,
+      theme: state.util.theme,
+    };
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      fetchUser: (username) => {
+        dispatch({ type: actionTypes.USERNAME_FETCH, username });
+      },
+      refresh: () => dispatch({ type: actionTypes.REFRESH }),
+    };
+  };
+  
+export default connect(mapStatetoProps, mapDispatchToProps)(Profile);
