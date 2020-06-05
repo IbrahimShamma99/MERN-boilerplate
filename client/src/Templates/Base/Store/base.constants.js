@@ -1,0 +1,3 @@
+const BasicInfoInitState = {};
+
+export { BasicInfoInitState };
