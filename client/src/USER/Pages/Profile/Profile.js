@@ -3,28 +3,9 @@ import React from "react";
 import { Breakpoint } from "react-socks";
 import ContactLogo from "./contacts";
 // import RouteNames from "../../constants/routes";
-import { connect } from "react-redux";
 import auth from "../../Utils/auth-helper";
-import * as actionTypes from "../../Store/user.actions";
 import ServerDir from "../../../constants/server";
 import StyleComponents from "./Components/Styles";
-
-const mapStatetoProps = (state) => {
-  console.log("state.user", state.user);
-  return {
-    ...state.UserState,
-    theme: state.util.theme,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUser: (username) => {
-      dispatch({ type: actionTypes.USERNAME_FETCH, username });
-    },
-    refresh: () => dispatch({ type: actionTypes.REFRESH }),
-  };
-};
 
 class Profile extends React.Component {
   componentWillMount() {
@@ -50,80 +31,86 @@ class Profile extends React.Component {
 
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
-          <this.Styles.ProfileContainer primary={this.props.theme==="light"? true :null}>
-          {this.props.profile?(
-            <div>
-            {this.props.profile.avatar ? (
-              this.props.profile.avatar.filename ? (
-                <div class="view overlay zoom">
-                  <this.Styles.Img
-                    className="profile-picture"
-                    alt="profile"
-                    src={
-                      ServerDir.concat("/",this.props.profile.avatar.filename)
-                    }
-                  ></this.Styles.Img>
+          <this.Styles.ProfileContainer
+            primary={this.props.theme === "light" ? true : null}
+          >
+            {this.props.profile ? (
+              <div>
+                {this.props.profile.avatar ? (
+                  this.props.profile.avatar.filename ? (
+                    <div class="view overlay zoom">
+                      <this.Styles.Img
+                        className="profile-picture"
+                        alt="profile"
+                        src={ServerDir.concat(
+                          "/",
+                          this.props.profile.avatar.filename
+                        )}
+                      ></this.Styles.Img>
+                    </div>
+                  ) : (
+                    <this.Styles.Img
+                      className="profile-picture"
+                      alt="profile"
+                      src={require("../../Assets/profile.jpg")}
+                    ></this.Styles.Img>
+                  )
+                ) : null}
+                <div className="username-container">
+                  <span>
+                    <this.Styles.usernameContainerH3>
+                      {this.props.profile.first_name} <br />
+                      {this.props.profile.last_name}
+                    </this.Styles.usernameContainerH3>
+                  </span>
+                  <this.Styles.usernameContainerP>
+                    {this.props.profile.bio}
+                  </this.Styles.usernameContainerP>
+                  {auth.isAuthenticated() &&
+                  this.props.user._id === this.props.profile._id ? (
+                    <div className="username-container-button">
+                      <a href={"/" + this.props.username + "/update"}>
+                        <this.Styles.usernameContainerButton>
+                          Edit Profile
+                        </this.Styles.usernameContainerButton>
+                      </a>
+                    </div>
+                  ) : null}
+                  <div className="contacts-container">
+                    <div className="row">
+                      {this.props.profile.contacts
+                        ? this.props.profile.contacts.map((contact) => {
+                            return <ContactLogo contact={contact} />;
+                          })
+                        : null}
+                    </div>
+                  </div>
                 </div>
-              ) : (
-                <this.Styles.Img
-                  className="profile-picture"
-                  alt="profile"
-                  src={require("../../Assets/profile.jpg")}
-                ></this.Styles.Img>
-              )
-            ) : null}
-            <div className="username-container">
-              <span>
-                <this.Styles.usernameContainerH3>
-                  {this.props.profile.first_name} <br />
-                  {this.props.profile.last_name}
-                </this.Styles.usernameContainerH3>
-              </span>
-              <this.Styles.usernameContainerP>
-                {this.props.profile.bio}
-              </this.Styles.usernameContainerP>
-              {auth.isAuthenticated() &&
-              this.props.user._id === this.props.profile._id ? (
-                <div className="username-container-button">
-                  <a href={"/" + this.props.username + "/update"}>
-                    <this.Styles.usernameContainerButton>
-                      Edit Profile
-                    </this.Styles.usernameContainerButton>
-                  </a>
-                </div>
-              ) : null}
-              <div className="contacts-container">
-                <div className="row">
-                  {this.props.profile.contacts
-                    ? this.props.profile.contacts.map((contact) => {
-                        return <ContactLogo contact={contact} />;
-                      })
-                    : null}
-                </div>
-              </div>
-            </div>
-            <this.Styles.InfoContainer>
-              <this.Styles.InfoAttributes>Location</this.Styles.InfoAttributes>
-              <this.Styles.InfoH4>
-                {this.props.profile.location}
-              </this.Styles.InfoH4>
-              {this.props.profile.interests ? (
-                <div>
-                  <this.Styles.InfoAttributes>Interests</this.Styles.InfoAttributes>
+                <this.Styles.InfoContainer>
+                  <this.Styles.InfoAttributes>
+                    Location
+                  </this.Styles.InfoAttributes>
                   <this.Styles.InfoH4>
-                    {this.props.profile.interests.map((intr) => intr)}
+                    {this.props.profile.location}
                   </this.Styles.InfoH4>
-                </div>
-              ) : null}
-              <this.Styles.InfoAttributes>Email</this.Styles.InfoAttributes>
-              <this.Styles.InfoH4>
-                {this.props.profile.email}
-              </this.Styles.InfoH4>
-            </this.Styles.InfoContainer></div>
-            ):null
-          }
+                  {this.props.profile.interests ? (
+                    <div>
+                      <this.Styles.InfoAttributes>
+                        Interests
+                      </this.Styles.InfoAttributes>
+                      <this.Styles.InfoH4>
+                        {this.props.profile.interests.map((intr) => intr)}
+                      </this.Styles.InfoH4>
+                    </div>
+                  ) : null}
+                  <this.Styles.InfoAttributes>Email</this.Styles.InfoAttributes>
+                  <this.Styles.InfoH4>
+                    {this.props.profile.email}
+                  </this.Styles.InfoH4>
+                </this.Styles.InfoContainer>
+              </div>
+            ) : null}
           </this.Styles.ProfileContainer>
-          
         </Breakpoint>
         <Breakpoint small down>
           <div className="mobile-profile-container container-fluid">
@@ -131,9 +118,7 @@ class Profile extends React.Component {
               <img
                 className="mobile-profile-picture"
                 alt="profile"
-                src={
-                  ServerDir.concat("/",this.props.profile.avatar.filename)
-                }
+                src={ServerDir.concat("/", this.props.profile.avatar.filename)}
               ></img>
             ) : (
               <img
@@ -227,4 +212,4 @@ class Profile extends React.Component {
     );
   }
 }
-export default connect(mapStatetoProps, mapDispatchToProps)(Profile);
+export default Profile;
